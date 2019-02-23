@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.EmployeeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Employee" >
+    <constructor >
+      <idArg column="eid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ename" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="esex" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ebirth" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="eidcard" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ephone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="edeptno" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="epostno" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="etime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="estatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="epassword" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    eid, ename, esex, ebirth, eidcard, ephone, email, edeptno, epostno, etime, estatus, 
+    epassword
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from employee
+    where eid = #{eid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from employee
+    where eid = #{eid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Employee" >
+    insert into employee (eid, ename, esex, 
+      ebirth, eidcard, ephone, 
+      email, edeptno, epostno, 
+      etime, estatus, epassword
+      )
+    values (#{eid,jdbcType=INTEGER}, #{ename,jdbcType=VARCHAR}, #{esex,jdbcType=VARCHAR}, 
+      #{ebirth,jdbcType=TIMESTAMP}, #{eidcard,jdbcType=VARCHAR}, #{ephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{edeptno,jdbcType=INTEGER}, #{epostno,jdbcType=VARCHAR}, 
+      #{etime,jdbcType=TIMESTAMP}, #{estatus,jdbcType=INTEGER}, #{epassword,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Employee" >
+    insert into employee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="ename != null" >
+        ename,
+      </if>
+      <if test="esex != null" >
+        esex,
+      </if>
+      <if test="ebirth != null" >
+        ebirth,
+      </if>
+      <if test="eidcard != null" >
+        eidcard,
+      </if>
+      <if test="ephone != null" >
+        ephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="edeptno != null" >
+        edeptno,
+      </if>
+      <if test="epostno != null" >
+        epostno,
+      </if>
+      <if test="etime != null" >
+        etime,
+      </if>
+      <if test="estatus != null" >
+        estatus,
+      </if>
+      <if test="epassword != null" >
+        epassword,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="ename != null" >
+        #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        #{esex,jdbcType=VARCHAR},
+      </if>
+      <if test="ebirth != null" >
+        #{ebirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eidcard != null" >
+        #{eidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="ephone != null" >
+        #{ephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="edeptno != null" >
+        #{edeptno,jdbcType=INTEGER},
+      </if>
+      <if test="epostno != null" >
+        #{epostno,jdbcType=VARCHAR},
+      </if>
+      <if test="etime != null" >
+        #{etime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estatus != null" >
+        #{estatus,jdbcType=INTEGER},
+      </if>
+      <if test="epassword != null" >
+        #{epassword,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Employee" >
+    update employee
+    <set >
+      <if test="ename != null" >
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="esex != null" >
+        esex = #{esex,jdbcType=VARCHAR},
+      </if>
+      <if test="ebirth != null" >
+        ebirth = #{ebirth,jdbcType=TIMESTAMP},
+      </if>
+      <if test="eidcard != null" >
+        eidcard = #{eidcard,jdbcType=VARCHAR},
+      </if>
+      <if test="ephone != null" >
+        ephone = #{ephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="edeptno != null" >
+        edeptno = #{edeptno,jdbcType=INTEGER},
+      </if>
+      <if test="epostno != null" >
+        epostno = #{epostno,jdbcType=VARCHAR},
+      </if>
+      <if test="etime != null" >
+        etime = #{etime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="estatus != null" >
+        estatus = #{estatus,jdbcType=INTEGER},
+      </if>
+      <if test="epassword != null" >
+        epassword = #{epassword,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Employee" >
+    update employee
+    set ename = #{ename,jdbcType=VARCHAR},
+      esex = #{esex,jdbcType=VARCHAR},
+      ebirth = #{ebirth,jdbcType=TIMESTAMP},
+      eidcard = #{eidcard,jdbcType=VARCHAR},
+      ephone = #{ephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      edeptno = #{edeptno,jdbcType=INTEGER},
+      epostno = #{epostno,jdbcType=VARCHAR},
+      etime = #{etime,jdbcType=TIMESTAMP},
+      estatus = #{estatus,jdbcType=INTEGER},
+      epassword = #{epassword,jdbcType=VARCHAR}
+    where eid = #{eid,jdbcType=INTEGER}
+  </update>
+</mapper>

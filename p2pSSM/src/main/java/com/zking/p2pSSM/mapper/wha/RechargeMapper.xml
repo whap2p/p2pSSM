@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.RechargeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Recharge" >
+    <constructor >
+      <idArg column="rID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="czlx" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lsh" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="czmoney" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dzmoney" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cztime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="statu" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zname" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    rID, uID, uname, czlx, lsh, czmoney, fl, dzmoney, cztime, statu, zname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from recharge
+    where rID = #{rID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from recharge
+    where rID = #{rID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Recharge" >
+    insert into recharge (rID, uID, uname, 
+      czlx, lsh, czmoney, 
+      fl, dzmoney, cztime, 
+      statu, zname)
+    values (#{rID,jdbcType=INTEGER}, #{uID,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, 
+      #{czlx,jdbcType=VARCHAR}, #{lsh,jdbcType=VARCHAR}, #{czmoney,jdbcType=VARCHAR}, 
+      #{fl,jdbcType=VARCHAR}, #{dzmoney,jdbcType=VARCHAR}, #{cztime,jdbcType=TIMESTAMP}, 
+      #{statu,jdbcType=VARCHAR}, #{zname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Recharge" >
+    insert into recharge
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rID != null" >
+        rID,
+      </if>
+      <if test="uID != null" >
+        uID,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="czlx != null" >
+        czlx,
+      </if>
+      <if test="lsh != null" >
+        lsh,
+      </if>
+      <if test="czmoney != null" >
+        czmoney,
+      </if>
+      <if test="fl != null" >
+        fl,
+      </if>
+      <if test="dzmoney != null" >
+        dzmoney,
+      </if>
+      <if test="cztime != null" >
+        cztime,
+      </if>
+      <if test="statu != null" >
+        statu,
+      </if>
+      <if test="zname != null" >
+        zname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rID != null" >
+        #{rID,jdbcType=INTEGER},
+      </if>
+      <if test="uID != null" >
+        #{uID,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="czlx != null" >
+        #{czlx,jdbcType=VARCHAR},
+      </if>
+      <if test="lsh != null" >
+        #{lsh,jdbcType=VARCHAR},
+      </if>
+      <if test="czmoney != null" >
+        #{czmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null" >
+        #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="dzmoney != null" >
+        #{dzmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="cztime != null" >
+        #{cztime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statu != null" >
+        #{statu,jdbcType=VARCHAR},
+      </if>
+      <if test="zname != null" >
+        #{zname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Recharge" >
+    update recharge
+    <set >
+      <if test="uID != null" >
+        uID = #{uID,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="czlx != null" >
+        czlx = #{czlx,jdbcType=VARCHAR},
+      </if>
+      <if test="lsh != null" >
+        lsh = #{lsh,jdbcType=VARCHAR},
+      </if>
+      <if test="czmoney != null" >
+        czmoney = #{czmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="fl != null" >
+        fl = #{fl,jdbcType=VARCHAR},
+      </if>
+      <if test="dzmoney != null" >
+        dzmoney = #{dzmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="cztime != null" >
+        cztime = #{cztime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="statu != null" >
+        statu = #{statu,jdbcType=VARCHAR},
+      </if>
+      <if test="zname != null" >
+        zname = #{zname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rID = #{rID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Recharge" >
+    update recharge
+    set uID = #{uID,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      czlx = #{czlx,jdbcType=VARCHAR},
+      lsh = #{lsh,jdbcType=VARCHAR},
+      czmoney = #{czmoney,jdbcType=VARCHAR},
+      fl = #{fl,jdbcType=VARCHAR},
+      dzmoney = #{dzmoney,jdbcType=VARCHAR},
+      cztime = #{cztime,jdbcType=TIMESTAMP},
+      statu = #{statu,jdbcType=VARCHAR},
+      zname = #{zname,jdbcType=VARCHAR}
+    where rID = #{rID,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.clapplyforMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.clapplyfor" >
+    <constructor >
+      <idArg column="clpid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="clpubcid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="clpuname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="clpporiginal" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="clpidpaper" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="clphpoc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="clpf" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="clpdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="clpauditor" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="clpstate" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    clpid, clpubcid, clpuname, clpporiginal, clpidpaper, clphpoc, clpf, clpdate, clpauditor, 
+    clpstate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from clapplyfor
+    where clpid = #{clpid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from clapplyfor
+    where clpid = #{clpid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.clapplyfor" >
+    insert into clapplyfor (clpid, clpubcid, clpuname, 
+      clpporiginal, clpidpaper, clphpoc, 
+      clpf, clpdate, clpauditor, 
+      clpstate)
+    values (#{clpid,jdbcType=INTEGER}, #{clpubcid,jdbcType=VARCHAR}, #{clpuname,jdbcType=VARCHAR}, 
+      #{clpporiginal,jdbcType=DOUBLE}, #{clpidpaper,jdbcType=VARCHAR}, #{clphpoc,jdbcType=VARCHAR}, 
+      #{clpf,jdbcType=DOUBLE}, #{clpdate,jdbcType=TIMESTAMP}, #{clpauditor,jdbcType=VARCHAR}, 
+      #{clpstate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.clapplyfor" >
+    insert into clapplyfor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clpid != null" >
+        clpid,
+      </if>
+      <if test="clpubcid != null" >
+        clpubcid,
+      </if>
+      <if test="clpuname != null" >
+        clpuname,
+      </if>
+      <if test="clpporiginal != null" >
+        clpporiginal,
+      </if>
+      <if test="clpidpaper != null" >
+        clpidpaper,
+      </if>
+      <if test="clphpoc != null" >
+        clphpoc,
+      </if>
+      <if test="clpf != null" >
+        clpf,
+      </if>
+      <if test="clpdate != null" >
+        clpdate,
+      </if>
+      <if test="clpauditor != null" >
+        clpauditor,
+      </if>
+      <if test="clpstate != null" >
+        clpstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clpid != null" >
+        #{clpid,jdbcType=INTEGER},
+      </if>
+      <if test="clpubcid != null" >
+        #{clpubcid,jdbcType=VARCHAR},
+      </if>
+      <if test="clpuname != null" >
+        #{clpuname,jdbcType=VARCHAR},
+      </if>
+      <if test="clpporiginal != null" >
+        #{clpporiginal,jdbcType=DOUBLE},
+      </if>
+      <if test="clpidpaper != null" >
+        #{clpidpaper,jdbcType=VARCHAR},
+      </if>
+      <if test="clphpoc != null" >
+        #{clphpoc,jdbcType=VARCHAR},
+      </if>
+      <if test="clpf != null" >
+        #{clpf,jdbcType=DOUBLE},
+      </if>
+      <if test="clpdate != null" >
+        #{clpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clpauditor != null" >
+        #{clpauditor,jdbcType=VARCHAR},
+      </if>
+      <if test="clpstate != null" >
+        #{clpstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.clapplyfor" >
+    update clapplyfor
+    <set >
+      <if test="clpubcid != null" >
+        clpubcid = #{clpubcid,jdbcType=VARCHAR},
+      </if>
+      <if test="clpuname != null" >
+        clpuname = #{clpuname,jdbcType=VARCHAR},
+      </if>
+      <if test="clpporiginal != null" >
+        clpporiginal = #{clpporiginal,jdbcType=DOUBLE},
+      </if>
+      <if test="clpidpaper != null" >
+        clpidpaper = #{clpidpaper,jdbcType=VARCHAR},
+      </if>
+      <if test="clphpoc != null" >
+        clphpoc = #{clphpoc,jdbcType=VARCHAR},
+      </if>
+      <if test="clpf != null" >
+        clpf = #{clpf,jdbcType=DOUBLE},
+      </if>
+      <if test="clpdate != null" >
+        clpdate = #{clpdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clpauditor != null" >
+        clpauditor = #{clpauditor,jdbcType=VARCHAR},
+      </if>
+      <if test="clpstate != null" >
+        clpstate = #{clpstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where clpid = #{clpid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.clapplyfor" >
+    update clapplyfor
+    set clpubcid = #{clpubcid,jdbcType=VARCHAR},
+      clpuname = #{clpuname,jdbcType=VARCHAR},
+      clpporiginal = #{clpporiginal,jdbcType=DOUBLE},
+      clpidpaper = #{clpidpaper,jdbcType=VARCHAR},
+      clphpoc = #{clphpoc,jdbcType=VARCHAR},
+      clpf = #{clpf,jdbcType=DOUBLE},
+      clpdate = #{clpdate,jdbcType=TIMESTAMP},
+      clpauditor = #{clpauditor,jdbcType=VARCHAR},
+      clpstate = #{clpstate,jdbcType=VARCHAR}
+    where clpid = #{clpid,jdbcType=INTEGER}
+  </update>
+</mapper>

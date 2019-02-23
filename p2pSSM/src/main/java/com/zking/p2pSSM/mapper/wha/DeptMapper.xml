@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.DeptMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Dept" >
+    <constructor >
+      <idArg column="did" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="dstatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="describes" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    did, dname, dtime, dstatus, describes
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dept
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dept
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Dept" >
+    insert into dept (did, dname, dtime, 
+      dstatus, describes)
+    values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, #{dtime,jdbcType=TIMESTAMP}, 
+      #{dstatus,jdbcType=INTEGER}, #{describes,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Dept" >
+    insert into dept
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="dname != null" >
+        dname,
+      </if>
+      <if test="dtime != null" >
+        dtime,
+      </if>
+      <if test="dstatus != null" >
+        dstatus,
+      </if>
+      <if test="describes != null" >
+        describes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dname != null" >
+        #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="dtime != null" >
+        #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dstatus != null" >
+        #{dstatus,jdbcType=INTEGER},
+      </if>
+      <if test="describes != null" >
+        #{describes,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Dept" >
+    update dept
+    <set >
+      <if test="dname != null" >
+        dname = #{dname,jdbcType=VARCHAR},
+      </if>
+      <if test="dtime != null" >
+        dtime = #{dtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dstatus != null" >
+        dstatus = #{dstatus,jdbcType=INTEGER},
+      </if>
+      <if test="describes != null" >
+        describes = #{describes,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Dept" >
+    update dept
+    set dname = #{dname,jdbcType=VARCHAR},
+      dtime = #{dtime,jdbcType=TIMESTAMP},
+      dstatus = #{dstatus,jdbcType=INTEGER},
+      describes = #{describes,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>

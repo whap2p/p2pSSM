@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.UserauditorMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Userauditor" >
+    <constructor >
+      <idArg column="uaid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="username" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="uauditorid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uauditor" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    uaid, userid, username, uauditorid, uauditor
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userauditor
+    where uaid = #{uaid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userauditor
+    where uaid = #{uaid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Userauditor" >
+    insert into userauditor (uaid, userid, username, 
+      uauditorid, uauditor)
+    values (#{uaid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{uauditorid,jdbcType=INTEGER}, #{uauditor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Userauditor" >
+    insert into userauditor
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uaid != null" >
+        uaid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="uauditorid != null" >
+        uauditorid,
+      </if>
+      <if test="uauditor != null" >
+        uauditor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uaid != null" >
+        #{uaid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="uauditorid != null" >
+        #{uauditorid,jdbcType=INTEGER},
+      </if>
+      <if test="uauditor != null" >
+        #{uauditor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Userauditor" >
+    update userauditor
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="uauditorid != null" >
+        uauditorid = #{uauditorid,jdbcType=INTEGER},
+      </if>
+      <if test="uauditor != null" >
+        uauditor = #{uauditor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uaid = #{uaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Userauditor" >
+    update userauditor
+    set userid = #{userid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      uauditorid = #{uauditorid,jdbcType=INTEGER},
+      uauditor = #{uauditor,jdbcType=VARCHAR}
+    where uaid = #{uaid,jdbcType=INTEGER}
+  </update>
+</mapper>

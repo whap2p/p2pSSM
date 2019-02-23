@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.FeedbackMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Feedback" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ftime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zking.p2pSSM.model.Feedback" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="fid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="fname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ftime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="fconent" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, fid, fname, ftime
+  </sql>
+  <sql id="Blob_Column_List" >
+    fconent
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from feedback
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from feedback
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Feedback" >
+    insert into feedback (id, fid, fname, 
+      ftime, fconent)
+    values (#{id,jdbcType=INTEGER}, #{fid,jdbcType=VARCHAR}, #{fname,jdbcType=VARCHAR}, 
+      #{ftime,jdbcType=TIMESTAMP}, #{fconent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Feedback" >
+    insert into feedback
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fid != null" >
+        fid,
+      </if>
+      <if test="fname != null" >
+        fname,
+      </if>
+      <if test="ftime != null" >
+        ftime,
+      </if>
+      <if test="fconent != null" >
+        fconent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null" >
+        #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null" >
+        #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="ftime != null" >
+        #{ftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fconent != null" >
+        #{fconent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Feedback" >
+    update feedback
+    <set >
+      <if test="fid != null" >
+        fid = #{fid,jdbcType=VARCHAR},
+      </if>
+      <if test="fname != null" >
+        fname = #{fname,jdbcType=VARCHAR},
+      </if>
+      <if test="ftime != null" >
+        ftime = #{ftime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fconent != null" >
+        fconent = #{fconent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zking.p2pSSM.model.Feedback" >
+    update feedback
+    set fid = #{fid,jdbcType=VARCHAR},
+      fname = #{fname,jdbcType=VARCHAR},
+      ftime = #{ftime,jdbcType=TIMESTAMP},
+      fconent = #{fconent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Feedback" >
+    update feedback
+    set fid = #{fid,jdbcType=VARCHAR},
+      fname = #{fname,jdbcType=VARCHAR},
+      ftime = #{ftime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

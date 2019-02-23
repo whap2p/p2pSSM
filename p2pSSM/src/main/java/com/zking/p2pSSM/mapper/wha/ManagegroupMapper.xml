@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.ManagegroupMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Managegroup" >
+    <constructor >
+      <idArg column="adminserial" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="adminname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="admindescribe" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    adminserial, adminname, admindescribe
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from managegroup
+    where adminserial = #{adminserial,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from managegroup
+    where adminserial = #{adminserial,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Managegroup" >
+    insert into managegroup (adminserial, adminname, admindescribe
+      )
+    values (#{adminserial,jdbcType=INTEGER}, #{adminname,jdbcType=VARCHAR}, #{admindescribe,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Managegroup" >
+    insert into managegroup
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="adminserial != null" >
+        adminserial,
+      </if>
+      <if test="adminname != null" >
+        adminname,
+      </if>
+      <if test="admindescribe != null" >
+        admindescribe,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="adminserial != null" >
+        #{adminserial,jdbcType=INTEGER},
+      </if>
+      <if test="adminname != null" >
+        #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="admindescribe != null" >
+        #{admindescribe,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Managegroup" >
+    update managegroup
+    <set >
+      <if test="adminname != null" >
+        adminname = #{adminname,jdbcType=VARCHAR},
+      </if>
+      <if test="admindescribe != null" >
+        admindescribe = #{admindescribe,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where adminserial = #{adminserial,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Managegroup" >
+    update managegroup
+    set adminname = #{adminname,jdbcType=VARCHAR},
+      admindescribe = #{admindescribe,jdbcType=VARCHAR}
+    where adminserial = #{adminserial,jdbcType=INTEGER}
+  </update>
+</mapper>

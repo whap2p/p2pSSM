@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.Product_copy2Mapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Product_copy2" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pmoney" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="pincome" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ptime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="ptype" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pway" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pcount" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="progress" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="psaveway" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="prateben" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ppublishtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="pname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ptotalmoney" jdbcType="BIGINT" javaType="java.lang.Long" />
+      <arg column="prange" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="puse" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pstate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="picture" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="pproduce" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="pdesc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="psafe" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="did" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, pmoney, pincome, ptime, ptype, pway, pcount, progress, psaveway, prateben, ppublishtime, 
+    pname, ptotalmoney, prange, puse, pstate, picture, pproduce, pdesc, psafe, did
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from product_copy2
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product_copy2
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Product_copy2" >
+    insert into product_copy2 (id, pmoney, pincome, 
+      ptime, ptype, pway, 
+      pcount, progress, psaveway, 
+      prateben, ppublishtime, pname, 
+      ptotalmoney, prange, puse, 
+      pstate, picture, pproduce, 
+      pdesc, psafe, did)
+    values (#{id,jdbcType=INTEGER}, #{pmoney,jdbcType=BIGINT}, #{pincome,jdbcType=VARCHAR}, 
+      #{ptime,jdbcType=TIMESTAMP}, #{ptype,jdbcType=INTEGER}, #{pway,jdbcType=VARCHAR}, 
+      #{pcount,jdbcType=TIMESTAMP}, #{progress,jdbcType=VARCHAR}, #{psaveway,jdbcType=VARCHAR}, 
+      #{prateben,jdbcType=VARCHAR}, #{ppublishtime,jdbcType=TIMESTAMP}, #{pname,jdbcType=VARCHAR}, 
+      #{ptotalmoney,jdbcType=BIGINT}, #{prange,jdbcType=VARCHAR}, #{puse,jdbcType=VARCHAR}, 
+      #{pstate,jdbcType=VARCHAR}, #{picture,jdbcType=VARCHAR}, #{pproduce,jdbcType=INTEGER}, 
+      #{pdesc,jdbcType=VARCHAR}, #{psafe,jdbcType=VARCHAR}, #{did,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Product_copy2" >
+    insert into product_copy2
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="pmoney != null" >
+        pmoney,
+      </if>
+      <if test="pincome != null" >
+        pincome,
+      </if>
+      <if test="ptime != null" >
+        ptime,
+      </if>
+      <if test="ptype != null" >
+        ptype,
+      </if>
+      <if test="pway != null" >
+        pway,
+      </if>
+      <if test="pcount != null" >
+        pcount,
+      </if>
+      <if test="progress != null" >
+        progress,
+      </if>
+      <if test="psaveway != null" >
+        psaveway,
+      </if>
+      <if test="prateben != null" >
+        prateben,
+      </if>
+      <if test="ppublishtime != null" >
+        ppublishtime,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="ptotalmoney != null" >
+        ptotalmoney,
+      </if>
+      <if test="prange != null" >
+        prange,
+      </if>
+      <if test="puse != null" >
+        puse,
+      </if>
+      <if test="pstate != null" >
+        pstate,
+      </if>
+      <if test="picture != null" >
+        picture,
+      </if>
+      <if test="pproduce != null" >
+        pproduce,
+      </if>
+      <if test="pdesc != null" >
+        pdesc,
+      </if>
+      <if test="psafe != null" >
+        psafe,
+      </if>
+      <if test="did != null" >
+        did,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pmoney != null" >
+        #{pmoney,jdbcType=BIGINT},
+      </if>
+      <if test="pincome != null" >
+        #{pincome,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null" >
+        #{ptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptype != null" >
+        #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="pway != null" >
+        #{pway,jdbcType=VARCHAR},
+      </if>
+      <if test="pcount != null" >
+        #{pcount,jdbcType=TIMESTAMP},
+      </if>
+      <if test="progress != null" >
+        #{progress,jdbcType=VARCHAR},
+      </if>
+      <if test="psaveway != null" >
+        #{psaveway,jdbcType=VARCHAR},
+      </if>
+      <if test="prateben != null" >
+        #{prateben,jdbcType=VARCHAR},
+      </if>
+      <if test="ppublishtime != null" >
+        #{ppublishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ptotalmoney != null" >
+        #{ptotalmoney,jdbcType=BIGINT},
+      </if>
+      <if test="prange != null" >
+        #{prange,jdbcType=VARCHAR},
+      </if>
+      <if test="puse != null" >
+        #{puse,jdbcType=VARCHAR},
+      </if>
+      <if test="pstate != null" >
+        #{pstate,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="pproduce != null" >
+        #{pproduce,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null" >
+        #{pdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="psafe != null" >
+        #{psafe,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Product_copy2" >
+    update product_copy2
+    <set >
+      <if test="pmoney != null" >
+        pmoney = #{pmoney,jdbcType=BIGINT},
+      </if>
+      <if test="pincome != null" >
+        pincome = #{pincome,jdbcType=VARCHAR},
+      </if>
+      <if test="ptime != null" >
+        ptime = #{ptime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ptype != null" >
+        ptype = #{ptype,jdbcType=INTEGER},
+      </if>
+      <if test="pway != null" >
+        pway = #{pway,jdbcType=VARCHAR},
+      </if>
+      <if test="pcount != null" >
+        pcount = #{pcount,jdbcType=TIMESTAMP},
+      </if>
+      <if test="progress != null" >
+        progress = #{progress,jdbcType=VARCHAR},
+      </if>
+      <if test="psaveway != null" >
+        psaveway = #{psaveway,jdbcType=VARCHAR},
+      </if>
+      <if test="prateben != null" >
+        prateben = #{prateben,jdbcType=VARCHAR},
+      </if>
+      <if test="ppublishtime != null" >
+        ppublishtime = #{ppublishtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="ptotalmoney != null" >
+        ptotalmoney = #{ptotalmoney,jdbcType=BIGINT},
+      </if>
+      <if test="prange != null" >
+        prange = #{prange,jdbcType=VARCHAR},
+      </if>
+      <if test="puse != null" >
+        puse = #{puse,jdbcType=VARCHAR},
+      </if>
+      <if test="pstate != null" >
+        pstate = #{pstate,jdbcType=VARCHAR},
+      </if>
+      <if test="picture != null" >
+        picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="pproduce != null" >
+        pproduce = #{pproduce,jdbcType=INTEGER},
+      </if>
+      <if test="pdesc != null" >
+        pdesc = #{pdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="psafe != null" >
+        psafe = #{psafe,jdbcType=VARCHAR},
+      </if>
+      <if test="did != null" >
+        did = #{did,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Product_copy2" >
+    update product_copy2
+    set pmoney = #{pmoney,jdbcType=BIGINT},
+      pincome = #{pincome,jdbcType=VARCHAR},
+      ptime = #{ptime,jdbcType=TIMESTAMP},
+      ptype = #{ptype,jdbcType=INTEGER},
+      pway = #{pway,jdbcType=VARCHAR},
+      pcount = #{pcount,jdbcType=TIMESTAMP},
+      progress = #{progress,jdbcType=VARCHAR},
+      psaveway = #{psaveway,jdbcType=VARCHAR},
+      prateben = #{prateben,jdbcType=VARCHAR},
+      ppublishtime = #{ppublishtime,jdbcType=TIMESTAMP},
+      pname = #{pname,jdbcType=VARCHAR},
+      ptotalmoney = #{ptotalmoney,jdbcType=BIGINT},
+      prange = #{prange,jdbcType=VARCHAR},
+      puse = #{puse,jdbcType=VARCHAR},
+      pstate = #{pstate,jdbcType=VARCHAR},
+      picture = #{picture,jdbcType=VARCHAR},
+      pproduce = #{pproduce,jdbcType=INTEGER},
+      pdesc = #{pdesc,jdbcType=VARCHAR},
+      psafe = #{psafe,jdbcType=VARCHAR},
+      did = #{did,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

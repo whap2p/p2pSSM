@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.LogMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Log" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="laccount" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="logtype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lremark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lprocesstime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, laccount, logtype, lremark, lprocesstime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Log" >
+    insert into log (id, laccount, logtype, 
+      lremark, lprocesstime)
+    values (#{id,jdbcType=INTEGER}, #{laccount,jdbcType=VARCHAR}, #{logtype,jdbcType=VARCHAR}, 
+      #{lremark,jdbcType=VARCHAR}, #{lprocesstime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Log" >
+    insert into log
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="laccount != null" >
+        laccount,
+      </if>
+      <if test="logtype != null" >
+        logtype,
+      </if>
+      <if test="lremark != null" >
+        lremark,
+      </if>
+      <if test="lprocesstime != null" >
+        lprocesstime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="laccount != null" >
+        #{laccount,jdbcType=VARCHAR},
+      </if>
+      <if test="logtype != null" >
+        #{logtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lremark != null" >
+        #{lremark,jdbcType=VARCHAR},
+      </if>
+      <if test="lprocesstime != null" >
+        #{lprocesstime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Log" >
+    update log
+    <set >
+      <if test="laccount != null" >
+        laccount = #{laccount,jdbcType=VARCHAR},
+      </if>
+      <if test="logtype != null" >
+        logtype = #{logtype,jdbcType=VARCHAR},
+      </if>
+      <if test="lremark != null" >
+        lremark = #{lremark,jdbcType=VARCHAR},
+      </if>
+      <if test="lprocesstime != null" >
+        lprocesstime = #{lprocesstime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Log" >
+    update log
+    set laccount = #{laccount,jdbcType=VARCHAR},
+      logtype = #{logtype,jdbcType=VARCHAR},
+      lremark = #{lremark,jdbcType=VARCHAR},
+      lprocesstime = #{lprocesstime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

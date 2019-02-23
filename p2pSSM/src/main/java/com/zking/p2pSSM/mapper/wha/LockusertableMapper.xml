@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.LockusertableMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Lockusertable" >
+    <constructor >
+      <idArg column="lockingserial" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lockingnumber" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lockingname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lockingiphone" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lockingid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="lockingdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    lockingserial, lockingnumber, lockingname, lockingiphone, lockingid, lockingdate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lockusertable
+    where lockingserial = #{lockingserial,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lockusertable
+    where lockingserial = #{lockingserial,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Lockusertable" >
+    insert into lockusertable (lockingserial, lockingnumber, lockingname, 
+      lockingiphone, lockingid, lockingdate
+      )
+    values (#{lockingserial,jdbcType=INTEGER}, #{lockingnumber,jdbcType=VARCHAR}, #{lockingname,jdbcType=VARCHAR}, 
+      #{lockingiphone,jdbcType=INTEGER}, #{lockingid,jdbcType=VARCHAR}, #{lockingdate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Lockusertable" >
+    insert into lockusertable
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lockingserial != null" >
+        lockingserial,
+      </if>
+      <if test="lockingnumber != null" >
+        lockingnumber,
+      </if>
+      <if test="lockingname != null" >
+        lockingname,
+      </if>
+      <if test="lockingiphone != null" >
+        lockingiphone,
+      </if>
+      <if test="lockingid != null" >
+        lockingid,
+      </if>
+      <if test="lockingdate != null" >
+        lockingdate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lockingserial != null" >
+        #{lockingserial,jdbcType=INTEGER},
+      </if>
+      <if test="lockingnumber != null" >
+        #{lockingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="lockingname != null" >
+        #{lockingname,jdbcType=VARCHAR},
+      </if>
+      <if test="lockingiphone != null" >
+        #{lockingiphone,jdbcType=INTEGER},
+      </if>
+      <if test="lockingid != null" >
+        #{lockingid,jdbcType=VARCHAR},
+      </if>
+      <if test="lockingdate != null" >
+        #{lockingdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Lockusertable" >
+    update lockusertable
+    <set >
+      <if test="lockingnumber != null" >
+        lockingnumber = #{lockingnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="lockingname != null" >
+        lockingname = #{lockingname,jdbcType=VARCHAR},
+      </if>
+      <if test="lockingiphone != null" >
+        lockingiphone = #{lockingiphone,jdbcType=INTEGER},
+      </if>
+      <if test="lockingid != null" >
+        lockingid = #{lockingid,jdbcType=VARCHAR},
+      </if>
+      <if test="lockingdate != null" >
+        lockingdate = #{lockingdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where lockingserial = #{lockingserial,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Lockusertable" >
+    update lockusertable
+    set lockingnumber = #{lockingnumber,jdbcType=VARCHAR},
+      lockingname = #{lockingname,jdbcType=VARCHAR},
+      lockingiphone = #{lockingiphone,jdbcType=INTEGER},
+      lockingid = #{lockingid,jdbcType=VARCHAR},
+      lockingdate = #{lockingdate,jdbcType=TIMESTAMP}
+    where lockingserial = #{lockingserial,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.BorrowcordMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Borrowcord" >
+    <constructor >
+      <idArg column="boid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bdate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="bstatue" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bcs" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bz1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bz2" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    boid, bid, bdate, bstatue, bcs, bz1, bz2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrowcord
+    where boid = #{boid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrowcord
+    where boid = #{boid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Borrowcord" >
+    insert into borrowcord (boid, bid, bdate, 
+      bstatue, bcs, bz1, 
+      bz2)
+    values (#{boid,jdbcType=INTEGER}, #{bid,jdbcType=INTEGER}, #{bdate,jdbcType=TIMESTAMP}, 
+      #{bstatue,jdbcType=INTEGER}, #{bcs,jdbcType=INTEGER}, #{bz1,jdbcType=VARCHAR}, 
+      #{bz2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Borrowcord" >
+    insert into borrowcord
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="boid != null" >
+        boid,
+      </if>
+      <if test="bid != null" >
+        bid,
+      </if>
+      <if test="bdate != null" >
+        bdate,
+      </if>
+      <if test="bstatue != null" >
+        bstatue,
+      </if>
+      <if test="bcs != null" >
+        bcs,
+      </if>
+      <if test="bz1 != null" >
+        bz1,
+      </if>
+      <if test="bz2 != null" >
+        bz2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="boid != null" >
+        #{boid,jdbcType=INTEGER},
+      </if>
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null" >
+        #{bdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bstatue != null" >
+        #{bstatue,jdbcType=INTEGER},
+      </if>
+      <if test="bcs != null" >
+        #{bcs,jdbcType=INTEGER},
+      </if>
+      <if test="bz1 != null" >
+        #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        #{bz2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Borrowcord" >
+    update borrowcord
+    <set >
+      <if test="bid != null" >
+        bid = #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="bdate != null" >
+        bdate = #{bdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="bstatue != null" >
+        bstatue = #{bstatue,jdbcType=INTEGER},
+      </if>
+      <if test="bcs != null" >
+        bcs = #{bcs,jdbcType=INTEGER},
+      </if>
+      <if test="bz1 != null" >
+        bz1 = #{bz1,jdbcType=VARCHAR},
+      </if>
+      <if test="bz2 != null" >
+        bz2 = #{bz2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where boid = #{boid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Borrowcord" >
+    update borrowcord
+    set bid = #{bid,jdbcType=INTEGER},
+      bdate = #{bdate,jdbcType=TIMESTAMP},
+      bstatue = #{bstatue,jdbcType=INTEGER},
+      bcs = #{bcs,jdbcType=INTEGER},
+      bz1 = #{bz1,jdbcType=VARCHAR},
+      bz2 = #{bz2,jdbcType=VARCHAR}
+    where boid = #{boid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 引入配置文件 -->
+    <properties resource="jdbc.properties"/>
+
+    <!--指定数据库jdbc驱动jar包的位置-->
+    <classPathEntry location="D:\initPath\mvn_repository\mysql\mysql-connector-java\5.1.44\mysql-connector-java-5.1.44.jar"/>
+
+    <!-- 一个数据库一个context -->
+    <context id="infoGuardian">
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true"/> <!-- 是否生成注释代时间戳 -->
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="${jdbc.driver}"
+                        connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}"/>
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 01 指定javaBean生成的位置 -->
+        <!-- targetPackage：指定生成的model生成所在的包名 -->
+        <!-- targetProject：指定在该项目下所在的路径  -->
+        <javaModelGenerator targetPackage="com.zking.p2pSSM.model"
+                            targetProject="src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否对model添加构造函数 -->
+            <property name="constructorBased" value="true"/>
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="false"/>
+            <!-- 建立的Model对象是否 不可改变  即生成的Model对象不会有 setter方法，只有构造方法 -->
+            <property name="immutable" value="false"/>
+        </javaModelGenerator>
+
+        <!-- 02 指定sql映射文件生成的位置 -->
+        <sqlMapGenerator targetPackage="com.zking.p2pSSM.mapper.wha"
+                         targetProject="src/main/java">
+            <!-- 是否允许子包，即targetPackage.schemaName.tableName -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 03 生成XxxMapper接口 -->
+        <!-- type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象 -->
+        <!-- type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象 -->
+        <!-- type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口 -->
+        <javaClientGenerator targetPackage="com.zking.p2pSSM.mapper.wha"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <!-- 是否在当前路径下新加一层schema,false路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- 配置表信息 -->
+        <!-- schema即为数据库名 -->
+        <!-- tableName为对应的数据库表 -->
+        <!-- domainObjectName是要生成的实体类 -->
+        <!-- enable*ByExample是否生成 example类 -->
+        <!--配置第1个表[admin]的信息-->
+        <!--<table schema="" tableName="admin" domainObjectName="Admin" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第2个表[approveitem]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="approveitem" domainObjectName="Approveitem" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第3个表[bankcard]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="bankcard" domainObjectName="Bankcard" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第4个表[banks]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="banks" domainObjectName="Banks" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第5个表[biao]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="biao" domainObjectName="Biao" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第6个表[borrowcord]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="borrowcord" domainObjectName="Borrowcord" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第7个表[borrowmoney]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="borrowmoney" domainObjectName="Borrowmoney" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第8个表[certification]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="certification" domainObjectName="Certification" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第9个表[certifrecord]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="certifrecord" domainObjectName="Certifrecord" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第10个表[clapplyfor]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="clapplyfor" domainObjectName="clapplyfor" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第11个表[creditlimit]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="creditlimit" domainObjectName="Creditlimit" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第12个表[dept]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="dept" domainObjectName="Dept" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第13个表[details]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="details" domainObjectName="Details" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第14个表[dope]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="dope" domainObjectName="Dope" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第15个表[employee]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="employee" domainObjectName="Employee" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第16个表[feedback]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="feedback" domainObjectName="Feedback" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第17个表[group]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="group" domainObjectName="Group" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第18个表[inactiveuser]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="inactiveuser" domainObjectName="Inactiveuser" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第19个表[integral]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="integral" domainObjectName="Integral" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第20个表[investinfo]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="investinfo" domainObjectName="Investinfo" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第21个表[investstat]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="investstat" domainObjectName="Investstat" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第22个表[limi]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="limi" domainObjectName="Limi" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第23个表[lockusertable]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="lockusertable" domainObjectName="Lockusertable" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第24个表[log]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="log" domainObjectName="Log" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第25个表[managegroup]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="managegroup" domainObjectName="Managegroup" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第26个表[notice]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="notice" domainObjectName="Notice" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第27个表[post]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="post" domainObjectName="Post" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第28个表[poundage]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="poundage" domainObjectName="Poundage" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第29个表[product]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="product" domainObjectName="Product" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第30个表[product_copy1]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="product_copy1" domainObjectName="Product_copy1" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第31个表[product_copy2]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="product_copy2" domainObjectName="Product_copy2" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第32个表[recharge]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="recharge" domainObjectName="Recharge" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第33个表[referee]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="referee" domainObjectName="Referee" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第34个表[tender]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="tender" domainObjectName="Tender" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第35个表[test]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="test" domainObjectName="Test" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第36个表[testtb]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="testtb" domainObjectName="Testtb" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第37个表[testtb1]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="testtb1" domainObjectName="Testtb1" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第38个表[trade]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="trade" domainObjectName="Trade" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第39个表[userauditor]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="userauditor" domainObjectName="Userauditor" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第40个表[userreport]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="userreport" domainObjectName="Userreport" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第41个表[users]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="users" domainObjectName="Users" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第42个表[vip]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="vip" domainObjectName="Vip" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+        <!--&lt;!&ndash;配置第43个表[withdrawal]的信息&ndash;&gt;-->
+        <!--<table schema="" tableName="withdrawal" domainObjectName="Withdrawal" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"><property name="useActualColumnNames" value="true"/></table>-->
+
+
+    </context>
+</generatorConfiguration>

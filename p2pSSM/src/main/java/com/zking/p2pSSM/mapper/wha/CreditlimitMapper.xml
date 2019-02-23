@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.CreditlimitMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Creditlimit" >
+    <constructor >
+      <idArg column="clid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cluserid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="clusername" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="crbankcard" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cllimit" jdbcType="DOUBLE" javaType="java.lang.Double" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    clid, cluserid, clusername, crbankcard, cllimit
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from creditlimit
+    where clid = #{clid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from creditlimit
+    where clid = #{clid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Creditlimit" >
+    insert into creditlimit (clid, cluserid, clusername, 
+      crbankcard, cllimit)
+    values (#{clid,jdbcType=INTEGER}, #{cluserid,jdbcType=INTEGER}, #{clusername,jdbcType=VARCHAR}, 
+      #{crbankcard,jdbcType=VARCHAR}, #{cllimit,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Creditlimit" >
+    insert into creditlimit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="clid != null" >
+        clid,
+      </if>
+      <if test="cluserid != null" >
+        cluserid,
+      </if>
+      <if test="clusername != null" >
+        clusername,
+      </if>
+      <if test="crbankcard != null" >
+        crbankcard,
+      </if>
+      <if test="cllimit != null" >
+        cllimit,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="clid != null" >
+        #{clid,jdbcType=INTEGER},
+      </if>
+      <if test="cluserid != null" >
+        #{cluserid,jdbcType=INTEGER},
+      </if>
+      <if test="clusername != null" >
+        #{clusername,jdbcType=VARCHAR},
+      </if>
+      <if test="crbankcard != null" >
+        #{crbankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="cllimit != null" >
+        #{cllimit,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Creditlimit" >
+    update creditlimit
+    <set >
+      <if test="cluserid != null" >
+        cluserid = #{cluserid,jdbcType=INTEGER},
+      </if>
+      <if test="clusername != null" >
+        clusername = #{clusername,jdbcType=VARCHAR},
+      </if>
+      <if test="crbankcard != null" >
+        crbankcard = #{crbankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="cllimit != null" >
+        cllimit = #{cllimit,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where clid = #{clid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Creditlimit" >
+    update creditlimit
+    set cluserid = #{cluserid,jdbcType=INTEGER},
+      clusername = #{clusername,jdbcType=VARCHAR},
+      crbankcard = #{crbankcard,jdbcType=VARCHAR},
+      cllimit = #{cllimit,jdbcType=DOUBLE}
+    where clid = #{clid,jdbcType=INTEGER}
+  </update>
+</mapper>

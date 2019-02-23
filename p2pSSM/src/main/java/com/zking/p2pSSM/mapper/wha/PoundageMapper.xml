@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.PoundageMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Poundage" >
+    <constructor >
+      <idArg column="pID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sxmoney" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="what" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="sxtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Localaccount" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bookaccount" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="paytype" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    pID, uID, uname, zname, sxmoney, what, sxtime, Localaccount, bookaccount, paytype
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from poundage
+    where pID = #{pID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from poundage
+    where pID = #{pID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Poundage" >
+    insert into poundage (pID, uID, uname, 
+      zname, sxmoney, what, 
+      sxtime, Localaccount, bookaccount, 
+      paytype)
+    values (#{pID,jdbcType=INTEGER}, #{uID,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, 
+      #{zname,jdbcType=VARCHAR}, #{sxmoney,jdbcType=VARCHAR}, #{what,jdbcType=VARCHAR}, 
+      #{sxtime,jdbcType=TIMESTAMP}, #{localaccount,jdbcType=VARCHAR}, #{bookaccount,jdbcType=VARCHAR}, 
+      #{paytype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Poundage" >
+    insert into poundage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pID != null" >
+        pID,
+      </if>
+      <if test="uID != null" >
+        uID,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="zname != null" >
+        zname,
+      </if>
+      <if test="sxmoney != null" >
+        sxmoney,
+      </if>
+      <if test="what != null" >
+        what,
+      </if>
+      <if test="sxtime != null" >
+        sxtime,
+      </if>
+      <if test="localaccount != null" >
+        Localaccount,
+      </if>
+      <if test="bookaccount != null" >
+        bookaccount,
+      </if>
+      <if test="paytype != null" >
+        paytype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pID != null" >
+        #{pID,jdbcType=INTEGER},
+      </if>
+      <if test="uID != null" >
+        #{uID,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="zname != null" >
+        #{zname,jdbcType=VARCHAR},
+      </if>
+      <if test="sxmoney != null" >
+        #{sxmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="what != null" >
+        #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="sxtime != null" >
+        #{sxtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="localaccount != null" >
+        #{localaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bookaccount != null" >
+        #{bookaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Poundage" >
+    update poundage
+    <set >
+      <if test="uID != null" >
+        uID = #{uID,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="zname != null" >
+        zname = #{zname,jdbcType=VARCHAR},
+      </if>
+      <if test="sxmoney != null" >
+        sxmoney = #{sxmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="what != null" >
+        what = #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="sxtime != null" >
+        sxtime = #{sxtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="localaccount != null" >
+        Localaccount = #{localaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bookaccount != null" >
+        bookaccount = #{bookaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="paytype != null" >
+        paytype = #{paytype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pID = #{pID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Poundage" >
+    update poundage
+    set uID = #{uID,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      zname = #{zname,jdbcType=VARCHAR},
+      sxmoney = #{sxmoney,jdbcType=VARCHAR},
+      what = #{what,jdbcType=VARCHAR},
+      sxtime = #{sxtime,jdbcType=TIMESTAMP},
+      Localaccount = #{localaccount,jdbcType=VARCHAR},
+      bookaccount = #{bookaccount,jdbcType=VARCHAR},
+      paytype = #{paytype,jdbcType=VARCHAR}
+    where pID = #{pID,jdbcType=INTEGER}
+  </update>
+</mapper>

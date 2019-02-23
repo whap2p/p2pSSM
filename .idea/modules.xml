@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/T216ssm.iml" filepath="$PROJECT_DIR$/T216ssm.iml" />
+      <module fileurl="file://$PROJECT_DIR$/p2pSSM/p2pSSM.iml" filepath="$PROJECT_DIR$/p2pSSM/p2pSSM.iml" />
+    </modules>
+  </component>
+</project>

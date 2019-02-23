@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.UserreportMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Userreport" >
+    <constructor >
+      <idArg column="reportserial" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="reportinformant" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reportInformer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reporttype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reportcontent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="reporttime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="reportstate" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reportserial, reportinformant, reportInformer, reporttype, reportcontent, reporttime, 
+    reportstate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from userreport
+    where reportserial = #{reportserial,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from userreport
+    where reportserial = #{reportserial,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Userreport" >
+    insert into userreport (reportserial, reportinformant, reportInformer, 
+      reporttype, reportcontent, reporttime, 
+      reportstate)
+    values (#{reportserial,jdbcType=INTEGER}, #{reportinformant,jdbcType=VARCHAR}, #{reportInformer,jdbcType=VARCHAR}, 
+      #{reporttype,jdbcType=VARCHAR}, #{reportcontent,jdbcType=VARCHAR}, #{reporttime,jdbcType=TIMESTAMP}, 
+      #{reportstate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Userreport" >
+    insert into userreport
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="reportserial != null" >
+        reportserial,
+      </if>
+      <if test="reportinformant != null" >
+        reportinformant,
+      </if>
+      <if test="reportInformer != null" >
+        reportInformer,
+      </if>
+      <if test="reporttype != null" >
+        reporttype,
+      </if>
+      <if test="reportcontent != null" >
+        reportcontent,
+      </if>
+      <if test="reporttime != null" >
+        reporttime,
+      </if>
+      <if test="reportstate != null" >
+        reportstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="reportserial != null" >
+        #{reportserial,jdbcType=INTEGER},
+      </if>
+      <if test="reportinformant != null" >
+        #{reportinformant,jdbcType=VARCHAR},
+      </if>
+      <if test="reportInformer != null" >
+        #{reportInformer,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttype != null" >
+        #{reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcontent != null" >
+        #{reportcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttime != null" >
+        #{reporttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportstate != null" >
+        #{reportstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Userreport" >
+    update userreport
+    <set >
+      <if test="reportinformant != null" >
+        reportinformant = #{reportinformant,jdbcType=VARCHAR},
+      </if>
+      <if test="reportInformer != null" >
+        reportInformer = #{reportInformer,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttype != null" >
+        reporttype = #{reporttype,jdbcType=VARCHAR},
+      </if>
+      <if test="reportcontent != null" >
+        reportcontent = #{reportcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="reporttime != null" >
+        reporttime = #{reporttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reportstate != null" >
+        reportstate = #{reportstate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where reportserial = #{reportserial,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Userreport" >
+    update userreport
+    set reportinformant = #{reportinformant,jdbcType=VARCHAR},
+      reportInformer = #{reportInformer,jdbcType=VARCHAR},
+      reporttype = #{reporttype,jdbcType=VARCHAR},
+      reportcontent = #{reportcontent,jdbcType=VARCHAR},
+      reporttime = #{reporttime,jdbcType=TIMESTAMP},
+      reportstate = #{reportstate,jdbcType=VARCHAR}
+    where reportserial = #{reportserial,jdbcType=INTEGER}
+  </update>
+</mapper>

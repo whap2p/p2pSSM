@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.RefereeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Referee" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="recommid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rapplicant" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rsponsorid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="rsponsorname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="rmoney" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="rtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="rman" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, rid, recommid, rapplicant, rsponsorid, rsponsorname, rmoney, rtime, rman
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from referee
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from referee
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Referee" >
+    insert into referee (id, rid, recommid, 
+      rapplicant, rsponsorid, rsponsorname, 
+      rmoney, rtime, rman
+      )
+    values (#{id,jdbcType=INTEGER}, #{rid,jdbcType=VARCHAR}, #{recommid,jdbcType=VARCHAR}, 
+      #{rapplicant,jdbcType=VARCHAR}, #{rsponsorid,jdbcType=INTEGER}, #{rsponsorname,jdbcType=VARCHAR}, 
+      #{rmoney,jdbcType=DOUBLE}, #{rtime,jdbcType=TIMESTAMP}, #{rman,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Referee" >
+    insert into referee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="rid != null" >
+        rid,
+      </if>
+      <if test="recommid != null" >
+        recommid,
+      </if>
+      <if test="rapplicant != null" >
+        rapplicant,
+      </if>
+      <if test="rsponsorid != null" >
+        rsponsorid,
+      </if>
+      <if test="rsponsorname != null" >
+        rsponsorname,
+      </if>
+      <if test="rmoney != null" >
+        rmoney,
+      </if>
+      <if test="rtime != null" >
+        rtime,
+      </if>
+      <if test="rman != null" >
+        rman,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="rid != null" >
+        #{rid,jdbcType=VARCHAR},
+      </if>
+      <if test="recommid != null" >
+        #{recommid,jdbcType=VARCHAR},
+      </if>
+      <if test="rapplicant != null" >
+        #{rapplicant,jdbcType=VARCHAR},
+      </if>
+      <if test="rsponsorid != null" >
+        #{rsponsorid,jdbcType=INTEGER},
+      </if>
+      <if test="rsponsorname != null" >
+        #{rsponsorname,jdbcType=VARCHAR},
+      </if>
+      <if test="rmoney != null" >
+        #{rmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="rtime != null" >
+        #{rtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rman != null" >
+        #{rman,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Referee" >
+    update referee
+    <set >
+      <if test="rid != null" >
+        rid = #{rid,jdbcType=VARCHAR},
+      </if>
+      <if test="recommid != null" >
+        recommid = #{recommid,jdbcType=VARCHAR},
+      </if>
+      <if test="rapplicant != null" >
+        rapplicant = #{rapplicant,jdbcType=VARCHAR},
+      </if>
+      <if test="rsponsorid != null" >
+        rsponsorid = #{rsponsorid,jdbcType=INTEGER},
+      </if>
+      <if test="rsponsorname != null" >
+        rsponsorname = #{rsponsorname,jdbcType=VARCHAR},
+      </if>
+      <if test="rmoney != null" >
+        rmoney = #{rmoney,jdbcType=DOUBLE},
+      </if>
+      <if test="rtime != null" >
+        rtime = #{rtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rman != null" >
+        rman = #{rman,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Referee" >
+    update referee
+    set rid = #{rid,jdbcType=VARCHAR},
+      recommid = #{recommid,jdbcType=VARCHAR},
+      rapplicant = #{rapplicant,jdbcType=VARCHAR},
+      rsponsorid = #{rsponsorid,jdbcType=INTEGER},
+      rsponsorname = #{rsponsorname,jdbcType=VARCHAR},
+      rmoney = #{rmoney,jdbcType=DOUBLE},
+      rtime = #{rtime,jdbcType=TIMESTAMP},
+      rman = #{rman,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

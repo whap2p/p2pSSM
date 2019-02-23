@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.DopeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Dope" >
+    <constructor >
+      <idArg column="did" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dprimkey" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dtitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="details" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dtime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    did, dprimkey, dtitle, details, dtime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from dope
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from dope
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Dope" >
+    insert into dope (did, dprimkey, dtitle, 
+      details, dtime)
+    values (#{did,jdbcType=INTEGER}, #{dprimkey,jdbcType=INTEGER}, #{dtitle,jdbcType=VARCHAR}, 
+      #{details,jdbcType=VARCHAR}, #{dtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Dope" >
+    insert into dope
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="dprimkey != null" >
+        dprimkey,
+      </if>
+      <if test="dtitle != null" >
+        dtitle,
+      </if>
+      <if test="details != null" >
+        details,
+      </if>
+      <if test="dtime != null" >
+        dtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dprimkey != null" >
+        #{dprimkey,jdbcType=INTEGER},
+      </if>
+      <if test="dtitle != null" >
+        #{dtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="dtime != null" >
+        #{dtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Dope" >
+    update dope
+    <set >
+      <if test="dprimkey != null" >
+        dprimkey = #{dprimkey,jdbcType=INTEGER},
+      </if>
+      <if test="dtitle != null" >
+        dtitle = #{dtitle,jdbcType=VARCHAR},
+      </if>
+      <if test="details != null" >
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="dtime != null" >
+        dtime = #{dtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Dope" >
+    update dope
+    set dprimkey = #{dprimkey,jdbcType=INTEGER},
+      dtitle = #{dtitle,jdbcType=VARCHAR},
+      details = #{details,jdbcType=VARCHAR},
+      dtime = #{dtime,jdbcType=TIMESTAMP}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>
