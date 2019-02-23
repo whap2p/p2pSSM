@@ -1,0 +1,16 @@
+Index: p2pSSM/src/test/java/SsmTableUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- p2pSSM/src/test/java/SsmTableUtil.java	(date 1550933342000)
++++ p2pSSM/src/test/java/SsmTableUtil.java	(date 1550934292114)
+@@ -11,7 +11,7 @@
+  * 1、在main方法里填写对应的表名与类名，一对一填写【键 - 值】 == 【表名 - 实体类名】
+  * 2、运行
+  * 3、复制粘贴代码
+- * 注意：底部有运行列子后展示的代码。
++ * 注意：底部有运行列子后展示的代码。。
+  * @CreateDate 2019-01-18 16:26
+  * @Version 1.0
+  */
