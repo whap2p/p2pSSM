@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminController {
     @Autowired
     AdminService adminService;
-    @RequestMapping("/bk_login")
+    @RequestMapping("/index")
     public String list(HttpServletRequest request, Admin admin) {
         PageBean pageBean=new PageBean();
         pageBean.setRequest(request);
@@ -22,8 +22,7 @@ public class AdminController {
         List<Admin> list = this.adminService.queryAdminPager(admin, pageBean);
         request.setAttribute("adminlist", list);
         request.setAttribute("pageBean",pageBean);
-        return "WEB-INF/view/" +
-                "";
+        return "WEB-INF/view/index";
     }
     @RequestMapping("/bk_index")
     public String bk_index(HttpServletRequest request, Admin admin) {
