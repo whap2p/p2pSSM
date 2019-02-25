@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif] -->
     <%--  //location.href="<%=basePath%>main.jsp"; --%>
-    <script type="text/javascript" src="<%=basePath%>Jquery/jquery-2.4.1.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>Jquery/jquery-2.1.4.min.js"></script>
   	<script type="text/javascript">
   		$(document).ready(function(){
   			$("#bt").click(function(){

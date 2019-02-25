@@ -42,9 +42,7 @@
 </head>
 
 <body>
-	<%
-		List list = (List) session.getAttribute("listlimit");
-	%>
+
 	<section id="container">
 		<!-- **********************************************************************************************************************************************************
       TOP BAR CONTENT & NOTIFICATIONS
@@ -60,7 +58,7 @@
 			
 			<div class="top-menu">
 				<ul class="nav pull-right top-menu">
-					<li><a class="logout" href="<%=basePath%>employee/exit.do">退出登录</a></li>
+					<li><a class="logout" href="<%=basePath%>/indexs.jsp">退出登录</a></li>
 				</ul>
 			</div>
 			<!-- <div class="top-menu">
@@ -94,25 +92,13 @@
 					</a>
 						<ul class="sub">
 							<li>
-								<%
-									if (list.contains("1")) {
-								%> <a href="<%=basePath%>dept/findall.do">部门管理</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>dept/findall.do">部门管理</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("2")) {
-								%> <a href="<%=basePath%>employee/list.do">员工管理</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>employee/list.do">员工管理</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("3")) {
-								%> <a href="<%=basePath%>users/list.do">用户管理</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>users/list.do">用户管理</a>
 							</li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
@@ -129,46 +115,22 @@
 					</a>
 						<ul class="sub">
 							<li>
-								<%
-									if (list.contains("4")) {
-								%> <a href="<%=basePath%>wd/wlist.do">提现管理</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>wd/wlist.do">提现管理</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("5")) {
-								%> <a href="<%=basePath%>bc/bankcard.do">银行卡管理</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>bc/bankcard.do">银行卡管理</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("6")) {
-								%> <a href="<%=basePath%>rc/rech.do">充值记录</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>rc/rech.do">充值记录</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("7")) {
-								%> <a href="<%=basePath%>pa/poundage.do">手续费记录</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>pa/poundage.do">手续费记录</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("8")) {
-								%> <a href="<%=basePath%>td/trade.do">交易记录</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>td/trade.do">交易记录</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("9")) {
-								%> <a href="<%=basePath%>brower/hjyList.do">借贷信息列表</a> <%
- 	}
- %>
+								  <a href="<%=basePath%>brower/hjyList.do">借贷信息列表</a>
 							</li>
 						</ul></li>
 
@@ -177,76 +139,36 @@
 					</a>
 						<ul class="sub">
 							<li>
-								<%
-									if (list.contains("15")) {
-								%><a href="<%=basePath%>/product/list.do">»投标列表</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/product/list.do">»投标列表</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("16")) {
-								%><a href="<%=basePath%>/product/input.do">»添加投标</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/product/input.do">»添加投标</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("17")) {
-								%><a href="<%=basePath%>/biao/list.do">»标种列表</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/biao/list.do">»标种列表</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("18")) {
-								%><a href="<%=basePath%>/biao/input.do">»添加标种</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/biao/input.do">»添加标种</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("19")) {
-								%><a href="<%=basePath%>/brower/qurey.do">»所有借款</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/brower/qurey.do">»所有借款</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("20")) {
-								%><a href="<%=basePath%>/brower/check.do">»待审核的借款</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/brower/check.do">»待审核的借款</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("21")) {
-								%><a href="<%=basePath%>/product/list.do?status=ing">»招标中的借款</a>
-								<%
-									}
-								%>
+								 <a href="<%=basePath%>/product/list.do?status=ing">»招标中的借款</a>
+
 							</li>
 							<li>
-								<%
-									if (list.contains("22")) {
-								%><a href="<%=basePath%>/brower/tohk.do">»还款</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/brower/tohk.do">»还款</a>
 							</li>
 							<li>
-								<%
-									if (list.contains("23")) {
-								%><a href="<%=basePath%>/product/list.do?status=over">»满标借款</a>
-								<%
-									}
-								%>
+								 <a href="<%=basePath%>/product/list.do?status=over">»满标借款</a>
+
 							</li>
 							<li>
-								<%
-									if (list.contains("24")) {
-								%><a href="<%=basePath%>/product/list.do?status=way">»还款方式</a> <%
- 	}
- %>
+								 <a href="<%=basePath%>/product/list.do?status=way">»还款方式</a>
 							</li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
@@ -254,49 +176,29 @@
 					</a>
 						<ul class="sub">
 							<li>
-								<%
-									if (list.contains("10")) {
-								%> <a
-								href="${pageContext.request.contextPath}/approve/limitApplyfor.do">»信用额度申请</a>
-								<%
-									}
-								%>
+								  <a
+								href="${pageContext.request.contextPath}/approve/limitApplyforlist.jsp">»信用额度申请</a>
+
 							</li>
 							<li>
-								<%
-									if (list.contains("11")) {
-								%> <a
-								href="${pageContext.request.contextPath}/approve/newuserInfoList.do">»新用户认证资料</a>
-								<%
-									}
-								%>
+								  <a
+								href="${pageContext.request.contextPath}/newuserInfoList.jsp">»新用户认证资料</a>
+
 							</li>
 							<li>
-								<%
-									if (list.contains("12")) {
-								%> <a
-								href="${pageContext.request.contextPath}/approve/basicInfoApprove.do">»用户资料认证</a>
-								<%
-									}
-								%>
+								  <a
+								href="${pageContext.request.contextPath}/basicInfoApprove.jsp">»用户资料认证</a>
+
 							</li>
 							<li>
-								<%
-									if (list.contains("13")) {
-								%> <a
+								  <a
 								href="${pageContext.request.contextPath}/approve/approveStatistics.do">»认证资料统计</a>
-								<%
-									}
-								%>
+
 							</li>
 							<li>
-								<%
-									if (list.contains("14")) {
-								%> <a
+								  <a
 								href="${pageContext.request.contextPath}/approve/traverseApproves.do">»认证项设置</a>
-								<%
-									}
-								%>
+
 							</li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
@@ -304,12 +206,8 @@
 					</a>
 						<ul class="sub">
 							<li>
-								<%
-									if (list.contains("100")) {
-								%><a href="<%=basePath%>limit/findlist.do">权限列表</a>
-								<%
-									}
-								%>
+								 <a href="<%=basePath%>limit.jsp">权限列表</a>
+
 							</li>
 						</ul></li>
 				</ul>
@@ -357,7 +255,7 @@
 		//custom select box
 
 		$(function() {
-			$('select.styled').customSelect();
+			// $('select.styled').customSelect();
 		});
 	</script>
 
