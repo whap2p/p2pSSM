@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.waz.wazApproveitemMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Approveitem" >
+    <constructor >
+      <idArg column="aiid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ainame" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="aitype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="aistate" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    aiid, ainame, aitype, aistate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from approveitem
+    where aiid = #{aiid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from approveitem
+    where aiid = #{aiid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Approveitem" >
+    insert into approveitem (aiid, ainame, aitype, 
+      aistate)
+    values (#{aiid,jdbcType=INTEGER}, #{ainame,jdbcType=VARCHAR}, #{aitype,jdbcType=VARCHAR}, 
+      #{aistate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Approveitem" >
+    insert into approveitem
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aiid != null" >
+        aiid,
+      </if>
+      <if test="ainame != null" >
+        ainame,
+      </if>
+      <if test="aitype != null" >
+        aitype,
+      </if>
+      <if test="aistate != null" >
+        aistate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aiid != null" >
+        #{aiid,jdbcType=INTEGER},
+      </if>
+      <if test="ainame != null" >
+        #{ainame,jdbcType=VARCHAR},
+      </if>
+      <if test="aitype != null" >
+        #{aitype,jdbcType=VARCHAR},
+      </if>
+      <if test="aistate != null" >
+        #{aistate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Approveitem" >
+    update approveitem
+    <set >
+      <if test="ainame != null" >
+        ainame = #{ainame,jdbcType=VARCHAR},
+      </if>
+      <if test="aitype != null" >
+        aitype = #{aitype,jdbcType=VARCHAR},
+      </if>
+      <if test="aistate != null" >
+        aistate = #{aistate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where aiid = #{aiid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Approveitem" >
+    update approveitem
+    set ainame = #{ainame,jdbcType=VARCHAR},
+      aitype = #{aitype,jdbcType=VARCHAR},
+      aistate = #{aistate,jdbcType=VARCHAR}
+    where aiid = #{aiid,jdbcType=INTEGER}
+  </update>
+</mapper>
