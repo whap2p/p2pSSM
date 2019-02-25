@@ -22,11 +22,11 @@ public class AdminController {
         List<Admin> list = this.adminService.queryAdminPager(admin, pageBean);
         request.setAttribute("adminlist", list);
         request.setAttribute("pageBean",pageBean);
-        return "WEB-INF/view/index";
+        return "WEB-INF/view/indexs";
     }
-    @RequestMapping("/bk_index")
+    @RequestMapping("/bk_login")
     public String bk_index(HttpServletRequest request, Admin admin) {
-        return "WEB-INF/view/bk_index";
+        return "WEB-INF/view/bk_login";
     }
     @RequestMapping("/common")
     public String common(HttpServletRequest request, Admin admin) {
