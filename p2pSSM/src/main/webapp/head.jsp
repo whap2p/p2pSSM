@@ -26,9 +26,9 @@
         <li class="c_2"><a href="#" target="_blank" title="官方QQ" alt="官方QQ"><b class="ico_head_QQ"></b></a></li>
         <li class="c_4"><a href="#" target="_blank" title="新浪微博" alt="新浪微博"><b class="ico_head_sina"></b></a></li>
       </ul>
-    <c:if test="${globaluser.unickname==null }">
+    <c:if test="${user.unickname==null }">
 				<ul class="fn-right header-top-ul">
-					<li><a href="<%=basePath%>invest/recommendShow.do" class="app">返回首页</a></li>
+					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
 							<a href="<%=basePath%>/register.jsp" class="c-orange" title="免费注册">免费注册</a>
@@ -41,12 +41,12 @@
 					</li>
 				</ul>
 			</c:if>
-			<c:if test="${globaluser!=null }">
+			<c:if test="${user!=null }">
 				<ul class="fn-right header-top-ul">
 					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
-							<a href="<%=basePath%>query.do?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
+							<a href="<%=basePath%>query.do?id=${user.uid}" class="c-orange" title="名字">${user.unickname
 								}</a>
 						</div>
 					</li>
@@ -63,7 +63,7 @@
     <div class="container">
       <div class="fn-left logo"> <a class="" href="<%=basePath%>invest/recommendShow.do"> <img src="<%=basePath%>images/logo.png"  title=""> </a> </div>
       <ul class="top-nav fn-clear">
-        <li > <a href="<%=basePath%>invest/recommendShow.do">首页</a> </li>
+        <li > <a href="<%=basePath%>/index.jsp">首页</a> </li>
         <li> <a href="<%=basePath%>invest/investSel.do" class="">我要投资</a> </li>
         <li> <a href="<%=basePath%>borrowadd.jsp" class="">我要借款</a> </li>
         <li> <a href="${pageContext.request.contextPath}/help.jsp">安全保障</a> </li>
@@ -76,9 +76,9 @@
 
 <script type="text/javascript">
 	function keys(){
-		var id="${globaluser.uid}";
-		if(id!=""){
-		window.location.href="<%=basePath %>query.do?id=${globaluser.uid}";
+		var uid="${user.uid}";
+		if(uid!=""){
+		window.location.href="<%=basePath %>user/queryById/"+uid;
 		}else {
 			alert("请先登入!");
 		window.location.href="<%=basePath%>/login.jsp";
