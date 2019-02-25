@@ -11,11 +11,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
     @Autowired
     AdminService adminService;
-    @RequestMapping("/list")
+    @RequestMapping("/bk_login")
     public String list(HttpServletRequest request, Admin admin) {
         PageBean pageBean=new PageBean();
         pageBean.setRequest(request);
@@ -23,6 +22,15 @@ public class AdminController {
         List<Admin> list = this.adminService.queryAdminPager(admin, pageBean);
         request.setAttribute("adminlist", list);
         request.setAttribute("pageBean",pageBean);
-        return "WEB-INF/view/indexs";
+        return "WEB-INF/view/" +
+                "";
+    }
+    @RequestMapping("/bk_index")
+    public String bk_index(HttpServletRequest request, Admin admin) {
+        return "WEB-INF/view/bk_index";
+    }
+    @RequestMapping("/common")
+    public String common(HttpServletRequest request, Admin admin) {
+        return "WEB-INF/view/common";
     }
 }
