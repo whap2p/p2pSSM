@@ -22,9 +22,9 @@
 	<!-- 导航栏 --><jsp:include page="head.jsp"></jsp:include>
 	
 	 
-	<!--登陆-->
+	<!--注册-->
 	<div class="wrap">
-		<form id="LonginForm" name="LonginForm" action="<%=basePath%>/user/login" method="post">
+		<form id="LonginForm" name="LonginForm" action="<%=basePath%>/users/login.do" method="post">
 			<div class="tdbModule loginPage">
 				<div class="registerTitle">用户登录</div>
 				<div class="registerCont">

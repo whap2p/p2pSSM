@@ -18,7 +18,7 @@ public class AdminServiceImplTest extends SpringJunitTest {
     public void queryByUserName() {
         //分页查询
         PageBean pageBean = new PageBean();
-        pageBean.setRows(2);
+        pageBean.setPage(2);
         Admin admin = new Admin();
         List<Admin> list = adminService.queryAdminPager(admin, pageBean);
         System.out.println(list.size());

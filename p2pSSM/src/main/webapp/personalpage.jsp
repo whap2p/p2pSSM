@@ -52,7 +52,7 @@
 		} 
 	</style>
       <div class="pmain-profile">
-        <div class="pmain-welcome"> <span class="fl"><span id="outLogin">晚上好，</span>${user.unickname} 喝一杯下午茶，让心情放松一下~</span>
+        <div class="pmain-welcome"> <span class="fl"><span id="outLogin">晚上好，</span>${user.unickname} 喝一杯下午茶，让心情放松一下~</span> 
 	        <span class="fr">注册时间：
 	         <fmt:formatDate value="${user.uregisterdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
 	        </span>
@@ -61,7 +61,7 @@
           <div class="user-head"> <span id="clickHeadImage" class="head-img" title="点击更换头像">
             	<form  method="post" action="">
               <input type="hidden" name="userPhotoUploadForm" value="userPhotoUploadForm">
-              <span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" src="${user.uhead}" alt="" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>-
+              <span id="userPhotoUploadForm:photo"><img id="userPhotoUploadForm:photoImage" src="images/touxiang.png" alt="" style="width:88px;height:88px;z-index:0;"> <i class="headframe" style="z-index:0;"></i>-
               <div id="userPhotoUploadForm:shangchuan-btn" class="ui-fileupload ui-widget" style="z-index:0;">
                 <div class="ui-fileupload-buttonbar ui-corner-top"><span class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left ui-fileupload-choose" role="button"><span class="ui-button-icon-left ui-icon ui-c ui-icon-plusthick"></span><span class="ui-button-text ui-c"></span>
 					<!--<input type="file" id="userPhotoUploadForm:shangchuan-btn_input" name="userPhotoUploadForm:shangchuan-btn_input" style="z-index:0;">--> 
@@ -81,7 +81,7 @@
             <ul>
               <li>用户名<span>${user.unickname}</span></li>
               <li>安全级别<span><i class="safe-level"><i class="onlevel" style="width:40%;" ></i></i></span> <a href="#">[低]</a></li>
-              <li>您还未开通第三方支付账户，请 <a class="pmain-log" href="../../thirdparty.jsp">立即开通</a>以确保您的正常使用和资金安全。 </li>
+              <li>您还未开通第三方支付账户，请 <a class="pmain-log" href="#">立即开通</a>以确保您的正常使用和资金安全。 </li>
             </ul>
           </div>
         </div>

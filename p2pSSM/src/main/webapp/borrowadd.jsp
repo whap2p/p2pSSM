@@ -285,16 +285,16 @@ body{ background:#f3f3f3; }
 					  </select> -->
 		           </td>
 				 </tr>
-
-
+	  
+				 
 				 <tr class="trline32">
 				   <td></td>
 				   <td style="font-size:12px;">您的信息完全保密</td>
-				 </tr>
+				 </tr>				 
 				 <tr class="trline32">
 				   <td></td>
 				   <td><a href="javascript:;" class="applyBtnenterprize"  onclick="key(1);">确认提交</a></td>
-				 </tr>
+				 </tr>				 
                  <input type="hidden" id="type" name="type" value="3"/>
 			   </table>
 			 </div>

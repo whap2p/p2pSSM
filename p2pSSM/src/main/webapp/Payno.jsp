@@ -640,7 +640,7 @@
 			</div>
         </div>
 				<div class="clear"></div>
-			</div>用户在充值或提现前，需开通第三方账户。
+			</div>
 		</div>
 <!--网站底部--><jsp:include page="bottom.jsp"></jsp:include>	</body>
 </html>
