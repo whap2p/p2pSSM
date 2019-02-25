@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.zj;
 
 
-import com.zking.p2pSSM.service.zj.zjService;
+import com.zking.p2pSSM.service.xj.zjService;
 import org.springframework.stereotype.Service;
 
 @Service

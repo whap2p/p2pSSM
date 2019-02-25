@@ -1,9 +1,9 @@
-package com.zking.p2pSSM.mapper.zj;
+package com.zking.p2pSSM.mapper.xj;
 
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface zjMapper {
+public interface xjMapper {
 
 }
