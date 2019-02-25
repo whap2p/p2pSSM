@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminController {
     @Autowired
     AdminService adminService;
-    @RequestMapping("/index")
+    @RequestMapping("/indexs")
     public String list(HttpServletRequest request, Admin admin) {
         PageBean pageBean=new PageBean();
         pageBean.setRequest(request);
