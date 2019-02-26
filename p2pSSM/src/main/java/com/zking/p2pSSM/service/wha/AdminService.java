@@ -2,9 +2,9 @@ package com.zking.p2pSSM.service.wha;
 
 import com.zking.p2pSSM.model.Admin;
 import com.zking.p2pSSM.utils.PageBean;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 public interface AdminService {
     int deleteByPrimaryKey(Integer id);
 

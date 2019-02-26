@@ -30,7 +30,16 @@
     from withdrawal
     where wID = #{wID,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="queryWithdrawal" resultMap="BaseResultMap" parameterType="com.zking.p2pSSM.model.Withdrawal">
+      select
+      <include refid="Base_Column_List" />
+      from withdrawal
+      where 1=1
+      <if test="wID != null and wID != '' ">
+        wID = #{wID,jdbcType=INTEGER}
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from withdrawal
     where wID = #{wID,jdbcType=INTEGER}
   </delete>

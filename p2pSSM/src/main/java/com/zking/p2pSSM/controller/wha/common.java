@@ -23,10 +23,10 @@ public class common {
     }
     //2管理组
     //部门管理
-    @RequestMapping("dept/findall")
-    public String findall(Model model){
-        return str + "bk_deptlist";
-    }
+//    @RequestMapping("dept/findall")
+//    public String findall(Model model){
+//        return str + "bk_deptlist";
+//    }
     //员工管理
     @RequestMapping("employee/list")
     public String employeelist(Model model){

@@ -1,10 +1,11 @@
-package com.zking.p2pSSM.mapper.wha;
+package com.zking.p2pSSM.service.wha;
+
 
 import com.zking.p2pSSM.model.Withdrawal;
 
 import java.util.List;
 
-public interface WithdrawalMapper {
+public interface WithrawalService {
     int deleteByPrimaryKey(Integer wID);
 
     int insert(Withdrawal record);
