@@ -177,27 +177,27 @@
 						<ul class="sub">
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/approve/limitApplyforlist.jsp">»信用额度申请</a>
+								href="${pageContext.request.contextPath}/limitApplyforlist">»信用额度申请</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/newuserInfoList.jsp">»新用户认证资料</a>
+								href="${pageContext.request.contextPath}/newuserInfoList">»新用户认证资料</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/basicInfoApprove.jsp">»用户资料认证</a>
+								href="${pageContext.request.contextPath}/basicInfoApprove">»用户资料认证</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/approve/approveStatistics.do">»认证资料统计</a>
+								href="${pageContext.request.contextPath}/approveStatistics">»认证资料统计</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/approve/traverseApproves.do">»认证项设置</a>
+								href="${pageContext.request.contextPath}/traverseApproves">»认证项设置</a>
 
 							</li>
 						</ul></li>
@@ -255,7 +255,7 @@
 		//custom select box
 
 		$(function() {
-			// $('select.styled').customSelect();
+			$('select.styled').customSelect();
 		});
 	</script>
 
