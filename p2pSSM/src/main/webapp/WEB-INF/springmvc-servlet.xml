@@ -38,26 +38,8 @@
         <property name="order" value="1"/>
     </bean>
     <!--4) 单独处理图片、样式、js等资源 -->
-    <mvc:resources location="/assets/" mapping="/assets/**"/>
-    <mvc:resources location="/cover/" mapping="/cover/**"/>
-    <mvc:resources location="/file/" mapping="/file/**"/>
-    <mvc:resources location="/images/" mapping="/images/**"/>
-    <mvc:resources location="/picture/" mapping="/picture/**"/>
-    <mvc:resources location="/script/" mapping="/script/**"/>
-    <mvc:resources location="/Ueditor/" mapping="/Ueditor/**"/>
-    <mvc:resources location="/validate/" mapping="/validate/**"/>
-    <mvc:resources location="/Jquery/" mapping="/Jquery/**"/>
-    <mvc:resources location="/css/" mapping="/css/**"/>
-    <mvc:resources location="/img/" mapping="/img/**"/>
-    <mvc:resources location="/js/" mapping="/js/**"/>
-    <mvc:resources location="/WEB-INF/view/js/" mapping="/WEB-INF/view/js/**"/>
-    <mvc:resources location="/WEB-INF/view/img/" mapping="/WEB-INF/view//img/**"/>
-    <mvc:resources location="/WEB-INF/view/css/" mapping="/WEB-INF/view/css/**"/>
-    <mvc:resources location="/WEB-INF/view/assets/" mapping="/WEB-INF/view/assets/**"/>
-    <mvc:resources location="/WEB-INF/view/Ueditor/" mapping="/WEB-INF/view/Ueditor/**"/>
-    <mvc:resources location="/WEB-INF/view/validate/" mapping="/WEB-INF/view/validate/**"/>
-    <mvc:resources location="/WEB-INF/view/Jquery/" mapping="/WEB-INF/view/Jquery/**"/>
-    <mvc:resources location="/WEB-INF/view/script/" mapping="/WEB-INF/view/script/**"/>
+    <mvc:resources location="/" mapping="/**"/>
+    <mvc:resources location="/WEB-INF/view/" mapping="/**"/>
 
     <!--&lt;!&ndash;6.2 配置文件上传解析器(CommonsMultipartResolver)&ndash;&gt;-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

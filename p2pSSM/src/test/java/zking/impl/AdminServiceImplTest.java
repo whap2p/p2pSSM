@@ -1,13 +1,16 @@
 package zking.impl;
 
 import com.zking.p2pSSM.model.Admin;
+import com.zking.p2pSSM.model.Withdrawal;
 import com.zking.p2pSSM.service.wha.AdminService;
 import com.zking.p2pSSM.utils.PageBean;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import zking.base.SpringJunitTest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class AdminServiceImplTest extends SpringJunitTest {
@@ -25,5 +28,6 @@ public class AdminServiceImplTest extends SpringJunitTest {
         for (Admin h : list) {
             System.out.println(h);
         }
+
     }
 }

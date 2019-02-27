@@ -60,10 +60,10 @@ public class common {
     }
     //4财务管理
     //提现管理
-    @RequestMapping("wd/wlist")
-    public String withdrawallist(Model model){
-        return str + "Withdrawallist";
-    }
+//    @RequestMapping("wd/wlist")
+//    public String withdrawallist(Model model){
+//        return str + "Withdrawallist";
+//    }
     //银行卡管理
     @RequestMapping("bc/bankcard")
     public String bankcard(Model model){
@@ -91,7 +91,7 @@ public class common {
     }
     //5借贷管理
     //投标列表
-    @RequestMapping("product/list")
+    @RequestMapping("product/list0")
     public String list(Model model){
         return str + "bk_list_pro";
     }
