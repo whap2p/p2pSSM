@@ -14,6 +14,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
+<input type="hidden" value="${pageContext.request.contextPath}" id="path">
 <header>
   <div class="header-top min-width">
     <div class="container fn-clear"> <strong class="fn-left">咨询热线：400-668-6698<span class="s-time">服务时间：9:00 - 18:00</span></strong>
@@ -28,7 +29,7 @@
       </ul>
     <c:if test="${globaluser.unickname==null }">
 				<ul class="fn-right header-top-ul">
-					<li><a href="<%=basePath%>invest/recommendShow.do" class="app">返回首页</a></li>
+					<li><a href="<%=basePath%>user/toUrl?url=index.jsp&type=redirect" class="app">返回首页</a></li>
 					<li>
 						<div class="">
 							<a href="<%=basePath%>/register.jsp" class="c-orange" title="免费注册">免费注册</a>
@@ -76,9 +77,10 @@
 
 <script type="text/javascript">
 	function keys(){
+	    var path = document.getElementById("path").value;
 		var id="${globaluser.uid}";
 		if(id!=""){
-		window.location.href="<%=basePath %>query.do?id=${globaluser.uid}";
+		window.location.href=path+"/user/query?id=${globaluser.uid}";
 		}else {
 			alert("请先登入!");
 		window.location.href="<%=basePath%>/login.jsp";

@@ -1,5 +1,7 @@
 package com.zking.p2pSSM.shiro;
 
+import com.zking.p2pSSM.model.dh.Users;
+import com.zking.p2pSSM.service.dh.UsersService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -19,13 +21,30 @@ import java.util.Set;
  */
 public class MyRealm extends AuthorizingRealm {
 
+    private UsersService usersService;
+
+    public UsersService getUsersService() {
+        return usersService;
+    }
+
+    public void setUsersService(UsersService usersService) {
+        this.usersService = usersService;
+    }
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         return null;
     }
 
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        return null;
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        String unickname = token.getPrincipal().toString();
+        Users users = usersService.qureyByName(unickname);
+        AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
+                users.getUnickname(),
+                users.getUpassword(),
+                this.getName()
+        );
+        return authenticationInfo;
     }
 }

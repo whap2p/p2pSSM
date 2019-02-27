@@ -76,10 +76,10 @@
 	
 		$(function() {
 			//判断最新公告是否为空,为空加载通知
-			var list = "${listss}";
-			if (list == "") {
-				window.location = "${pageContext.request.contextPath}/notice/noticetop5.do";
-			}
+			<%--var list = "${listss}";--%>
+            <%--if (list == "") {--%>
+                <%--window.location = "${pageContext.request.contextPath}/notice/noticetop5.do";--%>
+            <%--}--%>
 
 			$('.flexslider').flexslider({
 				directionNav : true,

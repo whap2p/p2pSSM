@@ -1,11 +1,9 @@
-package com.zking.p2pSSM.mapper.wha;
+package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.Investstat;
+import com.zking.p2pSSM.model.dh.Investstat;
 
-public interface InveststatMapper {
+public interface InveststatService {
     int deleteByPrimaryKey(Integer isid);
-
-    int insert(Investstat record);
 
     int insertSelective(Investstat record);
 
@@ -13,5 +11,6 @@ public interface InveststatMapper {
 
     int updateByPrimaryKeySelective(Investstat record);
 
-    int updateByPrimaryKey(Investstat record);
+    Investstat queryByuserid(Integer userid);
+
 }

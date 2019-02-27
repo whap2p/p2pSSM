@@ -1,11 +1,10 @@
-package com.zking.p2pSSM.mapper.wha;
+package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.Users;
+import com.zking.p2pSSM.model.dh.Users;
 
-public interface UsersMapper {
+public interface UsersService {
     int deleteByPrimaryKey(Integer uid);
 
-    int insert(Users record);
 
     int insertSelective(Users record);
 
@@ -13,5 +12,8 @@ public interface UsersMapper {
 
     int updateByPrimaryKeySelective(Users record);
 
-    int updateByPrimaryKey(Users record);
+    int getId();
+
+    Users qureyByName(String unickname);
+
 }

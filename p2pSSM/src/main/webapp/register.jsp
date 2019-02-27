@@ -33,7 +33,7 @@
 				<p class="p3">注册成功</p>
 			</div>
 			<div class="registerCont">
-				<form action="<%=basePath%>/users/insert.do" method="post">
+				<form action="<%=basePath%>/user/insert" method="post">
 					<ul>
 						<li><span class="dis">用户名:</span> <input type="text"
 							onblur="return checkunickname();" name="unickname" id="userName"
@@ -129,7 +129,7 @@
 			alert("用户名过长!!!");
 			return false;
 		}
-		$.post('${pageContext.request.contextPath}/users/findByName.do', {
+		$.post('${pageContext.request.contextPath}/user/findByName', {
 			"unickname" : unickname
 		}, function(data) {
 			var conent = data;
