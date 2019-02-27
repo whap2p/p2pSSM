@@ -1,11 +1,11 @@
-package com.zking.p2pSSM.mapper.wha;
+package com.zking.p2pSSM.service.wha;
 
 import com.zking.p2pSSM.model.Dept;
-import org.springframework.stereotype.Repository;
+import com.zking.p2pSSM.utils.PageBean;
 
 import java.util.List;
-@Repository
-public interface DeptMapper {
+
+public interface DeptService {
     int deleteByPrimaryKey(Integer did);
 
     int insert(Dept record);
@@ -18,5 +18,5 @@ public interface DeptMapper {
 
     int updateByPrimaryKey(Dept record);
 
-    List queryDept(Dept dept);
+    List queryDeptPager(Dept dept,PageBean pageBean);
 }

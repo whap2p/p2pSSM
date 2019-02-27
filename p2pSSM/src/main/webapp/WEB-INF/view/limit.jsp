@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta name="author" content="Dashboard">
     <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-    <title>DASHGUM - FREE Bootstrap Admin Template</title>
+    <title>权限列表</title>
     <!-- Bootstrap core CSS -->
 <link href="<%=basePath%>assets/css/bootstrap.css" rel="stylesheet">
 <!--external css-->

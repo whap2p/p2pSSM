@@ -69,7 +69,7 @@
 			<div class="showback">
 				<h4>
 					<i class="fa fa-angle-right"> <a
-						href="<%=basePath%>dept/findall.do">部门列表</a>
+						href="<%=basePath%>dept/findall">部门列表</a>
 					</i> <i class="fa fa-angle-right"> <a
 						href="javascript:history.go(-1)">返回</a>
 					</i>
@@ -77,7 +77,7 @@
 				<!-- 页面内容 -->
 				
 				<form class="form-horizontal style-form" method="post"
-					action="<%=basePath%>dept/upd.do">
+					action="<%=basePath%>dept/upd">
 
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">部门名称：</label>

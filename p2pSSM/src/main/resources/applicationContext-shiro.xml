@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--配置自定义的Realm-->
-    <bean id="shiroRealm" class="com.zking.ssm01.shiro.MyRealm">
+    <bean id="shiroRealm" class="com.zking.p2pSSM.shiro.MyRealm">
         <property name="userService" ref="userService" />
         <!--注意：重要的事情说三次~~~~~~此处加密方式要与用户注册时的算法一致 -->
         <!--注意：重要的事情说三次~~~~~~此处加密方式要与用户注册时的算法一致 -->

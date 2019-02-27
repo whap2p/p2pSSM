@@ -1,4 +1,4 @@
-﻿﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+﻿<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
@@ -92,45 +92,45 @@
 					</a>
 						<ul class="sub">
 							<li>
-								  <a href="<%=basePath%>dept/findall.do">部门管理</a>
+								  <a href="<%=basePath%>dept/findall">部门管理</a>
 							</li>
 							<li>
-								  <a href="<%=basePath%>employee/list.do">员工管理</a>
+								  <a href="<%=basePath%>employee/list">员工管理</a>
 							</li>
 							<li>
-								  <a href="<%=basePath%>users/list.do">用户管理</a>
+								  <a href="<%=basePath%>users/list">用户管理</a>
 							</li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
 							class="fa fa-desktop"></i> <span>网站内容管理</span>
 					</a>
 						<ul class="sub">
-							<li><a href="<%=basePath%>notice/toadd.do">添加网站通知</a></li>
-							<li><a href="<%=basePath%>notice/notlists.do">查询网站通知</a></li>
-							<li><a href="<%=basePath%>notice/addtupian.do">添加网站首页图片</a></li>
-							<li><a href="<%=basePath%>notice/toaddlisttupian.do?ids=6">查询首页图片</a></li>
+							<li><a href="<%=basePath%>notice/toadd">添加网站通知</a></li>
+							<li><a href="<%=basePath%>notice/notlists">查询网站通知</a></li>
+							<li><a href="<%=basePath%>notice/addtupian">添加网站首页图片</a></li>
+							<li><a href="<%=basePath%>notice/toaddlisttupian">查询首页图片</a></li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
 							class="fa fa-desktop"></i> <span>财务管理</span>
 					</a>
 						<ul class="sub">
 							<li>
-								  <a href="<%=basePath%>wd/wlist.do">提现管理</a>
+								  <a href="<%=basePath%>wd/wlist">提现管理</a>
 							</li>
 							<li>
-								  <a href="<%=basePath%>bc/bankcard.do">银行卡管理</a>
+								  <a href="<%=basePath%>bc/bankcard">银行卡管理</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>rc/rech.do">充值记录</a>
+								 <a href="<%=basePath%>rc/rech">充值记录</a>
 							</li>
 							<li>
-								  <a href="<%=basePath%>pa/poundage.do">手续费记录</a>
+								  <a href="<%=basePath%>pa/poundage">手续费记录</a>
 							</li>
 							<li>
-								  <a href="<%=basePath%>td/trade.do">交易记录</a>
+								  <a href="<%=basePath%>td/trade">交易记录</a>
 							</li>
 							<li>
-								  <a href="<%=basePath%>brower/hjyList.do">借贷信息列表</a>
+								  <a href="<%=basePath%>brower/hjyList">借贷信息列表</a>
 							</li>
 						</ul></li>
 
@@ -139,36 +139,36 @@
 					</a>
 						<ul class="sub">
 							<li>
-								 <a href="<%=basePath%>/product/list.do">»投标列表</a>
+								 <a href="<%=basePath%>/product/list">»投标列表</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/product/input.do">»添加投标</a>
+								 <a href="<%=basePath%>/product/input">»添加投标</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/biao/list.do">»标种列表</a>
+								 <a href="<%=basePath%>/biao/list">»标种列表</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/biao/input.do">»添加标种</a>
+								 <a href="<%=basePath%>/biao/input">»添加标种</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/brower/qurey.do">»所有借款</a>
+								 <a href="<%=basePath%>/brower/qurey">»所有借款</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/brower/check.do">»待审核的借款</a>
+								 <a href="<%=basePath%>/brower/check">»待审核的借款</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/product/list.do?status=ing">»招标中的借款</a>
+								 <a href="<%=basePath%>/product/list">»招标中的借款</a>
 
 							</li>
 							<li>
-								 <a href="<%=basePath%>/brower/tohk.do">»还款</a>
+								 <a href="<%=basePath%>/brower/tohk">»还款</a>
 							</li>
 							<li>
-								 <a href="<%=basePath%>/product/list.do?status=over">»满标借款</a>
+								 <a href="<%=basePath%>/product/list">»满标借款</a>
 
 							</li>
 							<li>
-								 <a href="<%=basePath%>/product/list.do?status=way">»还款方式</a>
+								 <a href="<%=basePath%>/product/list">»还款方式</a>
 							</li>
 						</ul></li>
 					<li class="sub-menu"><a href="javascript:;"> <i
@@ -177,27 +177,27 @@
 						<ul class="sub">
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/approve/limitApplyforlist.jsp">»信用额度申请</a>
+								href="${pageContext.request.contextPath}/approve/limitApplyforlist">»信用额度申请</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/newuserInfoList.jsp">»新用户认证资料</a>
+								href="${pageContext.request.contextPath}/approve/anewuserInfoList">»新用户认证资料</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/basicInfoApprove.jsp">»用户资料认证</a>
+								href="${pageContext.request.contextPath}/approve/basicInfoApprove">»用户资料认证</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/approve/approveStatistics.do">»认证资料统计</a>
+								href="${pageContext.request.contextPath}/approve/approveStatistics">»认证资料统计</a>
 
 							</li>
 							<li>
 								  <a
-								href="${pageContext.request.contextPath}/approve/traverseApproves.do">»认证项设置</a>
+								href="${pageContext.request.contextPath}/approve/traverseApproves">»认证项设置</a>
 
 							</li>
 						</ul></li>
@@ -206,7 +206,7 @@
 					</a>
 						<ul class="sub">
 							<li>
-								 <a href="<%=basePath%>limit.jsp">权限列表</a>
+								 <a href="<%=basePath%>limit/findlist">权限列表</a>
 
 							</li>
 						</ul></li>

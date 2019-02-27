@@ -28,8 +28,5 @@ public class AdminController {
     public String bk_index(HttpServletRequest request, Admin admin) {
         return "WEB-INF/view/bk_login";
     }
-    @RequestMapping("/common")
-    public String common(HttpServletRequest request, Admin admin) {
-        return "WEB-INF/view/common";
-    }
+
 }

@@ -19,7 +19,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>用户管理</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=basePath%>assets/css/bootstrap.css" rel="stylesheet">

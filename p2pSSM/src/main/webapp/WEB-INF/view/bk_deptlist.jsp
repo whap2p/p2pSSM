@@ -7,7 +7,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/zking" prefix="z" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +19,7 @@
 <meta name="keyword"
 	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
 
-<title>DASHGUM - FREE Bootstrap Admin Template</title>
+<title>部门管理</title>
 
 <!-- Bootstrap core CSS -->
 <link href="<%=basePath%>assets/css/bootstrap.css" rel="stylesheet">
@@ -57,10 +57,10 @@
 				<div class="content-panel">
 					<h4>
 						<i class="fa fa-angle-right">
-							<a href="<%=basePath%>dept/findall.do">部门列表</a>
+							<a href="<%=basePath%>dept/findall">部门列表</a>
 						</i> 
 						<i class="fa fa-angle-right">
-							<a  href="<%=basePath%>dept/toadd.do">添加部门</a>
+							<a  href="<%=basePath%>dept/toadd">添加部门</a>
 						</i>
 					</h4>
 					
@@ -85,9 +85,9 @@
 								<fmt:formatDate value="${dept.dtime }" 
 								pattern="yyyy-MM-dd"></fmt:formatDate></td>
 								<td>
-									<a href="<%=basePath%>dept/toupd.do?did=${dept.did}">编辑</a>
+									<a href="<%=basePath%>dept/toupd?did=${dept.did}">编辑</a>
 								 &nbsp;&nbsp;
-									<a href="<%=basePath%>dept/del.do?did=${dept.did}">删除</a>
+									<a href="<%=basePath%>dept/del?did=${dept.did}">删除</a>
 								</td>
 							</tr>
 						</c:forEach>
@@ -98,18 +98,7 @@
 							<tr>
 								<td colspan="7" align="center">
 									<div class="btn-group" align="center">
-										<button type="button" class="btn btn-default">
-											<font><font>首页</font></font>
-											<tton>
-											<button type="button" class="btn btn-default">
-												<font><font>1</font></font>
-												<tton>
-												<button type="button" class="btn btn-default">
-													<font><font>2</font></font>
-													<tton>
-													<button type="button" class="btn btn-default">
-														<font><font>末页</font></font>
-														<tton>
+										<z:page pageBean="${pageBean }"></z:page>
 									</div>
 								</td>
 

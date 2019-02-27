@@ -19,15 +19,24 @@
     from dept
     where did = #{did,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="queryDept" resultMap="BaseResultMap" parameterType="com.zking.p2pSSM.model.Dept">
+      select
+      <include refid="Base_Column_List" />
+      from dept
+      where 1 = 1
+      <if test="did !=null and did != '' ">
+        and did like #{did}
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from dept
     where did = #{did,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zking.p2pSSM.model.Dept" >
     insert into dept (did, dname, dtime, 
       dstatus, describes)
-    values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR}, #{dtime,jdbcType=TIMESTAMP}, 
-      #{dstatus,jdbcType=INTEGER}, #{describes,jdbcType=VARCHAR})
+    values (#{did,jdbcType=INTEGER}, #{dname,jdbcType=VARCHAR},sysdate(),
+      1, #{describes,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Dept" >
     insert into dept
