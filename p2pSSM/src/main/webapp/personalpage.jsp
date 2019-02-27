@@ -54,7 +54,7 @@
       <div class="pmain-profile">
         <div class="pmain-welcome"> <span class="fl"><span id="outLogin">晚上好，</span>${user.unickname} 喝一杯下午茶，让心情放松一下~</span> 
 	        <span class="fr">注册时间：
-	         <fmt:formatDate value="${user.uregisterdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
+	         <fmt:formatDate value="${globaluser.uregisterdate}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
 	        </span>
         </div>
         <div class="pmain-user">
@@ -79,9 +79,14 @@
             </span> <span class="head-icon"> <a href="#"><i title="第三方资金账户未认证" class="headiconbg headicon01"></i></a> <a href="#"><i class="headiconbg headicon2"></i></a> <a href="#"><i class="headiconbg headicon03"></i></a> </span> </div>
           <div class="user-info user-info1">
             <ul>
-              <li>用户名<span>${user.unickname}</span></li>
+              <li>用户名<span>${globaluser.unickname}</span></li>
               <li>安全级别<span><i class="safe-level"><i class="onlevel" style="width:40%;" ></i></i></span> <a href="#">[低]</a></li>
+              <c:if test="${globaluser.userpaytoid == null} ">
               <li>您还未开通第三方支付账户，请 <a class="pmain-log" href="#">立即开通</a>以确保您的正常使用和资金安全。 </li>
+              </c:if>
+              <c:if test="${globaluser.userpaytoid != null}">
+              <li>当前绑定的第三方卡号：${globaluser.userpaytoid}</li>
+              </c:if>
             </ul>
           </div>
         </div>

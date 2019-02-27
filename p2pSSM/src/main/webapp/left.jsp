@@ -16,7 +16,7 @@
 <body>
 <div id="personal-left" class="personal-left">
       <ul>
-        <li class="pleft-cur"><span><a href="query.do?id=${user.uid}"><i class="dot dot1"></i>账户总览</a></span></li>
+        <li class="pleft-cur"><span><a href="${pageContext.request.contextPath}/user/query?id=${globaluser.uid}"><i class="dot dot1"></i>账户总览</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="">资金记录</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="<%=basePath %>invest/investRecord.do">投资记录</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="">回款计划</a></span></li>

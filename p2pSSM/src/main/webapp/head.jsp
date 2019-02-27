@@ -47,7 +47,7 @@
 					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
-							<a href="<%=basePath%>query.do?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
+							<a href="${pageContext.request.contextPath}/user/query?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
 								}</a>
 						</div>
 					</li>

@@ -102,8 +102,8 @@
     <div class="personal-main">
       <div class="personal-pay">
         <h3><i>开通第三方账户</i></h3>
-        <form id="thirdform" name="thirdform" action="<%=basePath%>insertucertnum.do" method="post" enctype="application/x-www-form-urlencoded">
-          <input type="hidden" name="id" id="id" value="${globaluser.uid}">
+        <form id="thirdform" name="thirdform" action="<%=basePath%>user/kaihu" method="post" enctype="application/x-www-form-urlencoded">
+          <input type="hidden" name="uid" id="id" value="${globaluser.uid}">
           <div class="pay-notice">
             <p>开通第三方资金托管账户的信息将提交至<a href="http://www.sumapay.com/" target="_blank">丰付支付</a>网站执行，</p>
             <p><a href="http://www.sumapay.com/" target="_blank">丰付支付</a>系统将为您分配唯一用户ID（格式为：TG_用户名），并与您亿人宝账户自动绑定，您无需修改和记忆。 </p>

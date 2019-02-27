@@ -11,6 +11,7 @@ import org.apache.shiro.subject.Subject;
 import org.apache.shiro.web.session.HttpServletSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -47,7 +48,7 @@ public class UsersController {
         try {
             Users users1 = usersService.qureyByName(users.getUnickname());
             subject.login(token);
-            request.setAttribute("globaluser",users1);
+            request.getSession().setAttribute("globaluser",users1);
             return "forward:/index.jsp";
         }catch (Exception e){
             return "redirect:/login.jsp";
@@ -91,21 +92,24 @@ public class UsersController {
         Users users = usersService.selectByPrimaryKey(id);
 //        Investstat investstat = investstatService.queryByuserid(id);
         Certification certification = certificationService.queryByCusername(users.getUnickname());
-        request.setAttribute("user",users);
-//        request.setAttribute("investstat",investstat);
-        request.setAttribute("certification",certification);
+        request.getSession().setAttribute("globaluser",users);
+        request.getSession().setAttribute("certification",certification);
         return "personalpage";
     }
 
+    @RequestMapping("/kaihu")
+    @Transactional
     public String kaihu(Users user){
+        System.out.println(user.getUid());
+        System.out.println("进入方法！");
         Bankcard bankcard = bankcardService.qureyBysfz(user.getUcardid());
         user.setUserpaytoid(bankcard.getCardid());
-
         int i = usersService.updateByPrimaryKeySelective(user);
         if(i>0){
-            return "personalpage";
+            return "/user/query?id="+user.getUid();
+        }else {
+            return "redirect:/thirdparty.jsp";
         }
-        return "thirdparty";
     }
 
 }

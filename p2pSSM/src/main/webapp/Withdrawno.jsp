@@ -99,7 +99,7 @@
 				{
 					$(actualMessage).hide();
 				}
-				var balance=Number("0.0");
+				var balance=Number(${certification.cbalance});
 				//提现金额小于余额 
 				var legalFlag=(actualMoney-balance).toFixed(2)<=0;
 				if(!legalFlag)
@@ -140,10 +140,10 @@
             <h6>填写提现金额</h6>
             <ul>
               <li> <span class="deposit-formleft">可用金额</span> <span class="deposit-formright"> <i>
-                <label id="form:blance"> 0.00</label>
+                <label id="form:blance"> ${certification.cbalance}</label>
                 </i>元 </span> </li>
               <li> <span class="deposit-formleft">提现金额</span> <span class="deposit-formright">
-                <input type="text" class="deposite-txt" maxlength="10" >
+                <input type="text" class="deposite-txt" maxlength="10" id="form:actualMoney" >
                 元 </span> <span id="actualMoneyErrorDiv"><span id="actualMoney_message" style="display:none" class="error"></span></span> </li>
               <li> <span class="deposit-formleft">提现费用</span> <em id="txfy" class="markicon fl"></em> <span class="deposit-formright deposit-formright1"> <i>
                 <label id="form:fee"> 0.00</label>
@@ -166,6 +166,7 @@
         </div>
       </div>
     </div>
+    <c:if test="${globaluser.userpaytoid == null}">
     <div class="alert-450 alert-h220" id="alert-notOpenAccount" style="display: block;">
       <div class="alert-title">
         <h3>提示</h3>
@@ -177,7 +178,15 @@
         </form>
       </div>
     </div>
+    </c:if>
     <script type="text/javascript">
+      $("#form\\:actualMoney").blur(function () {
+          var tx = $("#form\\:actualMoney").val();
+          var fee = tx*0.001;
+          $("#form\\:fee").html(fee);
+          var sj = tx - fee;
+          $("#form\\:cashFine").html(sj);
+      });
 			$("#form\\:actualMoney").focus(
 					   function(){
 						   	$(this).css({"font-size":"24px","font-weight":"bold","font-family":"Arial","border":"1px solid #0caffe"});

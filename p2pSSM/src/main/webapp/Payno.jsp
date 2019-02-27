@@ -375,7 +375,7 @@
                   <em>元</em> </span> <span class="quick-error"> </span> </div>
                 <div class="info-tips">亿人宝提醒您：充值金额超过50000元时，请切换到网银充值</div>
                 <div class="info-2"> <span class="info-tit">银行卡号</span> <span class="info2-input">
-                  <input id="form:bankCardNo" type="text" name="form:bankCardNo" class="tx-txt">
+                  <input id="form:bankCardNo" type="text" name="form:bankCardNo" class="tx-txt" value="${globaluser.userpaytoid}">
                   <em class="info2-bank" style="display: none;">
                   <label id="form:defaultBankName" style="font-size:16px;"> </label>
                   </em> </span> <span class="quick-error3" id="bankCardError"></span> </div>
@@ -492,7 +492,7 @@
             
             <div class="clear"></div>
             
-            
+            <c:if test="${globaluser.userpaytoid == null}">
             <div class="alert-450 alert-h220" id="alert-notOpenAccount" style="display: block;">
             	<div class="alert-title"><h3>提示</h3></div>
             	<div class="alert-main">
@@ -504,6 +504,7 @@
 		        	</form>
             	</div>
             </div>
+            </c:if>
             
             <div class="alert-400 alert-h220" id="alert-ClickDialog" style="display:none;">
 				<div class="alert-title"><h3>消息</h3></div>
