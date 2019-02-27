@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
- <%
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="z" uri="/zking" %>
+<%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
@@ -32,10 +33,13 @@
     
     <div class="text-box">
 			<div class="text-content" id="text-content">
+				<h1 class="title">媒体报道</h1>
+				<p class="mt20 cn_line">
 					<ul class="r-list">
+						<c:forEach items="${listss}" var="notice">
 					<li class="clearfix">
 						<a href="">
-							<img src="images/2015062506.jpg" width="300" height="171">
+							<img src="${notice.noticepicture}" width="300" height="171">
 						</a>
 						<div class="record">
 							<h5>
@@ -47,10 +51,10 @@
 							<p class="time"><fmt:formatDate value="${notice.noticelasttime }"/></p>
 						</div>
 					</li>
-					
+						</c:forEach>
 				</ul>
 				<div class="page">
-					<span class="all">共有163条信息</span>
+					<%--<span class="all">共有163条信息</span>
 					<span class="count"></span>
 					<div class="fr pages">
 						<span data-page="1" class="currents">1</span>
@@ -63,7 +67,8 @@
 						<a data-page="16" href="#">16 </a>
 						<a data-page="17" href="#">17 </a>
 						<a data-page="2" class="next" href="#">下一页</a>
-						<a data-page="17" class="last" href="#">尾页</a>
+						<a data-page="17" class="last" href="#">尾页</a>--%>
+						<z:page pageBean="${pageBean }"></z:page>
 					</div>
 				</div>
 			</div>

@@ -14,7 +14,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-<input type="hidden" value="${pageContext.request.contextPath}" id="path">
 <header>
   <div class="header-top min-width">
     <div class="container fn-clear"> <strong class="fn-left">咨询热线：400-668-6698<span class="s-time">服务时间：9:00 - 18:00</span></strong>
@@ -29,7 +28,7 @@
       </ul>
     <c:if test="${globaluser.unickname==null }">
 				<ul class="fn-right header-top-ul">
-					<li><a href="<%=basePath%>user/toUrl?url=index.jsp&type=redirect" class="app">返回首页</a></li>
+					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
 							<a href="<%=basePath%>/register.jsp" class="c-orange" title="免费注册">免费注册</a>
@@ -47,7 +46,7 @@
 					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
-							<a href="${pageContext.request.contextPath}/user/query?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
+							<a href="<%=basePath%>query.do?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
 								}</a>
 						</div>
 					</li>
@@ -64,12 +63,12 @@
     <div class="container">
       <div class="fn-left logo"> <a class="" href="<%=basePath%>invest/recommendShow.do"> <img src="<%=basePath%>images/logo.png"  title=""> </a> </div>
       <ul class="top-nav fn-clear">
-        <li > <a href="<%=basePath%>invest/recommendShow.do">首页</a> </li>
-        <li> <a href="<%=basePath%>invest/investSel.do" class="">我要投资</a> </li>
+        <li > <a href="<%=basePath%>index.jsp">首页</a> </li>
+        <li> <a href="<%=basePath%>product/list" class="">我要投资</a> </li>
         <li> <a href="<%=basePath%>borrowadd.jsp" class="">我要借款</a> </li>
         <li> <a href="${pageContext.request.contextPath}/help.jsp">安全保障</a> </li>
         <li class="top-nav-safe" > <a href="#" onclick="keys();">我的账户</a> </li>
-        <li> <a href="<%=basePath %>notice/notlist.do?ids=1">关于我们</a> </li>
+        <li> <a href="<%=basePath %>notice/list?noticetype=1&&url=inform">关于我们</a> </li>
       </ul>
     </div>
   </div>
@@ -77,10 +76,9 @@
 
 <script type="text/javascript">
 	function keys(){
-	    var path = document.getElementById("path").value;
 		var id="${globaluser.uid}";
 		if(id!=""){
-		window.location.href=path+"/user/query?id=${globaluser.uid}";
+		window.location.href="<%=basePath %>query.do?id=${globaluser.uid}";
 		}else {
 			alert("请先登入!");
 		window.location.href="<%=basePath%>/login.jsp";

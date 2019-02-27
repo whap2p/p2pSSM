@@ -1,14 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/zking" prefix="z" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +47,7 @@
     <![endif]-->
 
 <script type="text/javascript">
+	// 查找
 	function findother() {
 		var wname = $('#wname').val();
 		var yyy = $('#yyy').val();
@@ -56,11 +56,11 @@
 		if (yyy > yyyy) {
 			alert("第二个日期不能小于第一个日期");
 		} else {
-			location.href = "wlist.do?wname=" + wname + "&yyy=" + yyy
+			location.href = "wlist?wname=" + wname + "&yyy=" + yyy
 					+ "&yyyy=" + yyyy + "&wstatu=" + wstatu;
 		}
-
 	}
+	//查看
 	function only(id) {
 		$.post("ajax.do", {
 			"id" : id
@@ -95,16 +95,18 @@
 			$('#spanid').click();
 		});
 	}
+	//转账
 	function zhuan(wid){
 		var gg = null;
 		var msg = "转账成功?\n\n请确认！";
 		if (confirm(msg)==true){
-			gg=1;
+			gg=1;//转账成功已提现
 		}else{
-			gg=0;
+			gg=0;//转账失败
 		}
-		location.href="zhuans.do?gg="+gg+"&wid="+wid;
+		location.href="zhuans?gg="+gg+"&wid="+wid;
 	}
+	//审核
 	function shens(wid){
 		var gg = null;
 		var msg = "审核通过?\n\n请确认！";
@@ -126,20 +128,20 @@
 				<h3>
 					&nbsp; &nbsp;<i class="fa fa-angle-right"></i> 提现管理
 				</h3>
-				<br> &nbsp; &nbsp; &nbsp; <a href="wlist.do"><button
+				<br> &nbsp; &nbsp; &nbsp; <a href="wlist"><button
 						type="button" class="btn btn-default">全部提现</button></a> &nbsp; &nbsp;
-				&nbsp; <a href="wlist.do?btn=3"><button type="button"
+				&nbsp; <a href="wlist?btn=3"><button type="button"
 						class="btn btn-default btn-primary">待审核的提现</button></a> &nbsp; &nbsp;
-				&nbsp; <a href="wlist.do?btn=2"><button type="button"
+				&nbsp; <a href="wlist?btn=2"><button type="button"
 						class="btn btn-default btn-info">转账中的提现</button></a> &nbsp; &nbsp;
-				&nbsp; <a href="wlist.do?btn=1"><button type="button"
+				&nbsp; <a href="wlist?btn=1"><button type="button"
 						class="btn btn-default btn-success">成功的提现</button></a> &nbsp; &nbsp;
-				&nbsp; <a href="wlist.do?btn=0"><button type="button"
+				&nbsp; <a href="wlist?btn=0"><button type="button"
 						class="btn btn-default btn-warning">失败的提现</button></a> <br> <br>
 				&nbsp; &nbsp; &nbsp;
 				<button type="button" class="btn btn-default btn-danger"
 					onclick="findother()">查找</button>
-				&nbsp; <a href="putexcel.do"><button type="button"
+				&nbsp; <a href="putexcel"><button type="button"
 						class="btn btn-default btn-inverse">导出excel</button></a> &nbsp; 用户名：<input
 					type="text" style="width: 170px" id="wname">&nbsp; 提交时间：<input
 					type="text" readonly="readonly" id="yyy" class="Wdate"
@@ -189,41 +191,22 @@
 												test="${w.statu=='1' }">已提现</c:if> <c:if
 												test="${w.statu=='2' }">转账中</c:if> <c:if
 												test="${w.statu=='3' }">审核中</c:if></td>
-										<td><c:if test="${w.statu=='0' }">
+										<td><c:if test="${w.statu=='0' || w.statu=='1' }">
 												<a id="mod" onclick="only('${w.wID}');" role="button"
 													class="btn" data-toggle="modal">查看</a>
-											</c:if> <c:if test="${w.statu=='1' }">
-												<a id="mod" onclick="only('${w.wID}');" role="button"
-													class="btn" data-toggle="modal">查看</a>
-											</c:if> <c:if test="${w.statu=='2' }"><a onclick="zhuan('${w.wID}')">转账</a></c:if> <c:if
-												test="${w.statu=='3' }"><a onclick="shens('${w.wID}')">审核</a></c:if></td>
+											</c:if>
+											<c:if test="${w.statu=='2' }">&nbsp;&nbsp;&nbsp;<a onclick="zhuan('${w.wID}')">转账</a></c:if>
+											<c:if test="${w.statu=='3' }">&nbsp;&nbsp;&nbsp;<a onclick="shens('${w.wID}')">审核</a></c:if>
+										</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
-						&nbsp;&nbsp;&nbsp;&nbsp;总计：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提现总额：${suntxmoney }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;到账金额:${sumdzmoney}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手续费：${sumsxf}
-						<br> <br> &nbsp;&nbsp;&nbsp;&nbsp; 共有${totalrow }条数据&nbsp;&nbsp;&nbsp;&nbsp;第${currpages }页/共${totalpage }页
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;提现总额：${suntxmoney }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;到账金额:${sumdzmoney}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;手续费：${sumsxf}
 						<br> &nbsp;&nbsp;&nbsp;&nbsp;
 
 						<ul class="pagination">
-							<li><a
-								href="wlist.do?currpage=1&btn=${btn }&wname=${wname}&yyy=${yyy}&yyyy=${yyyy}&wstatu=${wstatu}">
-									首页&nbsp;</a></li>
-							<li><a
-								href="wlist.do?currpage=${currpages-1 }&btn=${btn }&wname=${wname}&yyy=${yyy}&yyyy=${yyyy}&wstatu=${wstatu}">上一页</a>
-							</li>
-							<c:forEach begin="1" end="${totalpage }" varStatus="i">
-								<li><a
-									href="wlist.do?currpage=${i.index }&btn=${btn }&wname=${wname}&yyy=${yyy}&yyyy=${yyyy}&wstatu=${wstatu}">${i.index}</a>
-								</li>
-							</c:forEach>
-
-							<li><a
-								href="wlist.do?currpage=${currpages+1 }&btn=${btn }&wname=${wname}&yyy=${yyy}&yyyy=${yyyy}&wstatu=${wstatu}">下一页</a>
-							</li>
-							<li><a
-								href="wlist.do?currpage=${totalpage }&btn=${btn }&wname=${wname}&yyy=${yyy}&yyyy=${yyyy}&wstatu=${wstatu}">
-									&nbsp;尾页</a></li>
+							<z:page pageBean="${pageBean }"></z:page>
 						</ul>
 
 					</div>

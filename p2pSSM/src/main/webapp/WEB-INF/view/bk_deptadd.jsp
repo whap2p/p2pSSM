@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          		<div class="showback">
       					<h4>
       					<i class="fa fa-angle-right">
-							<a href="<%=basePath%>dept/findall.do">部门列表</a>
+							<a href="<%=basePath%>dept/findall">部门列表</a>
 						</i> 
 						<i class="fa fa-angle-right">
 							<a  href="javascript:history.go(-1)">返回</a>
@@ -55,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  		<!-- 页面内容 -->
 				  		
 				  		 <form class="form-horizontal style-form" method="post"
-				  		 	action="<%=basePath%>dept/insert.do">
+				  		 	action="<%=basePath%>dept/insert">
                            
                           <div class="form-group">
                               <label class="col-sm-2 col-sm-2 control-label">部门名称：</label>

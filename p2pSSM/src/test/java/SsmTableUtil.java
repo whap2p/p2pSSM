@@ -81,8 +81,9 @@ public class SsmTableUtil {
         System.out.println("asdf已填写的对应表格数据量大小：" + map.size());
 
         //--------------------填写对应数据层
-        run();//运行生成代码的方法
+//        run();//运行生成代码的方法
     }
+
 
     /**
      * @MethodName run

@@ -14,7 +14,7 @@ import java.util.List;
 public class AdminController {
     @Autowired
     AdminService adminService;
-    @RequestMapping("/index")
+    @RequestMapping("/indexs")
     public String list(HttpServletRequest request, Admin admin) {
         PageBean pageBean=new PageBean();
         pageBean.setRequest(request);
@@ -28,8 +28,5 @@ public class AdminController {
     public String bk_index(HttpServletRequest request, Admin admin) {
         return "WEB-INF/view/bk_login";
     }
-    @RequestMapping("/common")
-    public String common(HttpServletRequest request, Admin admin) {
-        return "WEB-INF/view/common";
-    }
+
 }

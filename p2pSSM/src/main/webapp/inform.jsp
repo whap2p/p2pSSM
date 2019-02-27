@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
- <%
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="z" uri="/zking" %>
+<%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
@@ -32,17 +33,12 @@
     
     <div class="text-box">
 			<div class="text-content" id="text-content">
-				<h1 class="title">
-				<c:if test="${idss==1}">网站公告</c:if>
-				<c:if test="${idss==2}">媒体报道</c:if>
-				<c:if test="${idss==3}">管理团队</c:if>
-				<c:if test="${idss==4}">合作伙伴</c:if>
-				<c:if test="${idss==5}">团队风采</c:if>
-				</h1>
+				<h1 class="title">网站公告</h1>
+				<p class="mt20 cn_line">
 				<ul class="clearfix mt20 new-list">
-				<c:forEach items="${list }" var="notice">
+				<c:forEach items="${listss }" var="notice">
 					<li class="clearfix list-item">
-						<a href="${pageContext.request.contextPath}/notice/notget.do?ids=${notice.noticeid }">${notice.noticetitle }</a>
+						<a href="${pageContext.request.contextPath}/notice/list?ids=${notice.noticeid }">${notice.noticetitle }</a>
 						<span>
 							<fmt:formatDate value="${notice.noticelasttime }"/>
 </span>
@@ -50,10 +46,9 @@
 				</c:forEach>
 				</ul>
 				<div class="page">
-					<span class="count"></span>
-					<div class="fr pages">
-						<span data-page="1" class="currents">1</span>
-						<a data-page="17" class="last" href="#">尾页</a>
+					<div class="page">
+						<z:page pageBean="${pageBean }"></z:page>
+					</div>
 					</div>
 				</div>
 			</div>
