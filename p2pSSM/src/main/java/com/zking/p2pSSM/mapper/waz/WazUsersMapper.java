@@ -4,7 +4,7 @@ import com.zking.p2pSSM.model.Users;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UsersMapper {
+public interface WazUsersMapper {
     int deleteByPrimaryKey(Integer uid);
 
     int insert(Users record);
@@ -17,17 +17,11 @@ public interface UsersMapper {
 
     int updateByPrimaryKey(Users record);
 
-    /**
-     *   用户登陆
-     * @param users
-     * @return
-     */
-    Users queryByName(Users users);
+    Users login(Users users);
 
     /**
-     * 用户开户
-     * @param users
+     *  查询总注册人数
      * @return
      */
-    int updateByKH(Users users);
+    int userCount();
 }

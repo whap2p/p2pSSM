@@ -33,7 +33,7 @@
 				<p class="mt20 cn_line">
 				亿人宝以金融创新基因吸引了来自国内五百强知名企业的业界精英，目前团队成员年轻朝气、充满活力，热爱新事物，勇于接受新挑战，团队成员有信心和决心，要用人人共享的理念在金融改革的浪潮中乘风破浪，要为普通大众创造财富增值的机会，为诚信经营者提供高效便捷的金融服务。 
 				</p>
-				<c:forEach items="${list}" var="list">
+				<c:forEach items="${listss}" var="list">
 				<div style="padding:20px 0;border-bottom:1px dashed #dbdbdb" class="clearfix">
 					<div class="img fl" style="width:130px;">
 						<img src="${list.noticepicture }" height="160px" width="120px">

@@ -19,12 +19,12 @@
     <div class="text-nav">
       <ul class="clearfix">
         <!-- <li class="selected"> <a class="text-link" href="网站公告.html">网站公告</a> </li> -->
-        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/notlist.do?ids=1">网站公告</a> </li>
-        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/notlist.do?ids=2">媒体报道</a> </li>
+        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/list?noticetype=1&&url=inform">网站公告</a> </li>
+        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/list?noticetype=2&&url=style">媒体报道</a> </li>
         <li> <a class="text-link" href="${pageContext.request.contextPath}/introduce.jsp">公司简介</a> </li>
-        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/notlist.do?ids=3">管理团队</a> </li>
-        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/notlist.do?ids=4">合作伙伴</a> </li>
-        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/notlist.do?ids=5">团队风采</a> </li>
+        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/list?noticetype=3&&url=informgltd">管理团队</a> </li>
+        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/list?noticetype=4&&url=cooperation">合作伙伴</a> </li>
+        <li> <a class="text-link" href="${pageContext.request.contextPath}/notice/list?noticetype=5&&url=informtdfc">团队风采</a> </li>
         <li> <a class="text-link" href="${pageContext.request.contextPath}/policy.jsp">法律政策</a> </li>
         <li> <a class="text-link" href="${pageContext.request.contextPath}/statement.jsp">法律声明</a> </li>
         <li> <a class="text-link" href="${pageContext.request.contextPath}/postage.jsp">资费说明</a> </li>

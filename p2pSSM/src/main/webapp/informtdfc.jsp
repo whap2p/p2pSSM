@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
- <%
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="z" uri="/zking" %>
+<%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
@@ -32,7 +33,7 @@
 			
 			<div class="text-content" id="text-content">
 			<h1 class="title">团队风采</h1>
-			<c:forEach items="${list }" var="list">
+			<c:forEach items="${listss }" var="list">
 				<ul class="r-list">
 					<li class="clearfix">
 							<img src="${list.noticepicture }" width="300" height="171">
@@ -48,6 +49,9 @@
 					</li>
 				</ul>
 					</c:forEach>
+					<div class="page">
+						<z:page pageBean="${pageBean }"></z:page>
+					</div>
 			</div>
 		
 		</div>

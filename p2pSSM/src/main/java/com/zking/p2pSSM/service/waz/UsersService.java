@@ -15,17 +15,11 @@ public interface UsersService {
 
     int updateByPrimaryKey(Users record);
 
-    /**
-     *   用户登陆
-     * @param users
-     * @return
-     */
-    Users queryByNamePager(Users users);
+    Users login(Users users);
 
     /**
-     * 用户开户
-     * @param users
+     *  查询总注册人数
      * @return
      */
-    int updateByKH(Users users);
+    int userCount();
 }

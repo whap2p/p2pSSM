@@ -31,8 +31,7 @@
 	}
 	
 	function Select(items,param){//按条件查询
-		
-		window.location.href="<%=basePath%>invest/investSel.do?item="+items+"&param="+param;
+		window.location.href="<%=basePath%>/product/list?item="+items+"&param="+param;
 	}
 
 </script>
@@ -60,10 +59,6 @@
                 <c:forEach items="${biao }" var="biao">
                 	<li class="n2"><a <c:if test="${biaoId==biao.id }">class="active"</c:if> style="cursor:pointer;" onclick="Select('itemtype','${biao.id}');" id="post_type_car${biao.id}">${biao.bname }</a></li>
                 </c:forEach>
-<!--                 <li class="n2"><a href="javascript:url('post_type','car');" id="post_type_car">多金保</a></li>
-                <li class="n3"><a href="javascript:url('post_type','house');" id="post_type_house">普金包</a></li>
-                <li class="n4"><a href="javascript:url('post_type','bridge');" id="post_type_bridge">恒金宝</a></li>
-                <li class="n5"><a href="javascript:url('post_type','worth');" id="post_type_worth">债权贷</a> </li> -->
               </ul>
             </dd>
           </dl>
@@ -140,6 +135,9 @@
           </ul>
         </div>
         <!------------投资列表-------------->
+        <%--<c:if test="${list == null}">
+          <c:redirect url="/product/list"></c:redirect>
+        </c:if>--%>
         <c:forEach items="${list }" var="invest" varStatus="status">
 <!--         <form action="investInfo.do" method="post" onsubmit="">investAdd.do
         <input type="hidden" name="" value=""/> 控制层要获取一个对象要不就在页面上用form表单传要不传一个条件到控制层查出来-->

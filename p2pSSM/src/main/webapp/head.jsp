@@ -28,7 +28,7 @@
       </ul>
     <c:if test="${globaluser.unickname==null }">
 				<ul class="fn-right header-top-ul">
-					<li><a href="<%=basePath%>invest/recommendShow.do" class="app">返回首页</a></li>
+					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
 							<a href="<%=basePath%>/register.jsp" class="c-orange" title="免费注册">免费注册</a>
@@ -63,12 +63,12 @@
     <div class="container">
       <div class="fn-left logo"> <a class="" href="<%=basePath%>invest/recommendShow.do"> <img src="<%=basePath%>images/logo.png"  title=""> </a> </div>
       <ul class="top-nav fn-clear">
-        <li > <a href="<%=basePath%>invest/recommendShow.do">首页</a> </li>
-        <li> <a href="<%=basePath%>invest/investSel.do" class="">我要投资</a> </li>
+        <li > <a href="<%=basePath%>index.jsp">首页</a> </li>
+        <li> <a href="<%=basePath%>product/list" class="">我要投资</a> </li>
         <li> <a href="<%=basePath%>borrowadd.jsp" class="">我要借款</a> </li>
         <li> <a href="${pageContext.request.contextPath}/help.jsp">安全保障</a> </li>
         <li class="top-nav-safe" > <a href="#" onclick="keys();">我的账户</a> </li>
-        <li> <a href="<%=basePath %>notice/notlist.do?ids=1">关于我们</a> </li>
+        <li> <a href="<%=basePath %>notice/list?noticetype=1&&url=inform">关于我们</a> </li>
       </ul>
     </div>
   </div>

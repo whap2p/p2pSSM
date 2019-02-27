@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zking.p2pSSM.mapper.wha.UsersMapper" >
+<mapper namespace="com.zking.p2pSSM.mapper.waz.WazUsersMapper" >
   <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Users" >
     <constructor >
       <idArg column="uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -222,21 +222,13 @@
       upwd_zd = #{upwd_zd,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-
-  <select id="queryByName" resultMap="BaseResultMap" parameterType="com.zking.p2pSSM.model.Users" >
+  <select id="login" resultType="com.zking.p2pSSM.model.Users" parameterType="com.zking.p2pSSM.model.Users" >
     select
     <include refid="Base_Column_List" />
     from users
-    where unickname = #{unickname} and upassword = #{upassword}
+    where unickname=#{unickname} and upassword=#{upassword}
   </select>
-
-  <update id="updateByKH"  parameterType="com.zking.p2pSSM.model.Users" >
-    update users set
-      uname = #{uname,jdbcType=VARCHAR},
-      umailbox = #{umailbox,jdbcType=VARCHAR},
-      uphonenumber = #{uphonenumber,jdbcType=VARCHAR},
-      ucardid = #{ucardid,jdbcType=VARCHAR},
-      upwd_zd = #{upwd_zd,jdbcType=VARCHAR}
-    where uid = #{uid,jdbcType=INTEGER}
-  </update>
+    <select id="userCount" resultType="java.lang.Integer">
+      select count(*) from users
+    </select>
 </mapper>
