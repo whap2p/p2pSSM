@@ -46,13 +46,13 @@
 					<li><a href="<%=basePath%>/index.jsp" class="app">返回首页</a></li>
 					<li>
 						<div class="">
-							<a href="<%=basePath%>query.do?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
+							<a href="<%=basePath%>user/query?id=${globaluser.uid}" class="c-orange" title="名字">${globaluser.unickname
 								}</a>
 						</div>
 					</li>
 					<li>
 						<div class="">
-							<a href="<%=basePath%>users/exit.do" class="js-login" title="退出">退出</a>
+							<a href="<%=basePath%>user/exit" class="js-login" title="退出">退出</a>
 						</div>
 					</li>
 				</ul>
@@ -78,7 +78,7 @@
 	function keys(){
 		var id="${globaluser.uid}";
 		if(id!=""){
-		window.location.href="<%=basePath %>query.do?id=${globaluser.uid}";
+		window.location.href="<%=basePath %>user/query?id=${globaluser.uid}";
 		}else {
 			alert("请先登入!");
 		window.location.href="<%=basePath%>/login.jsp";

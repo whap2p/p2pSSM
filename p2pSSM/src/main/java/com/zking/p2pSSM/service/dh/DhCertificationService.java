@@ -2,7 +2,7 @@ package com.zking.p2pSSM.service.dh;
 
 import com.zking.p2pSSM.model.dh.Certification;
 
-public interface CertificationService {
+public interface DhCertificationService {
     int deleteByPrimaryKey(Integer id);
 
     int insertSelective(Certification record);

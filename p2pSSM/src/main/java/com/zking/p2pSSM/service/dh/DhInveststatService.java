@@ -2,7 +2,7 @@ package com.zking.p2pSSM.service.dh;
 
 import com.zking.p2pSSM.model.dh.Investstat;
 
-public interface InveststatService {
+public interface DhInveststatService {
     int deleteByPrimaryKey(Integer isid);
 
     int insertSelective(Investstat record);

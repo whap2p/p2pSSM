@@ -18,7 +18,7 @@
       <ul>
         <li class="pleft-cur"><span><a href="${pageContext.request.contextPath}/user/query?id=${globaluser.uid}"><i class="dot dot1"></i>账户总览</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="">资金记录</a></span></li>
-        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="<%=basePath %>invest/investRecord.do">投资记录</a></span></li>
+        <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="<%=basePath %>user/qureyInvestinfo?id=3">投资记录</a></span></li>
         <li><span><a style="font-size:14px;text-align:center;width:115px;padding-right:35px;" href="">回款计划</a></span></li>
         <li class=""><span><a href="<%=basePath%>thirdparty.jsp"><i class="dot dot02"></i>开通第三方</a> </span> </li>
         <c:if test="${globaluser.ucertnumber==null}">
@@ -27,10 +27,10 @@
         </c:if>
         <c:if test="${globaluser.ucertnumber!=null}">
         <li><span><a href="pay.jsp"><i class="dot dot03"></i>充值</a></span></li>
-        <li class=""><span><a href="<%=basePath%>withdraw.do?id=${user.uid}"><i class="dot dot04"></i>提现</a></span></li>
+        <li class=""><span><a href="<%=basePath%>withdraw.do?id=${globaluser.uid}"><i class="dot dot04"></i>提现</a></span></li>
         </c:if>
-        <li style="position:relative;" class=""> <span> <a href="<%=basePath %>queryDope.do"><i class="dot dot08"></i>系统信息 </a> </span> </li>
-        <li class=""><span><a href="<%=basePath%>find.do?id=${user.uid}"><i class="dot dot09"></i>账户设置</a></span></li>
+        <li style="position:relative;" class=""> <span> <a href="<%=basePath %>user/queryDope?id=${globaluser.uid}"><i class="dot dot08"></i>系统信息 </a> </span> </li>
+        <li class=""><span><a href="<%=basePath%>find.do?id=${globaluser.uid}"><i class="dot dot09"></i>账户设置</a></span></li>
       </ul>
     </div>
 

@@ -1,8 +1,8 @@
 package com.zking.p2pSSM.service.impl.dh;
 
-import com.zking.p2pSSM.mapper.dh.BankcardMapper;
+import com.zking.p2pSSM.mapper.dh.DhBankcardMapper;
 import com.zking.p2pSSM.model.dh.Bankcard;
-import com.zking.p2pSSM.service.dh.BankcardService;
+import com.zking.p2pSSM.service.dh.DhBankcardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,27 +13,27 @@ import org.springframework.stereotype.Service;
  * @create  2019-02-27 14:08
  */
 @Service
-public class BankcardServiceImpl implements BankcardService {
+public class DhBankcardServiceImpl implements DhBankcardService {
     @Autowired
-    private BankcardMapper bankcardMapper;
+    private DhBankcardMapper bankcardMapper;
     @Override
     public int deleteByPrimaryKey(Integer bID) {
-        return 0;
+        return bankcardMapper.deleteByPrimaryKey(bID);
     }
 
     @Override
     public int insertSelective(Bankcard record) {
-        return 0;
+        return bankcardMapper.insertSelective(record);
     }
 
     @Override
     public Bankcard selectByPrimaryKey(Integer bID) {
-        return null;
+        return bankcardMapper.selectByPrimaryKey(bID);
     }
 
     @Override
     public int updateByPrimaryKeySelective(Bankcard record) {
-        return 0;
+        return bankcardMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override

@@ -367,15 +367,16 @@
         <h3><i>充值</i></h3>
         <div class="quick-pay-wrap">
           <h4> <span class="quick-tit pay-cur"><em>快捷支付</em></span> <span class="online-tit"><em>网银充值</em></span> </h4>
-          <form id="form" name="form" method="post" action="" >
+          <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/user/chongzhi" >
+              <<input type="hidden" name="uid" value="${globaluser.uid}">
             <div class="quick-main">
               <div class="fl quick-info">
                 <div class="info-1"> <span class="info-tit">充值金额</span> <span class="info1-input">
-                  <input id="form:actualMoney1" type="text" name="" class="pay-money-txt" maxlength="10" >
+                  <input id="form:actualMoney1" type="text" name="czmoney" class="pay-money-txt" maxlength="10" >
                   <em>元</em> </span> <span class="quick-error"> </span> </div>
                 <div class="info-tips">亿人宝提醒您：充值金额超过50000元时，请切换到网银充值</div>
                 <div class="info-2"> <span class="info-tit">银行卡号</span> <span class="info2-input">
-                  <input id="form:bankCardNo" type="text" name="form:bankCardNo" class="tx-txt" value="${globaluser.userpaytoid}">
+                  <input id="form:bankCardNo" type="text" name="lsh" class="tx-txt" value="${globaluser.userpaytoid}">
                   <em class="info2-bank" style="display: none;">
                   <label id="form:defaultBankName" style="font-size:16px;"> </label>
                   </em> </span> <span class="quick-error3" id="bankCardError"></span> </div>

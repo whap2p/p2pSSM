@@ -63,8 +63,8 @@
           <div class="investnote-list">
             <div class="investnote-contitle"> 
             	<span class="investnote-w1 fb">标题</span> 
-            	<span class="investnote-w2 fb">类型</span> 
-            	<span class="investnote-w3 fb">利率</span> 
+            	<span class="investnote-w2 fb">类型</span>
+            	<span class="investnote-w3 fb">利率</span>
             	<span class="investnote-hbw4 fb">截止期限</span> 
             	<span class="investnote-hbw5 fb">还款方式</span> 
             	<span class="investnote-hbw6 fb">金额</span> 
@@ -72,11 +72,10 @@
             <ul>
             	<c:forEach items="${record }" var="recordList" varStatus="idnum">
               		<li>
-              			<span class="investnote-w1" title="${recordList.title }">${ft:substring(recordList.title,0,8) }</span>
+                        <span class="investnote-w1" title="${recordList.instyle }">${recordList.instyle }</span>
               			<span class="investnote-w2">
-              				<c:forEach items="${biao }" var="b">
-              					<c:if test="${recordList.type == b.id }">${b.bname }</c:if>
-<%--               					<c:if test="${recordList.type != b.id }">${recordList.instyle }</c:if>
+              				<c:forEach items="${biao}" var="b">
+              					<c:if test="${recordList.brrowid == b.id }">${b.bname }</c:if>
  --%>              				</c:forEach>
               			</span>
               			<span class="investnote-w3">${recordList.interest }%</span>
@@ -87,7 +86,7 @@
 				</c:forEach>
 					<li>
 					
-						<div align="center"> <span class="page"><a href="investRecord.do?currpage=1" onclick=""><!-- javascript:void(0); -->首页</a><a href="investRecord.do?currpage=${currpages-1 }" onclick="">上一页</a><c:forEach begin="1" end="${totalpage > 6 ? 6 : totalpage}" step="1" varStatus="bindex">&nbsp;<a class="curr" onclick="" href="investRecord.do?currpage=${bindex.count }">${bindex.count }</a></c:forEach><a href="investRecord.do?currpage=${currpages+1 }" onclick="">下一页</a><a href="investRecord.do?currpage=${totalpage }" onclick="">尾页</a>&nbsp;<em>共${totalpage }页&nbsp;</em></span></div>
+						<div align="center"> <span class="page"><a href="user/qureyInvestinfo?page=1" onclick=""><!-- javascript:void(0); -->首页</a><a href="user/qureyInvestinfo?page=${currpages-1 }" onclick="">上一页</a><c:forEach begin="1" end="${totalPage > 6 ? 6 : totalpage}" step="1" varStatus="bindex">&nbsp;<a class="curr" onclick="" href="user/qureyInvestinfo?page=${bindex.count }">${bindex.count }</a></c:forEach><a href="user/qureyInvestinfo?page=${currpages+1 }" onclick="">下一页</a><a href="investRecord.do?page=${totalpage }" onclick="">尾页</a>&nbsp;<em>共${totalpage }页&nbsp;</em></span></div>
 					
 					</li>
             </ul>

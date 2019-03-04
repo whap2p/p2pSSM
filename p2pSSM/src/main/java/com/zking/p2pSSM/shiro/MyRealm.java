@@ -1,15 +1,11 @@
 package com.zking.p2pSSM.shiro;
 
 import com.zking.p2pSSM.model.dh.Users;
-import com.zking.p2pSSM.service.dh.UsersService;
+import com.zking.p2pSSM.service.dh.DhUsersService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
-import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.util.ByteSource;
-
-import java.util.Set;
 
 /**
  * @author Giraffe Wld
@@ -21,14 +17,14 @@ import java.util.Set;
  */
 public class MyRealm extends AuthorizingRealm {
 
-    private UsersService usersService;
+    private DhUsersService dhUsersService;
 
-    public UsersService getUsersService() {
-        return usersService;
+    public DhUsersService getDhUsersService() {
+        return dhUsersService;
     }
 
-    public void setUsersService(UsersService usersService) {
-        this.usersService = usersService;
+    public void setDhUsersService(DhUsersService dhUsersService) {
+        this.dhUsersService = dhUsersService;
     }
 
     @Override
@@ -38,13 +34,14 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        String unickname = token.getPrincipal().toString();
-        Users users = usersService.qureyByName(unickname);
+        String uname = token.getPrincipal().toString();
+        System.out.println(uname);
+        Users users = dhUsersService.qureyByName(uname);
         AuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 users.getUnickname(),
                 users.getUpassword(),
                 this.getName()
         );
-        return authenticationInfo;
+        return  authenticationInfo;
     }
 }

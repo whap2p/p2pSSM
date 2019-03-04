@@ -1,8 +1,8 @@
 package com.zking.p2pSSM.service.impl.dh;
 
-import com.zking.p2pSSM.mapper.dh.UsersMapper;
+import com.zking.p2pSSM.mapper.dh.DhUsersMapper;
 import com.zking.p2pSSM.model.dh.Users;
-import com.zking.p2pSSM.service.dh.UsersService;
+import com.zking.p2pSSM.service.dh.DhUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,10 @@ import org.springframework.stereotype.Service;
  * @company xxx公司
  * @create  2019-02-26 9:48
  */
-@Service("usersService")
-public class UsersServiceImpl implements UsersService {
+@Service("dhUsersService")
+public class DhUsersServiceImpl implements DhUsersService {
     @Autowired
-    private UsersMapper usersMapper;
+    private DhUsersMapper usersMapper;
     @Override
     public int deleteByPrimaryKey(Integer uid) {
         return usersMapper.deleteByPrimaryKey(uid);

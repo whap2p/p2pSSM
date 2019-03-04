@@ -1,8 +1,8 @@
 package com.zking.p2pSSM.service.impl.dh;
 
-import com.zking.p2pSSM.mapper.dh.CertificationMapper;
+import com.zking.p2pSSM.mapper.dh.DhCertificationMapper;
 import com.zking.p2pSSM.model.dh.Certification;
-import com.zking.p2pSSM.service.dh.CertificationService;
+import com.zking.p2pSSM.service.dh.DhCertificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
  * @create  2019-02-26 19:11
  */
 @Service
-public class CertificationServiceImpl implements CertificationService {
+public class DhCertificationServiceImpl implements DhCertificationService {
     @Autowired
-    private CertificationMapper certificationMapper;
+    private DhCertificationMapper certificationMapper;
     @Override
     public int deleteByPrimaryKey(Integer id) {
         return certificationMapper.deleteByPrimaryKey(id);
@@ -33,7 +33,7 @@ public class CertificationServiceImpl implements CertificationService {
 
     @Override
     public int updateByPrimaryKeySelective(Certification record) {
-        return 0;
+        return certificationMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override

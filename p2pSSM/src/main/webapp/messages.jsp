@@ -14,13 +14,13 @@
 <title>p2p网贷平台</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="css/common.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="css/user.css" />
+<link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/user.css" />
 <link rel="stylesheet" type="text/css"
-	href="css/jquery.datetimepicker.css" />
-<script type="text/javascript" src="script/jquery.min.js"></script>
-<script type="text/javascript" src="script/common.js"></script>
-<script src="script/user.js" type="text/javascript"></script>
+	href="${pageContext.request.contextPath}/css/jquery.datetimepicker.css" />
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/script/common.js"></script>
+<script src="${pageContext.request.contextPath}/script/user.js" type="text/javascript"></script>
 <script type="text/javascript" src = "${pageContext.request.contextPath}/js/jquery-1.8.3.js
 "></script>
 </head>
@@ -39,6 +39,8 @@ $(document).ready(function(){
 		}
 		
 	});
+	var path = $("#path").val();
+	var chkSon = $("#chkSon").val();
 	var subChk = $("input[name='chkSon']")
 	subChk.click(function() {
 		$("#chkAll").prop("checked", subChk.length == subChk.filter(":checked").length ? true:false);
@@ -57,7 +59,7 @@ $(document).ready(function(){
 			});
 			$.ajax({
 				type: "POST",
-				url: "batchDeletes.do",
+				url: path+"/user/batchDeletes?chkSon="+chkSon,
 				data: {'delitems':checkedList.toString()},
 				success: function(result) {
 				$("[name ='chkSon']:checkbox").attr("checked", false);
@@ -75,7 +77,7 @@ $(document).ready(function(){
 	<div class="wrapper wbgcolor">
 		<div class="w1200 personal">
 			<div class="credit-ad">
-				<img src="images/clist1.jpg" width="1200" height="96">
+				<img src="${pageContext.request.contextPath}/images/clist1.jpg" width="1200" height="96">
 			</div>
 			<div id="personal-left" class="personal-left">
 				<ul>
@@ -165,18 +167,18 @@ $(document).ready(function(){
 								</ul>
 								<span class="xxsz" style="display: none;">消息设置</span>
 							</div>
-							<div class="pxtxx-title">
+						<div class="pxtxx-title">
 								<span class="pxtxx-check">
 									<input type="checkbox" name="chkAll" id="chkAll" style="margin-left: -740px; margin-top: 15px;"  title="全选"/>
 								<span class="pxtxx-type ml46">消息标题</span> 
 								<span class="pxtxx-con">内容</span> 
 								<span class="pxxtx-date">执行时间</span>
-							</div>
 							<div id="pxtxx-list" class="pxtxx-list">
 								<ul>
 									
-										<c:forEach items="${list}" var="dope">
+										<c:forEach items="${dhDopes}" var="dope">
 											<li>
+												<input type="hidden" id="path" value="${pageContext.request.contextPath}">
 												<span class="pxtxx-check">
 													<input type="checkbox" name="chkSon" id="chkSon" style="margin-left: -740px;" value="${dope.did}"/>
 												</span>
@@ -196,13 +198,13 @@ $(document).ready(function(){
 				</div>
 				<center>
 					<div class="btn-group" align="center">
-						共${totalPage}/${currpage}页    <a href="<%=basePath%>queryDope.do?currpage=1">首页</a>
-						<a href="<%=basePath%>queryDope.do?currpage=${currpage-1}">上一页</a>
+						共${totalPage}/${currpage}页    <a href="<%=basePath%>user/queryDope?page=1">首页</a>
+						<a href="<%=basePath%>user/queryDope?page=${currpage-1}">上一页</a>
 							<c:forEach begin="1" end="${totalPage}" var="i">
-	  							<font size="1"><a href="<%=basePath%>queryDope.do?currpage=${i}">${i}</a></font>
+	  							<font size="1"><a href="<%=basePath%>user/queryDope?currpage=${i}">${i}</a></font>
 	  						</c:forEach>
-						<a href="<%=basePath%>queryDope.do?currpage=${currpage-1}">下一页</a>
-						     <a href="<%=basePath%>queryDope.do?currpage=${totalPage}">末页</a>
+						<a href="<%=basePath%>user/queryDope?page=${currpage+1}">下一页</a>
+						     <a href="<%=basePath%>user/queryDope?page=${totalPage}">末页</a>
 					</div>
 				</center>
 			</div>
@@ -267,7 +269,7 @@ $(document).ready(function(){
 				<dl>
 					<dt>官方二维码</dt>
 					<dd>
-						<span class="icon-ft-erweima"><img src="images/code.png"
+						<span class="icon-ft-erweima"><img src="${pageContext.request.contextPath}/images/code.png"
 							style="display: inline;"></span>
 					</dd>
 				</dl>
@@ -288,7 +290,7 @@ $(document).ready(function(){
 			</div>
 		</div>
 	</div>
-	<script src="script/jquery.datetimepicker.js" type="text/javascript"></script>
-	<script src="script/datepicker.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/script/jquery.datetimepicker.js" type="text/javascript"></script>
+	<script src="${pageContext.request.contextPath}/script/datepicker.js" type="text/javascript"></script>
 </body>
 </html>

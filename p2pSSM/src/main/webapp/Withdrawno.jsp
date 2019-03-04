@@ -135,15 +135,16 @@
     <div class="personal-main">
       <div class="personal-deposit">
         <h3><i>提现</i></h3>
-        <form id="form" name="form" method="post" action=""  target="_blank">
+        <form id="form" name="form" method="post" action="${pageContext.request.contextPath}/user/tixian"  target="_blank">
           <div class="deposit-form" style="margin-top:0px;border-top:0px none;">
             <h6>填写提现金额</h6>
+            <input type="hidden" name="uid" value="${globaluser.uid}">
             <ul>
               <li> <span class="deposit-formleft">可用金额</span> <span class="deposit-formright"> <i>
                 <label id="form:blance"> ${certification.cbalance}</label>
                 </i>元 </span> </li>
               <li> <span class="deposit-formleft">提现金额</span> <span class="deposit-formright">
-                <input type="text" class="deposite-txt" maxlength="10" id="form:actualMoney" >
+                <input type="text" class="deposite-txt" maxlength="10" id="form:actualMoney" name="txmoney" >
                 元 </span> <span id="actualMoneyErrorDiv"><span id="actualMoney_message" style="display:none" class="error"></span></span> </li>
               <li> <span class="deposit-formleft">提现费用</span> <em id="txfy" class="markicon fl"></em> <span class="deposit-formright deposit-formright1"> <i>
                 <label id="form:fee"> 0.00</label>
@@ -186,6 +187,7 @@
           $("#form\\:fee").html(fee);
           var sj = tx - fee;
           $("#form\\:cashFine").html(sj);
+
       });
 			$("#form\\:actualMoney").focus(
 					   function(){

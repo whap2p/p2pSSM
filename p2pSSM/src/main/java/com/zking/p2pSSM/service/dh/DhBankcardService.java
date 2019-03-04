@@ -4,7 +4,7 @@ import com.zking.p2pSSM.model.dh.Bankcard;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface BankcardService {
+public interface DhBankcardService {
     int deleteByPrimaryKey(Integer bID);
 
     int insertSelective(Bankcard record);

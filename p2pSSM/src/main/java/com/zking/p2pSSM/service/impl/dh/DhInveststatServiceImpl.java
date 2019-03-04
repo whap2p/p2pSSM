@@ -1,8 +1,8 @@
 package com.zking.p2pSSM.service.impl.dh;
 
-import com.zking.p2pSSM.mapper.dh.InveststatMapper;
+import com.zking.p2pSSM.mapper.dh.DhInveststatMapper;
 import com.zking.p2pSSM.model.dh.Investstat;
-import com.zking.p2pSSM.service.dh.InveststatService;
+import com.zking.p2pSSM.service.dh.DhInveststatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,17 +13,17 @@ import org.springframework.stereotype.Service;
  * @create  2019-02-26 19:11
  */
 @Service
-public class InveststatServiceImpl implements InveststatService {
+public class DhInveststatServiceImpl implements DhInveststatService {
     @Autowired
-    private InveststatMapper investstatMapper;
+    private DhInveststatMapper investstatMapper;
     @Override
     public int deleteByPrimaryKey(Integer isid) {
-        return 0;
+        return investstatMapper.deleteByPrimaryKey(isid);
     }
 
     @Override
     public int insertSelective(Investstat record) {
-        return 0;
+        return investstatMapper.insertSelective(record);
     }
 
     @Override
@@ -33,7 +33,7 @@ public class InveststatServiceImpl implements InveststatService {
 
     @Override
     public int updateByPrimaryKeySelective(Investstat record) {
-        return 0;
+        return investstatMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override

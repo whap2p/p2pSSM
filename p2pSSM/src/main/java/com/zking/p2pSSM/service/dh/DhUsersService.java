@@ -2,7 +2,7 @@ package com.zking.p2pSSM.service.dh;
 
 import com.zking.p2pSSM.model.dh.Users;
 
-public interface UsersService {
+public interface DhUsersService {
     int deleteByPrimaryKey(Integer uid);
 
 
