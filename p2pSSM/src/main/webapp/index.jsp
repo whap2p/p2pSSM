@@ -59,7 +59,6 @@
     </script>
 </head>
 <body>
-${globaluser}
 <!-- 导航栏 -->
 <jsp:include page="head.jsp"></jsp:include>
 <!--banner-->
@@ -82,7 +81,7 @@ ${globaluser}
         var list = "${listss}";
         if (list == "") {
             <%--window.location = "${pageContext.request.contextPath}/notice/list?noticetype=6";--%>
-            <%--window.location = "${pageContext.request.contextPath}/notice/query";--%>
+            window.location = "${pageContext.request.contextPath}/notice/query";
         }
 
         $('.flexslider').flexslider({

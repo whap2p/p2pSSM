@@ -42,7 +42,7 @@ public class DhUsersServiceImpl implements DhUsersService {
     }
 
     @Override
-    public Users qureyByName(String unickname) {
-        return usersMapper.qureyByName(unickname);
+    public Users qureyByName(Users users) {
+        return usersMapper.qureyByName(users);
     }
 }

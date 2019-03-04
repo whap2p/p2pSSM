@@ -58,7 +58,7 @@ public class DhUsersController {
 //        Subject subject = SecurityUtils.getSubject();
 //        try {
 //            subject.login(token);
-            Users users1 = usersService.qureyByName(users.getUnickname());
+            Users users1 = usersService.qureyByName(users);
             if(users1 != null){
                 request.getSession().setAttribute("globaluser",users1);
                 return "forward:/index.jsp";
@@ -106,7 +106,7 @@ public class DhUsersController {
     @ResponseBody
     @RequestMapping("/findByName")
     public Users findByName(Users users){
-        Users users1 = usersService.qureyByName(users.getUnickname());
+        Users users1 = usersService.qureyByName(users);
         return users1;
     }
 

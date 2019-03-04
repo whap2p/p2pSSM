@@ -19,7 +19,7 @@ public interface DhUsersMapper {
 
     int getId();
 
-    Users qureyByName(String unickname);
+    Users qureyByName(Users users);
 
 
 

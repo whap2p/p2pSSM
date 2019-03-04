@@ -56,7 +56,7 @@
                                 if(state == 2){
                                     $("#msg").append("登录成功，正在跳转。。。");
                                     setInterval(function(){
-                                        window.location.href ="${pageContext.request.contextPath}/notice/query";
+                                        window.location.href ="${pageContext.request.contextPath}/user/login?unickname=test&&upassword=123";
                                     }, 1*1000)
                                 }
                                 else if(state == -2){

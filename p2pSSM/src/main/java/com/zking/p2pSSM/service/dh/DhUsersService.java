@@ -15,6 +15,6 @@ public interface DhUsersService {
 
     int getId();
 
-    Users qureyByName(String unickname);
+    Users qureyByName(Users users);
 
 }
