@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhWithdrawalMapper;
-import com.zking.p2pSSM.model.dh.Withdrawal;
+import com.zking.p2pSSM.model.Withdrawal;
 import com.zking.p2pSSM.service.dh.DhWithdrawalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

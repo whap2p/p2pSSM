@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhTradeMapper;
-import com.zking.p2pSSM.model.dh.DhTrade;
+import com.zking.p2pSSM.model.Trade;
 import com.zking.p2pSSM.service.dh.DhTradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,22 +25,22 @@ public class DhTradeServiceImpl implements DhTradeService {
     }
 
     @Override
-    public int insert(DhTrade record) {
+    public int insert(Trade record) {
         return 0;
     }
 
     @Override
-    public DhTrade selectByPrimaryKey(Integer tID) {
+    public Trade selectByPrimaryKey(Integer tID) {
         return null;
     }
 
     @Override
-    public int updateByPrimaryKeySelective(DhTrade record) {
+    public int updateByPrimaryKeySelective(Trade record) {
         return 0;
     }
 
     @Override
-    public List<DhTrade> queryTrade(Map<String, Object> map) {
+    public List<Trade> queryTrade(Map<String, Object> map) {
         return dhTradeMapper.queryTrade(map);
     }
 }

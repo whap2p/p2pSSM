@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.waz.WazBorrowmoneyMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Borrowmoney" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="bserial" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="busername" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brelname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bpass" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="btype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="btitle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bmoney" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="btimelimit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="blimit" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bstate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brecommend" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="bleixing" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="beizhu1" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="beizhu2" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, bserial, busername, brelname, bpass, btype, btitle, bmoney, brate, btimelimit, 
+    blimit, bstate, brecommend, bleixing, beizhu1, beizhu2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from borrowmoney
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from borrowmoney
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Borrowmoney" >
+    insert into borrowmoney (id, bserial, busername, 
+      brelname, bpass, btype, 
+      btitle, bmoney, brate, 
+      btimelimit, blimit, bstate, 
+      brecommend, bleixing, beizhu1, 
+      beizhu2)
+    values (#{id,jdbcType=INTEGER}, #{bserial,jdbcType=VARCHAR}, #{busername,jdbcType=VARCHAR}, 
+      #{brelname,jdbcType=VARCHAR}, #{bpass,jdbcType=VARCHAR}, #{btype,jdbcType=VARCHAR}, 
+      #{btitle,jdbcType=VARCHAR}, #{bmoney,jdbcType=VARCHAR}, #{brate,jdbcType=VARCHAR}, 
+      #{btimelimit,jdbcType=VARCHAR}, #{blimit,jdbcType=VARCHAR}, #{bstate,jdbcType=VARCHAR}, 
+      #{brecommend,jdbcType=VARCHAR}, #{bleixing,jdbcType=VARCHAR}, #{beizhu1,jdbcType=VARCHAR}, 
+      #{beizhu2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Borrowmoney" >
+    insert into borrowmoney
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="bserial != null" >
+        bserial,
+      </if>
+      <if test="busername != null" >
+        busername,
+      </if>
+      <if test="brelname != null" >
+        brelname,
+      </if>
+      <if test="bpass != null" >
+        bpass,
+      </if>
+      <if test="btype != null" >
+        btype,
+      </if>
+      <if test="btitle != null" >
+        btitle,
+      </if>
+      <if test="bmoney != null" >
+        bmoney,
+      </if>
+      <if test="brate != null" >
+        brate,
+      </if>
+      <if test="btimelimit != null" >
+        btimelimit,
+      </if>
+      <if test="blimit != null" >
+        blimit,
+      </if>
+      <if test="bstate != null" >
+        bstate,
+      </if>
+      <if test="brecommend != null" >
+        brecommend,
+      </if>
+      <if test="bleixing != null" >
+        bleixing,
+      </if>
+      <if test="beizhu1 != null" >
+        beizhu1,
+      </if>
+      <if test="beizhu2 != null" >
+        beizhu2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="bserial != null" >
+        #{bserial,jdbcType=VARCHAR},
+      </if>
+      <if test="busername != null" >
+        #{busername,jdbcType=VARCHAR},
+      </if>
+      <if test="brelname != null" >
+        #{brelname,jdbcType=VARCHAR},
+      </if>
+      <if test="bpass != null" >
+        #{bpass,jdbcType=VARCHAR},
+      </if>
+      <if test="btype != null" >
+        #{btype,jdbcType=VARCHAR},
+      </if>
+      <if test="btitle != null" >
+        #{btitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bmoney != null" >
+        #{bmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="brate != null" >
+        #{brate,jdbcType=VARCHAR},
+      </if>
+      <if test="btimelimit != null" >
+        #{btimelimit,jdbcType=VARCHAR},
+      </if>
+      <if test="blimit != null" >
+        #{blimit,jdbcType=VARCHAR},
+      </if>
+      <if test="bstate != null" >
+        #{bstate,jdbcType=VARCHAR},
+      </if>
+      <if test="brecommend != null" >
+        #{brecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="bleixing != null" >
+        #{bleixing,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu1 != null" >
+        #{beizhu1,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu2 != null" >
+        #{beizhu2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Borrowmoney" >
+    update borrowmoney
+    <set >
+      <if test="bserial != null" >
+        bserial = #{bserial,jdbcType=VARCHAR},
+      </if>
+      <if test="busername != null" >
+        busername = #{busername,jdbcType=VARCHAR},
+      </if>
+      <if test="brelname != null" >
+        brelname = #{brelname,jdbcType=VARCHAR},
+      </if>
+      <if test="bpass != null" >
+        bpass = #{bpass,jdbcType=VARCHAR},
+      </if>
+      <if test="btype != null" >
+        btype = #{btype,jdbcType=VARCHAR},
+      </if>
+      <if test="btitle != null" >
+        btitle = #{btitle,jdbcType=VARCHAR},
+      </if>
+      <if test="bmoney != null" >
+        bmoney = #{bmoney,jdbcType=VARCHAR},
+      </if>
+      <if test="brate != null" >
+        brate = #{brate,jdbcType=VARCHAR},
+      </if>
+      <if test="btimelimit != null" >
+        btimelimit = #{btimelimit,jdbcType=VARCHAR},
+      </if>
+      <if test="blimit != null" >
+        blimit = #{blimit,jdbcType=VARCHAR},
+      </if>
+      <if test="bstate != null" >
+        bstate = #{bstate,jdbcType=VARCHAR},
+      </if>
+      <if test="brecommend != null" >
+        brecommend = #{brecommend,jdbcType=VARCHAR},
+      </if>
+      <if test="bleixing != null" >
+        bleixing = #{bleixing,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu1 != null" >
+        beizhu1 = #{beizhu1,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu2 != null" >
+        beizhu2 = #{beizhu2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Borrowmoney" >
+    update borrowmoney
+    set bserial = #{bserial,jdbcType=VARCHAR},
+      busername = #{busername,jdbcType=VARCHAR},
+      brelname = #{brelname,jdbcType=VARCHAR},
+      bpass = #{bpass,jdbcType=VARCHAR},
+      btype = #{btype,jdbcType=VARCHAR},
+      btitle = #{btitle,jdbcType=VARCHAR},
+      bmoney = #{bmoney,jdbcType=VARCHAR},
+      brate = #{brate,jdbcType=VARCHAR},
+      btimelimit = #{btimelimit,jdbcType=VARCHAR},
+      blimit = #{blimit,jdbcType=VARCHAR},
+      bstate = #{bstate,jdbcType=VARCHAR},
+      brecommend = #{brecommend,jdbcType=VARCHAR},
+      bleixing = #{bleixing,jdbcType=VARCHAR},
+      beizhu1 = #{beizhu1,jdbcType=VARCHAR},
+      beizhu2 = #{beizhu2,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

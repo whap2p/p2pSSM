@@ -51,4 +51,16 @@ public class UsersServiceImpl implements UsersService {
     public int userCount() {
         return usersMapper.userCount();
     }
+
+    @Override
+    public int userCountByMarkmoney() {
+        return usersMapper.userCountByMarkmoney();
+    }
+
+    @Override
+    public int userCountByMarkgain() {
+        return usersMapper.userCountByMarkgain();
+    }
+
+
 }

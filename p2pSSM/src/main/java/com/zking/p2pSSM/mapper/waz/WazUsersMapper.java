@@ -24,4 +24,16 @@ public interface WazUsersMapper {
      * @return
      */
     int userCount();
+
+    /**
+     * 主页查询累计投资金额
+     * @return
+     */
+    int userCountByMarkmoney();
+
+    /**
+     * 主页查询累积收益
+     * @return
+     */
+    int userCountByMarkgain();
 }

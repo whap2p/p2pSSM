@@ -1,6 +1,7 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.Users;
+
+import com.zking.p2pSSM.model.Users;
 
 public interface DhUsersService {
     int deleteByPrimaryKey(Integer uid);

@@ -20,7 +20,7 @@ public interface WazProductMapper {
     int updateByPrimaryKey(Product record);
 
     /**
-     * 投资列表查询
+     * 投资列表查询，带模糊查
      * @param product
      * @return
      */

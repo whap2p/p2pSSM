@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhDopeMapper;
-import com.zking.p2pSSM.model.dh.DhDope;
+import com.zking.p2pSSM.model.Dope;
 import com.zking.p2pSSM.service.dh.DhDopeServiec;
 import com.zking.p2pSSM.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +25,22 @@ public class DhDopeServiecImpl implements DhDopeServiec {
     }
 
     @Override
-    public int insertSelective(DhDope record) {
+    public int insertSelective(Dope record) {
         return dhDopeMapper.insertSelective(record);
     }
 
     @Override
-    public DhDope selectByPrimaryKey(Integer did) {
+    public Dope selectByPrimaryKey(Integer did) {
         return dhDopeMapper.selectByPrimaryKey(did);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(DhDope record) {
+    public int updateByPrimaryKeySelective(Dope record) {
         return dhDopeMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public List<DhDope> qureyDopePager(int dprimkey,PageBean pageBean) {
+    public List<Dope> qureyDopePager(int dprimkey,PageBean pageBean) {
         return dhDopeMapper.qureyDope(dprimkey);
     }
 }

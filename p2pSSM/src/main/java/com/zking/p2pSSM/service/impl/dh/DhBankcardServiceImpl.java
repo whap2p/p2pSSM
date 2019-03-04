@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhBankcardMapper;
-import com.zking.p2pSSM.model.dh.Bankcard;
+import com.zking.p2pSSM.model.Bankcard;
 import com.zking.p2pSSM.service.dh.DhBankcardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

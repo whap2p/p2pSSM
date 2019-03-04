@@ -27,14 +27,14 @@
 <script src="<%=basePath%>script/ablumn.js"></script>
 <script src="<%=basePath%>script/plugins.js"></script>
 <script src="<%=basePath%>script/detail.js"></script>
-<link href="http://localhost:8080/p2p//css/common.css" rel="stylesheet" />
-<link href="http://localhost:8080/p2p//css/register.css"
+<link href="<%=basePath%>/css/common.css" rel="stylesheet" />
+<link href=<%=basePath%>/css/register.css"
 	rel="stylesheet" type="text/css" />
 <script type="text/javascript"
-	src="http://localhost:8080/p2p//script/jquery.min.js"></script>
+	src="<%=basePath%>/script/jquery.min.js"></script>
 <script type="text/javascript"
-	src="http://localhost:8080/p2p//script/common.js"></script>
-<script src="http://localhost:8080/p2p//script/login.js"
+	src="<%=basePath%>/script/common.js"></script>
+<script src="<%=basePath%>/script/login.js"
 	type="text/javascript"></script>
 </head>
 <script type="text/javascript">
@@ -88,7 +88,7 @@
 								pattern="yyyy-MM-dd" /></li>
 						<li><span class="c-888">保障方式：</span>${Borrowmoney.psaveway }</li>
 						<li><span class="c-888">还款方式：</span>${Borrowmoney.pway }</li>
-						<li><span class="c-888">需还本息：</span> <%-- ${ } --%>元</li>
+						<li><span class="c-888">需还本息：</span> ${Borrowmoney.prateben }元</li>
 						<li><span class="c-888">借款用途：</span>${Borrowmoney.puse }</li>
 						<li class="colspan"><span class="c-888 fl">投标进度：</span>
 							<div class="progress-bar fl">
@@ -105,9 +105,9 @@
 				<div class="mod-right mod-status">
 					<div class="inner">
 						<div class="text">
-							待还本息：<span class="f24 c-333">40,400.00</span>元<br> 剩余期限：<span
+							待还本息：<span class="f24 c-333">${Borrowmoney.ptotalmoney+ Borrowmoney.prateben}</span>元<br> 剩余期限：<span
 								class="f24 c-333">29天</span> <br> 下期还款日： <span
-								class="f20 c-333">2015-10-13</span>
+								class="f20 c-333">2019-5-29</span>
 						</div>
 						<i class="icon icon-status icon-status1"></i>
 					</div>
@@ -115,6 +115,7 @@
 
 			</div>
 		</div>
+
 		<div class="item-detail-body clearfix mrt30 ui-tab">
 			<div class="ui-tab-nav hd">
 				<i class="icon-cur" style="left: 39px;"></i>
@@ -226,7 +227,7 @@
 									<div class="album" id="album">
 										<div class="album-show">
 											<div class="loading" style="display: none;"></div>
-											<img src="images/news.jpg">
+											<img src="../images/news.jpg">
 										</div>
 										<div class="album-thumb">
 											<a href="javascript:;" class="btn btn-prev"></a> <a
@@ -238,40 +239,40 @@
 													style="margin: 0px; padding: 0px; position: relative; list-style-type: none; z-index: 1; width: 1926px; left: 0px;">
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img"><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img" ><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img"><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img"><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img" ><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img" ><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img" ><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img" ><img
+															src="../images/news.jpg"></a></li>
 													<li
 														style="overflow: hidden; float: left; width: 164px; height: 108px;"><a
-														class="small_img" id="images/news.jpg"><img
-															src="images/news.jpg"></a></li>
+														class="small_img"><img
+															src="../images/news.jpg"></a></li>
 												</ul>
 											</div>
 										</div>
@@ -370,6 +371,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 	<!--网站底部-->
 	<div id="footer" class="ft">

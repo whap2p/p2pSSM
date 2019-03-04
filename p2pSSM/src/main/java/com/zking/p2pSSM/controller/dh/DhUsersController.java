@@ -1,10 +1,9 @@
 package com.zking.p2pSSM.controller.dh;
 
-import com.zking.p2pSSM.model.dh.*;
+import com.zking.p2pSSM.model.*;
 import com.zking.p2pSSM.service.dh.*;
 import com.zking.p2pSSM.utils.PageBean;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,16 +54,20 @@ public class DhUsersController {
 
     @RequestMapping("/login")
     public String login(Users users, HttpServletRequest request){
-        UsernamePasswordToken token = new UsernamePasswordToken(users.getUnickname(),users.getUpassword());
-        Subject subject = SecurityUtils.getSubject();
-        try {
-            subject.login(token);
+//        UsernamePasswordToken token = new UsernamePasswordToken(users.getUnickname(),users.getUpassword());
+//        Subject subject = SecurityUtils.getSubject();
+//        try {
+//            subject.login(token);
             Users users1 = usersService.qureyByName(users.getUnickname());
-            request.getSession().setAttribute("globaluser",users1);
-            return "forward:/index.jsp";
-        }catch (Exception e){
-            return "redirect:/login.jsp";
-        }
+            if(users1 != null){
+                request.getSession().setAttribute("globaluser",users1);
+                return "forward:/index.jsp";
+            }else{
+                return "redirect:/login.jsp";
+            }
+//        }catch (Exception e){
+//            return "redirect:/login.jsp";
+//        }
     }
 
     @RequestMapping("/exit")
@@ -80,7 +83,7 @@ public class DhUsersController {
     }
 
     @RequestMapping("/insert")
-    public  String insert(Users users,HttpServletRequest request) throws ParseException {
+    public  String insert(Users users, HttpServletRequest request) throws ParseException {
         users.setUid(usersService.getId());
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -161,7 +164,7 @@ public class DhUsersController {
             double kyye = cbalances - txmoneys;
             certification.setCbalance(String.valueOf(kyye));
             certificationService.updateByPrimaryKeySelective(certification);
-            DhDope dhDope = new DhDope();
+            Dope dhDope = new Dope();
             dhDope.setDprimkey(users.getUid());
             dhDope.setDtitle("提现审核中");
             dhDope.setDetails("尊敬的用户,您的提现金额"+txmoney+"元正在审核中!");
@@ -175,7 +178,7 @@ public class DhUsersController {
 
     @RequestMapping("/chongzhi")
     @Transactional
-    public String chongzhi(int uid,DhRecharge dhRecharge) throws ParseException {
+    public String chongzhi(int uid,Recharge dhRecharge) throws ParseException {
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = format.parse(df.format(new Date()));
@@ -195,7 +198,7 @@ public class DhUsersController {
         dhRecharge.setStatu("成功");
         dhRecharge.setZname(users.getUname());
         certificationService.updateByPrimaryKeySelective(certification);
-        DhDope dhDope = new DhDope();
+        Dope dhDope = new Dope();
         dhDope.setDprimkey(users.getUid());
         dhDope.setDtitle("充值成功");
         dhDope.setDetails("尊敬的用户,您通过快捷支付充值的"+dhRecharge.getCzmoney()+"元已到账!");
@@ -208,7 +211,7 @@ public class DhUsersController {
     public String queryDope(int id,HttpServletRequest request){
         PageBean pageBean = new PageBean();
         pageBean.setRequest(request);
-        List<DhDope> dhDopes = dhDopeServiec.qureyDopePager(id,pageBean);
+        List<Dope> dhDopes = dhDopeServiec.qureyDopePager(id,pageBean);
         System.out.println(dhDopes.size());
         System.out.println(pageBean.getPage());
         request.getSession().setAttribute("totalPage",pageBean.getTotal());
@@ -228,8 +231,8 @@ public class DhUsersController {
     public String qureyInvestinfo(int id,HttpServletRequest request){
         PageBean pageBean = new PageBean();
         pageBean.setRequest(request);
-        List<DhBiao> dhBiaos = dhBiaoService.queryBiao();
-        List<DhInvestinfo> dhInvestinfos = dhInvestinfoService.qureyInvestinfoPager(id,pageBean);
+        List<Biao> dhBiaos = dhBiaoService.queryBiao();
+        List<Investinfo> dhInvestinfos = dhInvestinfoService.qureyInvestinfoPager(id,pageBean);
         request.getSession().setAttribute("totalPage",pageBean.getTotal());
         request.getSession().setAttribute("currpages",pageBean.getPage());
         request.getSession().setAttribute("record",dhInvestinfos);
@@ -241,7 +244,7 @@ public class DhUsersController {
     public String qureyTrade(int uid){
         Map map = new HashMap();
         map.put("uid",uid);
-        List<DhTrade> list = dhTradeService.queryTrade(map);
+        List<Trade> list = dhTradeService.queryTrade(map);
 
         return "";
     }

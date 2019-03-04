@@ -9,6 +9,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix = "fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="ft"%>
+<%@ taglib prefix="z" uri="/zking" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -164,7 +165,7 @@
               </div>
             </li>
             <li class="col-120-2"> 
-            	<a class="ui-btn btn-gray"  href="investInfo.do?bmid=${invest.id }"> 
+            	<a class="ui-btn btn-gray"  href="../product/queryById?id=${invest.id }">
             		<c:if test="${invest.pstate=='1' }">立即投标</c:if>
             		<c:if test="${invest.pstate=='2' }">募集完成</c:if>
             		<c:if test="${invest.pstate=='3' }">还款中</c:if>
@@ -177,7 +178,9 @@
         </c:forEach>
         <!------------投资列表-------------->
       </div>
-      <div class="pagination clearfix mrt30"> <span class="page"><a href="investSel.do?currpage=1" onclick=""><!-- javascript:void(0); -->首页</a><a href="investSel.do?currpage=${currpages-1 }" onclick="">上一页</a><c:forEach begin="1" end="${totalpage }" step="1" varStatus="bindex">&nbsp;<a class="curr" onclick="" href="investSel.do?currpage=${bindex.count }">${bindex.count }</a></c:forEach><a href="investSel.do?currpage=${currpages+1 }" onclick="">下一页</a><a href="investSel.do?currpage=${totalpage }" onclick="">尾页</a>&nbsp;<em>共${totalpage }页&nbsp;</em></span>
+      <div class="pagination clearfix mrt30">
+        <z:page pageBean="${pageBean}"></z:page>
+        <%--<span class="page"><a href="investSel.do?currpage=1" onclick=""><!-- javascript:void(0); -->首页</a><a href="investSel.do?currpage=${currpages-1 }" onclick="">上一页</a><c:forEach begin="1" end="${totalpage }" step="1" varStatus="bindex">&nbsp;<a class="curr" onclick="" href="investSel.do?currpage=${bindex.count }">${bindex.count }</a></c:forEach><a href="investSel.do?currpage=${currpages+1 }" onclick="">下一页</a><a href="investSel.do?currpage=${totalpage }" onclick="">尾页</a>&nbsp;<em>共${totalpage }页&nbsp;</em></span>--%>
 <%--         <dl class="page-select">
           <dt><span>1</span><i class="icon icon-down"></i></dt>
           <dd style="display: none;">

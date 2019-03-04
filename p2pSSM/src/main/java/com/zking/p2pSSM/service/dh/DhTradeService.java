@@ -1,6 +1,6 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.DhTrade;
+import com.zking.p2pSSM.model.Trade;
 
 import java.util.List;
 import java.util.Map;
@@ -8,11 +8,11 @@ import java.util.Map;
 public interface DhTradeService {
     int deleteByPrimaryKey(Integer tID);
 
-    int insert(DhTrade record);
+    int insert(Trade record);
 
-    DhTrade selectByPrimaryKey(Integer tID);
+    Trade selectByPrimaryKey(Integer tID);
 
-    int updateByPrimaryKeySelective(DhTrade record);
+    int updateByPrimaryKeySelective(Trade record);
 
-    List<DhTrade> queryTrade(Map<String, Object> map);
+    List<Trade> queryTrade(Map<String, Object> map);
 }

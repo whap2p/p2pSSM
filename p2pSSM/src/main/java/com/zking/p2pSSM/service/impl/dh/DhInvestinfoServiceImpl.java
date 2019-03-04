@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhInvestinfoMapper;
-import com.zking.p2pSSM.model.dh.DhInvestinfo;
+import com.zking.p2pSSM.model.Investinfo;
 import com.zking.p2pSSM.service.dh.DhInvestinfoService;
 import com.zking.p2pSSM.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,22 +25,22 @@ public class DhInvestinfoServiceImpl implements DhInvestinfoService {
     }
 
     @Override
-    public int insertSelective(DhInvestinfo record) {
+    public int insertSelective(Investinfo record) {
         return dhInvestinfoMapper.insertSelective(record);
     }
 
     @Override
-    public DhInvestinfo selectByPrimaryKey(Integer inid) {
+    public Investinfo selectByPrimaryKey(Integer inid) {
         return dhInvestinfoMapper.selectByPrimaryKey(inid);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(DhInvestinfo record) {
+    public int updateByPrimaryKeySelective(Investinfo record) {
         return dhInvestinfoMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public List<DhInvestinfo> qureyInvestinfoPager(int userid,PageBean pageBean) {
+    public List<Investinfo> qureyInvestinfoPager(int userid,PageBean pageBean) {
         return dhInvestinfoMapper.qureyInvestinfo(userid);
     }
 }

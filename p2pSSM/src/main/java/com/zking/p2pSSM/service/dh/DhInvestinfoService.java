@@ -1,6 +1,6 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.DhInvestinfo;
+import com.zking.p2pSSM.model.Investinfo;
 import com.zking.p2pSSM.utils.PageBean;
 
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.List;
 public interface DhInvestinfoService {
     int deleteByPrimaryKey(Integer inid);
 
-    int insertSelective(DhInvestinfo record);
+    int insertSelective(Investinfo record);
 
-    DhInvestinfo selectByPrimaryKey(Integer inid);
+    Investinfo selectByPrimaryKey(Integer inid);
 
-    int updateByPrimaryKeySelective(DhInvestinfo record);
+    int updateByPrimaryKeySelective(Investinfo record);
 
-    List<DhInvestinfo> qureyInvestinfoPager(int userid,PageBean pageBean);
+    List<Investinfo> qureyInvestinfoPager(int userid,PageBean pageBean);
 
 }

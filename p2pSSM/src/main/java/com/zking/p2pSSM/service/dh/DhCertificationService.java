@@ -1,6 +1,6 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.Certification;
+import com.zking.p2pSSM.model.Certification;
 
 public interface DhCertificationService {
     int deleteByPrimaryKey(Integer id);

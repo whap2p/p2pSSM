@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhInveststatMapper;
-import com.zking.p2pSSM.model.dh.Investstat;
+import com.zking.p2pSSM.model.Investstat;
 import com.zking.p2pSSM.service.dh.DhInveststatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

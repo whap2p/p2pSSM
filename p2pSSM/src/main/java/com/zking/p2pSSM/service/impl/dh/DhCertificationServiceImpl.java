@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhCertificationMapper;
-import com.zking.p2pSSM.model.dh.Certification;
+import com.zking.p2pSSM.model.Certification;
 import com.zking.p2pSSM.service.dh.DhCertificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

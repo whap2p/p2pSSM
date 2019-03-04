@@ -33,7 +33,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product selectByPrimaryKey(Integer id) {
-        return null;
+        return productMapper.selectByPrimaryKey(id);
     }
 
     @Override

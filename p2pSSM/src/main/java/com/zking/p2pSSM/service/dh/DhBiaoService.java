@@ -1,18 +1,18 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.DhBiao;
+import com.zking.p2pSSM.model.Biao;
 
 import java.util.List;
 
 public interface DhBiaoService {
     int deleteByPrimaryKey(Integer id);
 
-    int insertSelective(DhBiao record);
+    int insertSelective(Biao record);
 
-    DhBiao selectByPrimaryKey(Integer id);
+    Biao selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(DhBiao record);
+    int updateByPrimaryKeySelective(Biao record);
 
-    List<DhBiao> queryBiao();
+    List<Biao> queryBiao();
 
 }

@@ -1,6 +1,6 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.DhDope;
+import com.zking.p2pSSM.model.Dope;
 import com.zking.p2pSSM.utils.PageBean;
 
 import java.util.List;
@@ -8,12 +8,12 @@ import java.util.List;
 public interface DhDopeServiec {
     int deleteByPrimaryKey(Integer did);
 
-    int insertSelective(DhDope record);
+    int insertSelective(Dope record);
 
-    DhDope selectByPrimaryKey(Integer did);
+    Dope selectByPrimaryKey(Integer did);
 
-    int updateByPrimaryKeySelective(DhDope record);
+    int updateByPrimaryKeySelective(Dope record);
 
-    List<DhDope> qureyDopePager(int dprimkey,PageBean pageBean);
+    List<Dope> qureyDopePager(int dprimkey,PageBean pageBean);
 
 }

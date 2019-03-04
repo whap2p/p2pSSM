@@ -231,4 +231,10 @@
     <select id="userCount" resultType="java.lang.Integer">
       select count(*) from users
     </select>
+  <select id="userCountByMarkmoney" resultType="java.lang.Integer">
+      select count(markmoney) from investstat
+    </select>
+  <select id="userCountByMarkgain" resultType="java.lang.Integer">
+      select count(markgain) from investstat
+    </select>
 </mapper>

@@ -1,6 +1,6 @@
 package com.zking.p2pSSM.shiro;
 
-import com.zking.p2pSSM.model.dh.Users;
+import com.zking.p2pSSM.model.Users;
 import com.zking.p2pSSM.service.dh.DhUsersService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;

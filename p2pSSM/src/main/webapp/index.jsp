@@ -59,6 +59,7 @@
     </script>
 </head>
 <body>
+${globaluser}
 <!-- 导航栏 -->
 <jsp:include page="head.jsp"></jsp:include>
 <!--banner-->
@@ -81,7 +82,7 @@
         var list = "${listss}";
         if (list == "") {
             <%--window.location = "${pageContext.request.contextPath}/notice/list?noticetype=6";--%>
-            window.location = "${pageContext.request.contextPath}/notice/query";
+            <%--window.location = "${pageContext.request.contextPath}/notice/query";--%>
         }
 
         $('.flexslider').flexslider({
@@ -200,10 +201,11 @@
 </div>
 <div class="ipubs">
 		<span class="o1">累计投资金额:<strong>
-				<fmt:formatNumber value="${ztz}" pattern="#.##" /><!-- 1,047,288,128.79 -->
+				<fmt:formatNumber value="${userCountByMarkmoney}" pattern="#.##" /><!-- 1,047,288,128.79 -->
 		</strong>元
 		</span> <span class="o2">累积收益:<strong>
-				<fmt:formatNumber value="${ztz*0.3}" pattern="#.##" /><!-- 1,047,288,128.79 -->
+				<%--<fmt:formatNumber value="${ztz*0.3}" pattern="#.##" /><!-- 1,047,288,128.79 -->--%>
+    <fmt:formatNumber value="${userCountByMarkgain}" pattern="#.##" />
 		</strong>元
 		</span><span class="o2">网站已运行:<strong>${date}
 </strong>
@@ -363,16 +365,16 @@
                                                     <!-- (<fmt:formatNumber value="${(pro.pmoney/pro.ptotalmoney)*100}" pattern="#.00"/>==100) -->
                                                     <c:if test="${pro.pstate=='2' }">
                                                         <a class="ui-btn btn-gray"
-                                                           href="investInfo.do?bmid=${pro.id }">还款中</a>
+                                                           href="../product/queryById?id=${pro.id }">还款中</a>
                                                     </c:if> <c:if test="${pro.pstate=='1' }">
                                                     <a class="ui-btn btn-gray"
-                                                       href="investInfo.do?bmid=${pro.id }">立即投标</a>
+                                                       href="../product/queryById?id=${pro.id }">立即投标</a>
                                                 </c:if> <c:if test="${pro.pstate=='3' }">
                                                     <a class="ui-btn btn-gray"
-                                                       href="investInfo.do?bmid=${pro.id }">已失效</a>
+                                                       href="../product/queryById?id=${pro.id }">已失效</a>
                                                 </c:if> <c:if test="${pro.pstate=='4' }">
                                                     <a class="ui-btn btn-gray"
-                                                       href="investInfo.do?bmid=${pro.id }">已筹完</a>
+                                                       href="../product/queryById?id=${pro.id }">已筹完</a>
                                                 </c:if>
                                                 </td>
                                             </tr>
@@ -492,7 +494,7 @@
                 </div>
             </div>
             <div class="mrt20 mod">
-                <a href="<%=basePath%>/demo.jsp"><img
+                <a href="../demo.html"><img
                         src="<%=basePath%>/images/pic_home_js.jpg" width="300" height="80"
                         alt="收益计算器" class="pic"></a>
             </div>

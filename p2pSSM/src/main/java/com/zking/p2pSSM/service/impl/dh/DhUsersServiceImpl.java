@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhUsersMapper;
-import com.zking.p2pSSM.model.dh.Users;
+import com.zking.p2pSSM.model.Users;
 import com.zking.p2pSSM.service.dh.DhUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
  * @company xxx公司
  * @create  2019-02-26 9:48
  */
-@Service("dhUsersService")
+@Service
 public class DhUsersServiceImpl implements DhUsersService {
     @Autowired
     private DhUsersMapper usersMapper;

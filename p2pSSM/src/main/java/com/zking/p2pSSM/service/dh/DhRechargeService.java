@@ -1,14 +1,14 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.DhRecharge;
+import com.zking.p2pSSM.model.Recharge;
 
 public interface DhRechargeService {
     int deleteByPrimaryKey(Integer rID);
 
-    int insertSelective(DhRecharge record);
+    int insertSelective(Recharge record);
 
-    DhRecharge selectByPrimaryKey(Integer rID);
+    Recharge selectByPrimaryKey(Integer rID);
 
-    int updateByPrimaryKeySelective(DhRecharge record);
+    int updateByPrimaryKeySelective(Recharge record);
 
 }

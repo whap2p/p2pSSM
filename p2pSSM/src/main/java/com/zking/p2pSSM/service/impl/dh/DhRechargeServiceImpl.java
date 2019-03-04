@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhRechargeMapper;
-import com.zking.p2pSSM.model.dh.DhRecharge;
+import com.zking.p2pSSM.model.Recharge;
 import com.zking.p2pSSM.service.dh.DhRechargeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,17 +22,17 @@ public class DhRechargeServiceImpl implements DhRechargeService {
     }
 
     @Override
-    public int insertSelective(DhRecharge record) {
+    public int insertSelective(Recharge record) {
         return dhRechargeMapper.insertSelective(record);
     }
 
     @Override
-    public DhRecharge selectByPrimaryKey(Integer rID) {
+    public Recharge selectByPrimaryKey(Integer rID) {
         return dhRechargeMapper.selectByPrimaryKey(rID);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(DhRecharge record) {
+    public int updateByPrimaryKeySelective(Recharge record) {
         return dhRechargeMapper.updateByPrimaryKeySelective(record);
     }
 }

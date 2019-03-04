@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.dh.DhTradeMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Trade" >
+    <constructor >
+      <idArg column="tID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="uname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="zname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="jymoney" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="what" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="jytime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="other" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    tID, uID, uname, zname, jymoney, what, jytime, other
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from trade
+    where tID = #{tID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from trade
+    where tID = #{tID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Trade" >
+    insert into trade (tID, uID, uname, 
+      zname, jymoney, what, 
+      jytime, other)
+    values (#{tID,jdbcType=INTEGER}, #{uID,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, 
+      #{zname,jdbcType=VARCHAR}, #{jymoney,jdbcType=VARCHAR}, #{what,jdbcType=VARCHAR}, 
+      #{jytime,jdbcType=TIMESTAMP}, #{other,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Trade" >
+    insert into trade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tID != null" >
+        tID,
+      </if>
+      <if test="uID != null" >
+        uID,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="zname != null" >
+        zname,
+      </if>
+      <if test="jymoney != null" >
+        jymoney,
+      </if>
+      <if test="what != null" >
+        what,
+      </if>
+      <if test="jytime != null" >
+        jytime,
+      </if>
+      <if test="other != null" >
+        other,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tID != null" >
+        #{tID,jdbcType=INTEGER},
+      </if>
+      <if test="uID != null" >
+        #{uID,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="zname != null" >
+        #{zname,jdbcType=VARCHAR},
+      </if>
+      <if test="jymoney != null" >
+        #{jymoney,jdbcType=VARCHAR},
+      </if>
+      <if test="what != null" >
+        #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="jytime != null" >
+        #{jytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="other != null" >
+        #{other,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Trade" >
+    update trade
+    <set >
+      <if test="uID != null" >
+        uID = #{uID,jdbcType=INTEGER},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="zname != null" >
+        zname = #{zname,jdbcType=VARCHAR},
+      </if>
+      <if test="jymoney != null" >
+        jymoney = #{jymoney,jdbcType=VARCHAR},
+      </if>
+      <if test="what != null" >
+        what = #{what,jdbcType=VARCHAR},
+      </if>
+      <if test="jytime != null" >
+        jytime = #{jytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="other != null" >
+        other = #{other,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tID = #{tID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Trade" >
+    update trade
+    set uID = #{uID,jdbcType=INTEGER},
+      uname = #{uname,jdbcType=VARCHAR},
+      zname = #{zname,jdbcType=VARCHAR},
+      jymoney = #{jymoney,jdbcType=VARCHAR},
+      what = #{what,jdbcType=VARCHAR},
+      jytime = #{jytime,jdbcType=TIMESTAMP},
+      other = #{other,jdbcType=VARCHAR}
+    where tID = #{tID,jdbcType=INTEGER}
+  </update>
+  <select id="queryTrade" resultType="com.zking.p2pSSM.model.Trade" parameterType="map">
+    select * from trade where 1=1 and uID = #{uid}
+    <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">
+      and  STR_TO_DATE(txtime,'%Y-%m-%d')
+      BETWEEN STR_TO_DATE(#{yyy},'%Y-%m-%d') AND STR_TO_DATE(#{yyyy},'%Y-%m-%d')
+    </if>
+    <if test="what != null and what != ''">
+      and what like concat(concat('%', #{what}), '%');
+    </if>
+
+
+
+  </select>
+</mapper>

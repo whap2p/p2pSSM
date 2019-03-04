@@ -20,6 +20,9 @@ public class AdminController {
         pageBean.setRequest(request);
         System.out.println(pageBean.toString());
         List<Admin> list = this.adminService.queryAdminPager(admin, pageBean);
+        for (Admin admin1 : list) {
+            System.out.println(admin1);
+        }
         request.setAttribute("adminlist", list);
         request.setAttribute("pageBean",pageBean);
         return "WEB-INF/view/indexs";

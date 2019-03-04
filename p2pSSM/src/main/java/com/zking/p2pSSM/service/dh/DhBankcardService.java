@@ -1,6 +1,6 @@
 package com.zking.p2pSSM.service.dh;
 
-import com.zking.p2pSSM.model.dh.Bankcard;
+import com.zking.p2pSSM.model.Bankcard;
 import org.springframework.stereotype.Repository;
 
 @Repository

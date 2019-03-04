@@ -289,6 +289,20 @@
     <if test="pway!=null">
       and pway=#{pway}
     </if>
+      <if test="pincome!=null">
+          <if test="pincome==0">
+              and '12'>pincome
+          </if>
+          <if test="pincome==12">
+              and '14' >pincome and pincome > '12'
+          </if>
+          <if test="pincome==14">
+              and '16' > pincome and pincome > '14'
+          </if>
+          <if test="pincome==16">
+              and pincome > '16'
+          </if>
+      </if>
   </select>
   <select id="queryByTop" resultType="com.zking.p2pSSM.model.Product" parameterType="com.zking.p2pSSM.model.Product">
     select * from product limit 0, 2;

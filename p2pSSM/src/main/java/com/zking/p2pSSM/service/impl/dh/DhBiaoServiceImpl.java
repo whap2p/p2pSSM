@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.dh;
 
 import com.zking.p2pSSM.mapper.dh.DhBiaoMapper;
-import com.zking.p2pSSM.model.dh.DhBiao;
+import com.zking.p2pSSM.model.Biao;
 import com.zking.p2pSSM.service.dh.DhBiaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,22 +24,22 @@ public class DhBiaoServiceImpl implements DhBiaoService {
     }
 
     @Override
-    public int insertSelective(DhBiao record) {
+    public int insertSelective(Biao record) {
         return dhBiaoMapper.insertSelective(record);
     }
 
     @Override
-    public DhBiao selectByPrimaryKey(Integer id) {
+    public Biao selectByPrimaryKey(Integer id) {
         return dhBiaoMapper.selectByPrimaryKey(id);
     }
 
     @Override
-    public int updateByPrimaryKeySelective(DhBiao record) {
+    public int updateByPrimaryKeySelective(Biao record) {
         return dhBiaoMapper.updateByPrimaryKeySelective(record);
     }
 
     @Override
-    public List<DhBiao> queryBiao() {
+    public List<Biao> queryBiao() {
         return dhBiaoMapper.queryBiao();
     }
 }
