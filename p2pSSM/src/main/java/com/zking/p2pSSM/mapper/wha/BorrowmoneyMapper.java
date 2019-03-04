@@ -1,7 +1,11 @@
 package com.zking.p2pSSM.mapper.wha;
 
 import com.zking.p2pSSM.model.Borrowmoney;
+import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+@Repository
 public interface BorrowmoneyMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -9,9 +13,11 @@ public interface BorrowmoneyMapper {
 
     int insertSelective(Borrowmoney record);
 
-    Borrowmoney selectByPrimaryKey(Integer id);
+    Borrowmoney selectByPrimaryBorrowmoneyKey(Integer id);
 
     int updateByPrimaryKeySelective(Borrowmoney record);
 
     int updateByPrimaryKey(Borrowmoney record);
+
+    List queryBorrowmoney(Borrowmoney borrowmoney);
 }

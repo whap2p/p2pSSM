@@ -1,14 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/zking" prefix="z" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -53,25 +52,25 @@
 	<!--main content start-->
 	<section id="main-content">
 		<section class="wrapper">
-		
+
 			<!-- 内容开始 -->
 			<div class="col-md-12 mt">
 				<div class="content-panel">
 					<h4>
 						<i class="fa fa-angle-right">
-							<a href="<%=basePath%>employee/list.do">员工列表</a>
-						</i> 
+							<a href="<%=basePath%>employee/list">员工列表</a>
+						</i>
 						<i class="fa fa-angle-right">
-							<a  href="<%=basePath%>employee/toadd.do">添加员工</a>
+							<a  href="<%=basePath%>employee/toadd">添加员工</a>
 						</i>
 						<br/><br/>
-						<form  action="<%=basePath%>employee/selectlike.do" method="post">
+						<form  action="<%=basePath%>employee/list" method="post">
 							用户名：
 						<input type="text" name="ename" maxlength="10" />
 						<input type="submit" value="查 找" class="btn btn-theme03"/>
 						</form>
 					</h4>
-					
+
 					<hr>
 					<table class="table table-hover">
 						<thead>
@@ -95,7 +94,7 @@
 								<td>${status.index+1 }</td>
 								<td>${emp.ename }</td>
 								<td>${emp.esex }</td>
-								<td><fmt:formatDate value="${emp.ebirth }" 
+								<td><fmt:formatDate value="${emp.ebirth }"
 								pattern="yyyy-MM-dd"></fmt:formatDate>
 								</td>
 								<td>${emp.eidcard }</td>
@@ -110,12 +109,12 @@
 								</td>
 								<td>${emp.epostno }</td>
 								<td>
-								<fmt:formatDate value="${emp.etime }" 
+								<fmt:formatDate value="${emp.etime }"
 								pattern="yyyy-MM-dd"></fmt:formatDate></td>
 								<td>
-									<a href="<%=basePath%>employee/toupd.do?eid=${emp.eid}">编辑</a>
+									<a href="<%=basePath%>employee/toupd?eid=${emp.eid}">编辑</a>
 									<c:if test="${emp.eid!=1}">
-									<a href="<%=basePath%>employee/del.do?eid=${emp.eid}">删除</a>
+									<a href="<%=basePath%>employee/del?eid=${emp.eid}">删除</a>
 									</c:if>
 								</td>
 							</tr>
@@ -124,27 +123,11 @@
 						</tbody>
 						<tbody>
 						<tbody>
-							<c:if test="${1==2 }">
 								<tr>
 								<td colspan="7" align="center">
-									<div class="btn-group" align="center">
-										<button type="button" class="btn btn-default">
-											<font><font>首页</font></font>
-											<tton>
-											<button type="button" class="btn btn-default">
-												<font><font>1</font></font>
-												<tton>
-												<button type="button" class="btn btn-default">
-													<font><font>2</font></font>
-													<tton>
-													<button type="button" class="btn btn-default">
-														<font><font>末页</font></font>
-														<tton>
-									</div>
+                                    <z:page pageBean="${pageBean }"></z:page>
 								</td>
-
 							</tr>
-							</c:if>
 						</tbody>
 
 					</table>

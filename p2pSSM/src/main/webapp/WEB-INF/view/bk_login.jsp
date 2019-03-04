@@ -35,15 +35,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			$("#bt").click(function(){
   				var user = document.getElementById("uid").value;
   				var password = document.getElementById("pwd").value;
-  				$.post("user_L.do",{"uid":user,"pwd":password},function(date){
-  					if(date=="0"){
-  						alert("登陆失败！");
-  					}else{
-  						//alert("登陆成功！");
-						
-						location.href="menu_S.do";
-  					}
-  				});
+  				if(user == ""){
+  					alert("请输入用户名")
+					return false;
+				}
+				if(password == ""){
+					alert("请输入用户名")
+					return false;
+				}
+				location.href="<%=basePath%>log/user_L?user="+user+"&&password="+password;
+
   			});
   		});
   	</script>
@@ -58,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  <div id="login-page">
 	  	<div class="container">
 	  	
-		      <form class="form-login" id="fr" methods="post" action="index.html" onsubmit="return false">
+		      <form class="form-login" id="fr" methods="post" onsubmit="return false">
 		        <h2 class="form-login-heading">物流管理系统</h2>
 		        <div class="login-wrap">
 		            <input type="text" id="uid" class="form-control" placeholder="User ID" autofocus>
@@ -67,10 +68,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		            <label class="checkbox">
 		                <span class="pull-right">
 		                    <a data-toggle="modal" href="login.html#myModal">忘记密码 ?  </a>
-		
 		                </span>
 		            </label>
-		            <button id="bt" class="btn btn-theme btn-block" href="index.html" type="submit"><i class="fa fa-lock"></i> 登录</button>
+		            <button id="bt" class="btn btn-theme btn-block"><i class="fa fa-lock"></i> 登录</button>
 		            <hr>
 		            
 		            <div class="login-social-link centered">
@@ -122,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- You can use an image of whatever size. This script will stretch to fit in any screen size.-->
     <script type="text/javascript" src="<%=basePath%>assets/js/jquery.backstretch.min.js"></script>
     <script>
-        $.backstretch("img/6.jpg", {speed: 500});
+        $.backstretch("<%=basePath%>img/6.jpg", {speed: 500});
     </script>
 
 

@@ -1,5 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/zking" prefix="z" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -40,47 +42,40 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  
+
   <body>
-  
+
   	<!-- 导航栏 --><jsp:include page="common.jsp"></jsp:include>
 	<!--main content start-->
 	<section id="main-content">
 		<section class="wrapper">
-		
+
 			<!-- 内容开始 -->
 			<div class="col-md-12 mt">
 				<div class="content-panel">
 					<hr>
 					<table class="table table-hover">
 						<thead>
-							<tr >
-								<th>序号</th>
-								<th>员工姓名</th>
-								<th>员工手机号</th>
-								<th>员工所述部门</th>
-								<th>员工职位</th>
-								<th>操作</th>
-							</tr>
+						<tr>
+							<th>序号</th>
+							<th>管理组名称</th>
+							<th>描述</th>
+							<th>创建时间</th>
+							<th>操作</th>
+						</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${emp}" var="emp" varStatus="status">
-							<tr >
+						<c:forEach items="${deptlist }" var="dept" varStatus="status">
+							<tr>
 								<td>${status.index+1 }</td>
-								<td>${emp.ename }</td>
-								<td>${emp.ephone }</td>
+								<td>${dept.dname }</td>
+								<td>${dept.describes }</td>
 								<td>
-									<c:forEach items="${depts}" var="dept">
-										<c:if test="${emp.edeptno==dept.did}">
-											${dept.dname }
-										</c:if>
-									</c:forEach>
-								</td>
-								<td>${emp.epostno }</td>
+									<fmt:formatDate value="${dept.dtime }"
+													pattern="yyyy-MM-dd"></fmt:formatDate></td>
 								<td>
-									<c:if test="${emp.eid!=1 }">
-										<a href="<%=basePath%>limit/toupd.do?eid=${emp.eid}">编辑</a>
-									</c:if>	
+									<a href="<%=basePath%>limit/toupd?did=${dept.did}">授权</a>
+									&nbsp;&nbsp;
 								</td>
 							</tr>
 						</c:forEach>

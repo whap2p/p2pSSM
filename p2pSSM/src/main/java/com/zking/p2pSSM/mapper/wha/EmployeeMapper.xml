@@ -15,17 +15,27 @@
       <arg column="etime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="estatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="epassword" jdbcType="VARCHAR" javaType="java.lang.String" />
+        <arg column="esalt" jdbcType="VARCHAR" javaType="java.lang.String" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
     eid, ename, esex, ebirth, eidcard, ephone, email, edeptno, epostno, etime, estatus, 
-    epassword
+    epassword,esalt
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from employee
     where eid = #{eid,jdbcType=INTEGER}
+  </select>
+    <select id="queryEmployee" resultMap="BaseResultMap" parameterType="com.zking.p2pSSM.model.Employee">
+        select * from Employee	where estatus=1
+      <if test="ename != null and ename != '' ">
+         and ename like concat(concat('%',#{ename}),'%')
+      </if>
+    </select>
+  <select id="selectByPrimaryKeyename" resultMap="BaseResultMap" parameterType="java.lang.String">
+      select * from   Employee	where ename= #{ename}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from employee
@@ -82,6 +92,9 @@
       <if test="epassword != null" >
         epassword,
       </if>
+      <if test="esalt != null" >
+      esalt,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="eid != null" >
@@ -119,6 +132,9 @@
       </if>
       <if test="epassword != null" >
         #{epassword,jdbcType=VARCHAR},
+      </if>
+      <if test="esalt != null" >
+        #{esalt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -158,6 +174,9 @@
       <if test="epassword != null" >
         epassword = #{epassword,jdbcType=VARCHAR},
       </if>
+      <if test="esalt != null" >
+        esalt = #{esalt,jdbcType=VARCHAR},
+      </if>
     </set>
     where eid = #{eid,jdbcType=INTEGER}
   </update>
@@ -173,7 +192,22 @@
       epostno = #{epostno,jdbcType=VARCHAR},
       etime = #{etime,jdbcType=TIMESTAMP},
       estatus = #{estatus,jdbcType=INTEGER},
-      epassword = #{epassword,jdbcType=VARCHAR}
+      epassword = #{epassword,jdbcType=VARCHAR}，
+      esalt = #{epassword,jdbcType=VARCHAR}
     where eid = #{eid,jdbcType=INTEGER}
   </update>
+  <select id="queryRolesByEmpName" resultType="java.lang.String" parameterType="java.lang.String">
+  select d.did from
+  employee e,dept_emp de,dept d
+  where e.eid = de.deeid and de.dedid = d.did
+  and e.ename =#{ename}
+
+  </select>
+  <select id="queryPermssByEmpName" resultType="java.lang.String" parameterType="java.lang.String">
+    select m.mid from employee e,dept_emp de,
+    limi li,menu m
+    where e.eid = de.deeid and de.dedid = li.did and li.mid=m.mid
+    and e.ename =#{ename}
+  </select>
+
 </mapper>

@@ -19,11 +19,30 @@
   <sql id="Base_Column_List" >
     rID, uID, uname, czlx, lsh, czmoney, fl, dzmoney, cztime, statu, zname
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryRechargeKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from recharge
     where rID = #{rID,jdbcType=INTEGER}
+  </select>
+  <select id="queryRecharge" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from recharge
+    where 1=1
+    <if test="uname !=null and uname !='' ">
+      and  uname = #{uname}
+    </if>
+    <if test="statu !=null and statu !='' ">
+      and  statu = #{statu}
+    </if>
+    <if test="zflx !=null and zflx !='' ">
+      and  czlx = #{zflx}
+    </if>
+    <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">
+      and  STR_TO_DATE(cztime,'%Y-%m-%d')
+      BETWEEN STR_TO_DATE(#{yyy},'%Y-%m-%d') AND STR_TO_DATE(#{yyyy},'%Y-%m-%d')
+    </if>
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from recharge

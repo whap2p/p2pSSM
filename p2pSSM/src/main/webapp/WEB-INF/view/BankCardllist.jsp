@@ -7,8 +7,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="/zking" prefix="z" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,7 @@
 		if (yyy > yyyy) {
 			alert("第二个日期不能小于第一个日期");
 		} else {
-			location.href = "bankcard.do?uname=" + uname + "&yyy=" + yyy
+			location.href = "bankcard?uname=" + uname + "&yyy=" + yyy
 					+ "&yyyy=" + yyyy + "&zname=" + zname;
 		}
 	}
@@ -126,26 +125,9 @@
 								</c:forEach>	
 							</tbody>			
 					</table>
-					&nbsp; &nbsp;&nbsp; 第${currpages }页/总${totalpage }页<br><br>
-					<ul class="pagination">
-				<li>
-					 <a href="bankcard.do?currpage=1&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">首页</a>
-				</li>
-				<li>
-					 <a href="bankcard.do?currpage=${currpages-1 }&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">上一页</a>
-				</li>
-				<c:forEach begin="1" end="${totalpage }" varStatus="i">
-								<li><a
-									href="bankcard.do?currpage=${i.index}&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">${i.index}</a>
-								</li>
-							</c:forEach>
-				<li>
-					 <a href="bankcard.do?currpage=${currpages+1}&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">下一页</a>
-				</li>
-				<li>
-					 <a href="bankcard.do?currpage=${totalpage}&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">尾页</a>
-				</li>
-			</ul>
+						<td colspan="7" align="center">
+							<z:page pageBean="${pageBean }"></z:page>
+						</td>
 					</div>
 				</div>
 			</div>

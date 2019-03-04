@@ -50,7 +50,7 @@ public class UsersController {
     @RequestMapping("/code/{uuid}")
     public void code(@PathVariable("uuid")String uuid , HttpServletResponse response){
         System.out.println("+++开始扫码");
-        String content = "http://192.168.43.166:8080/p2pSSM/users/scan/" + uuid;   //手机扫码的二维码地址
+        String content = "http://192.168.43.39:8080/p2pSSM/users/scan/" + uuid;   //手机扫码的二维码地址
         LoginCodeUtil.set(uuid, 0);
         BufferedImage imageCode = QrCoreUtil.getQrCode(content);
         response.setContentType("image/png");

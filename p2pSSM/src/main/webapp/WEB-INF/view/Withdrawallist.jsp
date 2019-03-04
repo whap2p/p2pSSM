@@ -62,7 +62,7 @@
 	}
 	//查看
 	function only(id) {
-		$.post("ajax.do", {
+		$.post("withdrawallist", {
 			"id" : id
 		}, function(date) {
 			//alert(date.uname);
@@ -115,7 +115,7 @@
 		}else{
 			gg=0;
 		}
-		location.href="shen.do?gg="+gg+"&wid="+wid;
+		location.href="shen?gg="+gg+"&wid="+wid;
 	}
 </script>
 </head>

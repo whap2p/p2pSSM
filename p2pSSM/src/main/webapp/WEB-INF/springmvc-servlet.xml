@@ -50,5 +50,25 @@
         <!--resolveLazily属性启用是为了推迟文件解析，以便捕获文件大小异常-->
         <property name="resolveLazily" value="true"/>
     </bean>
-
+    <!--必须将Shiro注解的开启放置到spring-mvc.xml中（即放在springMVC容器中加载），不然Shiro注解开启无效！！！-->
+    <!--必须将Shiro注解的开启放置到spring-mvc.xml中（即放在springMVC容器中加载），不然Shiro注解开启无效！！！-->
+    <!--必须将Shiro注解的开启放置到spring-mvc.xml中（即放在springMVC容器中加载），不然Shiro注解开启无效！！！-->
+    <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
+          depends-on="lifecycleBeanPostProcessor">
+        <property name="proxyTargetClass" value="true"></property>
+    </bean>
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager"/>
+    </bean>
+    <!--springmvc中有一个org.springframework.web.servlet.handler.SimpleMappingExceptionResolver类就可以解决这个问题-->
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">
+                    unauthorized
+                </prop>
+            </props>
+        </property>
+        <property name="defaultErrorView" value="unauthorized"/>
+    </bean>
 </beans>

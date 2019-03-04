@@ -73,7 +73,7 @@
 			<div class="showback">
 				<h4>
 					<i class="fa fa-angle-right"> <a
-						href="<%=basePath%>employee/list.do">部门信息列表</a>
+						href="<%=basePath%>employee/list">部门信息列表</a>
 					</i> <i class="fa fa-angle-right"> <a
 						href="javascript:history.go(-1)">返回</a>
 					</i>
@@ -81,7 +81,7 @@
 				<!-- 页面内容 -->
 
 				<form class="form-horizontal style-form" method="post"
-					action="<%=basePath%>employee/upd.do?eid=${ee.eid}">
+					action="<%=basePath%>employee/upd?eid=${ee.eid}">
 
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">员工姓名：</label>

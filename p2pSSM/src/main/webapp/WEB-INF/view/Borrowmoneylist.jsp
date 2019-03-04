@@ -1,13 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/zking" prefix="z" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,17 +56,15 @@
 		if (yyy > yyyy) {
 			alert("第二个日期不能小于第一个日期");
 		} else {
-			location.href = "wlist.do?wname=" + wname + "&yyy=" + yyy
+			location.href = "wlist?wname=" + wname + "&yyy=" + yyy
 					+ "&yyyy=" + yyyy + "&wstatu=" + wstatu;
 		}
 
 	}
 	function only(id) {
-		$.post("bajax.do", {
+		$.post("Borrowmoneylist", {
 			"id" : id
 		}, function(date) {
-			
-		
 			$('#u1').html(date.brelname);
 			$('#u2').html(date.bpass);
 			$('#u3').html(date.btype);
@@ -151,28 +149,8 @@
 								</c:forEach>
 							</tbody>
 						</table>
-						、<br> &nbsp;&nbsp;&nbsp;&nbsp; 共有${totalrow }条数据&nbsp;&nbsp;&nbsp;&nbsp;第${currpages }页/共${totalpage }页
-						<br> &nbsp;&nbsp;&nbsp;&nbsp;
-
 						<ul class="pagination">
-							<li><a
-								href="hjyList.do?currpage=1">
-									首页&nbsp;</a></li>
-							<li><a
-								href="hjyList.do?currpage=${currpages-1 }">上一页</a>
-							</li>
-							<c:forEach begin="1" end="${totalpage }" varStatus="i">
-								<li><a
-									href="hjyList.do?currpage=${i.index }">${i.index}</a>
-								</li>
-							</c:forEach>
-
-							<li><a
-								href="hjyList.do?currpage=${currpages+1 }">下一页</a>
-							</li>
-							<li><a
-								href="hjyList.do?currpage=${totalpage }">
-									&nbsp;尾页</a></li>
+							<z:page pageBean="${pageBean }"></z:page>
 						</ul>
 
 					</div>

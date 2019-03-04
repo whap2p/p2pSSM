@@ -1,8 +1,10 @@
 package zking.impl;
 
 import com.zking.p2pSSM.model.Admin;
+import com.zking.p2pSSM.model.Limi;
 import com.zking.p2pSSM.model.Withdrawal;
 import com.zking.p2pSSM.service.wha.AdminService;
+import com.zking.p2pSSM.service.wha.WhaLimiService;
 import com.zking.p2pSSM.utils.PageBean;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,8 @@ import java.util.Map;
 public class AdminServiceImplTest extends SpringJunitTest {
     @Autowired
     private AdminService adminService;
-
+    @Autowired
+    WhaLimiService whaLimitService;
     @Test
     public void queryByUserName() {
         //分页查询

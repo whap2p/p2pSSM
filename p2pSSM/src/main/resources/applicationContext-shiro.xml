@@ -4,22 +4,22 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!--配置自定义的Realm-->
-    <bean id="shiroRealm" class="com.zking.p2pSSM.shiro.MyRealm">
-        <property name="dhUsersService" ref="dhUsersService" />
+    <bean id="shiroRealm" class="com.zking.p2pSSM.shiro.WhaMyRealm">
+        <property name="whaEmployeeService" ref="whaEmployeeService" />
         <!--注意：重要的事情说三次~~~~~~此处加密方式要与用户注册时的算法一致 -->
         <!--注意：重要的事情说三次~~~~~~此处加密方式要与用户注册时的算法一致 -->
         <!--注意：重要的事情说三次~~~~~~此处加密方式要与用户注册时的算法一致 -->
         <!--以下三个配置告诉shiro将如何对用户传来的明文密码进行加密-->
-        <!--<property name="credentialsMatcher">-->
-            <!--<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">-->
-                <!--&lt;!&ndash;指定hash算法为MD5&ndash;&gt;-->
-                <!--<property name="hashAlgorithmName" value="md5"/>-->
-                <!--&lt;!&ndash;指定散列次数为1024次&ndash;&gt;-->
-                <!--<property name="hashIterations" value="1024"/>-->
-                <!--&lt;!&ndash;true指定Hash散列值使用Hex加密存. false表明hash散列值用用Base64-encoded存储&ndash;&gt;-->
-                <!--<property name="storedCredentialsHexEncoded" value="true"/>-->
-            <!--</bean>-->
-        <!--</property>-->
+        <property name="credentialsMatcher">
+            <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <!--指定hash算法为MD5-->
+                <property name="hashAlgorithmName" value="md5"/>
+                <!--指定散列次数为1024次-->
+                <property name="hashIterations" value="1024"/>
+                <!--true指定Hash散列值使用Hex加密存. false表明hash散列值用用Base64-encoded存储-->
+                <property name="storedCredentialsHexEncoded" value="true"/>
+            </bean>
+        </property>
     </bean>
 
     <!--注册安全管理器-->
@@ -47,20 +47,17 @@
                 <!--anon 表示匿名访问，不需要认证以及授权-->
                 <!--authc表示需要认证 没有进行身份认证是不能进行访问的-->
                 <!--roles[admin]表示角色认证，必须是拥有admin角色的用户才行-->
-                /user/login=anon
-                /user/updatePwd.jsp=authc
-                /admin/*.jsp=roles[admin]
-                /user/teacher.jsp=perms["user:update"]
-               <!-- /css/**               = anon
-                /images/**            = anon
-                /js/**                = anon
-                /                     = anon
-                /user/logout          = logout
-                /user/**              = anon
-                /userInfo/**          = authc
-                /dict/**              = authc
-                /console/**           = roles[admin]
-                /**                   = anon-->
+
+                <!-- /css/**               = anon
+                 /images/**            = anon
+                 /js/**                = anon
+                 /                     = anon
+                 /user/logout          = logout
+                 /user/**              = anon
+                 /userInfo/**          = authc
+                 /dict/**              = authc
+                 /console/**           = roles[admin]
+                 /**                   = anon-->
             </value>
         </property>
     </bean>

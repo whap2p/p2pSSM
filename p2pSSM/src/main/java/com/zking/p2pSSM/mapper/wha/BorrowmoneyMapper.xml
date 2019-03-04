@@ -25,13 +25,19 @@
     id, bserial, busername, brelname, bpass, btype, btitle, bmoney, brate, btimelimit, 
     blimit, bstate, brecommend, bleixing, beizhu1, beizhu2
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryBorrowmoneyKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from borrowmoney
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="queryBorrowmoney" resultMap="BaseResultMap" parameterType="com.zking.p2pSSM.model.Borrowmoney">
+      select
+      <include refid="Base_Column_List" />
+      from borrowmoney
+      where 1=1
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from borrowmoney
     where id = #{id,jdbcType=INTEGER}
   </delete>

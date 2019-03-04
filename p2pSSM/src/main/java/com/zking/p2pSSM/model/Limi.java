@@ -6,13 +6,13 @@ import lombok.ToString;
 public class Limi {
     private Integer lid;
 
-    private Integer eid;
+    private Integer did;
 
     private String mid;
 
-    public Limi(Integer lid, Integer eid, String mid) {
+    public Limi(Integer lid, Integer did, String mid) {
         this.lid = lid;
-        this.eid = eid;
+        this.did = did;
         this.mid = mid;
     }
 
@@ -28,12 +28,12 @@ public class Limi {
         this.lid = lid;
     }
 
-    public Integer getEid() {
-        return eid;
+    public Integer getDid() {
+        return did;
     }
 
-    public void setEid(Integer eid) {
-        this.eid = eid;
+    public void setDid(Integer did) {
+        this.did = did;
     }
 
     public String getMid() {

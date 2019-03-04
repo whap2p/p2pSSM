@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zking.p2pSSM.mapper.dh.DhUsersMapper" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.UsersMapper" >
   <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Users" >
     <constructor >
       <idArg column="uid" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -235,10 +235,4 @@
       upwd_zd = #{upwd_zd,jdbcType=VARCHAR}
     where uid = #{uid,jdbcType=INTEGER}
   </update>
-  <select id="getId" resultType="java.lang.Integer"  >
-    select count(uid)+1 from users
-  </select>
-  <select id="qureyByName" resultType="com.zking.p2pSSM.model.Users" parameterType="com.zking.p2pSSM.model.Users">
- select * from users where unickname = #{unickname} and upassword = #{upassword}
-  </select>
 </mapper>

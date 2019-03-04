@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.InveststatMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Investstat" >
+    <constructor >
+      <idArg column="isid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="markcount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="lmcount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="gmcount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="markmoney" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="markgain" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="markbegindate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="markenddate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    isid, userid, markcount, lmcount, gmcount, markmoney, markgain, markbegindate, markenddate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from investstat
+    where isid = #{isid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from investstat
+    where isid = #{isid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Investstat" >
+    insert into investstat (isid, userid, markcount, 
+      lmcount, gmcount, markmoney, 
+      markgain, markbegindate, markenddate
+      )
+    values (#{isid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{markcount,jdbcType=INTEGER}, 
+      #{lmcount,jdbcType=INTEGER}, #{gmcount,jdbcType=INTEGER}, #{markmoney,jdbcType=DECIMAL}, 
+      #{markgain,jdbcType=DECIMAL}, #{markbegindate,jdbcType=TIMESTAMP}, #{markenddate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Investstat" >
+    insert into investstat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="isid != null" >
+        isid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="markcount != null" >
+        markcount,
+      </if>
+      <if test="lmcount != null" >
+        lmcount,
+      </if>
+      <if test="gmcount != null" >
+        gmcount,
+      </if>
+      <if test="markmoney != null" >
+        markmoney,
+      </if>
+      <if test="markgain != null" >
+        markgain,
+      </if>
+      <if test="markbegindate != null" >
+        markbegindate,
+      </if>
+      <if test="markenddate != null" >
+        markenddate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="isid != null" >
+        #{isid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="markcount != null" >
+        #{markcount,jdbcType=INTEGER},
+      </if>
+      <if test="lmcount != null" >
+        #{lmcount,jdbcType=INTEGER},
+      </if>
+      <if test="gmcount != null" >
+        #{gmcount,jdbcType=INTEGER},
+      </if>
+      <if test="markmoney != null" >
+        #{markmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="markgain != null" >
+        #{markgain,jdbcType=DECIMAL},
+      </if>
+      <if test="markbegindate != null" >
+        #{markbegindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markenddate != null" >
+        #{markenddate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Investstat" >
+    update investstat
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="markcount != null" >
+        markcount = #{markcount,jdbcType=INTEGER},
+      </if>
+      <if test="lmcount != null" >
+        lmcount = #{lmcount,jdbcType=INTEGER},
+      </if>
+      <if test="gmcount != null" >
+        gmcount = #{gmcount,jdbcType=INTEGER},
+      </if>
+      <if test="markmoney != null" >
+        markmoney = #{markmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="markgain != null" >
+        markgain = #{markgain,jdbcType=DECIMAL},
+      </if>
+      <if test="markbegindate != null" >
+        markbegindate = #{markbegindate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="markenddate != null" >
+        markenddate = #{markenddate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where isid = #{isid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Investstat" >
+    update investstat
+    set userid = #{userid,jdbcType=INTEGER},
+      markcount = #{markcount,jdbcType=INTEGER},
+      lmcount = #{lmcount,jdbcType=INTEGER},
+      gmcount = #{gmcount,jdbcType=INTEGER},
+      markmoney = #{markmoney,jdbcType=DECIMAL},
+      markgain = #{markgain,jdbcType=DECIMAL},
+      markbegindate = #{markbegindate,jdbcType=TIMESTAMP},
+      markenddate = #{markenddate,jdbcType=TIMESTAMP}
+    where isid = #{isid,jdbcType=INTEGER}
+  </update>
+</mapper>

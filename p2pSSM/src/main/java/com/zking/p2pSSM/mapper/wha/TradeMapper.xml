@@ -22,6 +22,27 @@
     from trade
     where tID = #{tID,jdbcType=INTEGER}
   </select>
+  <!--查询交易记录-->
+  <select id="queryTradelist" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+    from trade
+    where 1=1
+    <!--根据id查询-->
+    <if test="tID != null and tID != '' ">
+      and tID = #{tID}
+    </if>
+    <if test="uname !=null and uname !='' ">
+      and  uname = #{uname}
+    </if>
+    <if test="zname !=null and zname !='' ">
+      and  zname = #{zname}
+    </if>
+    <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">
+      and  STR_TO_DATE(jytime,'%Y-%m-%d')
+      BETWEEN STR_TO_DATE(#{yyy},'%Y-%m-%d') AND STR_TO_DATE(#{yyyy},'%Y-%m-%d')
+    </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from trade
     where tID = #{tID,jdbcType=INTEGER}

@@ -7,8 +7,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="/zking" prefix="z" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,10 +56,10 @@
 				<div class="content-panel">
 					<h4>
 						<i class="fa fa-angle-right">
-							<a href="<%=basePath%>users/list.do?currpage=1">用户列表</a>
+							<a href="<%=basePath%>users/list">用户列表</a>
 						</i> 
 						<br><br>
-						<form  action="<%=basePath%>users/list.do" method="post">
+						<form  action="<%=basePath%>users/list" method="post">
 							用户名：
 						<input type="text" name="unickname" maxlength="10" />
 						<input type="submit" value="查 找"  class="btn btn-theme03"/>
@@ -95,37 +94,22 @@
 								pattern="yyyy-MM-dd"></fmt:formatDate></td>
 							</tr>
 						</c:forEach>
-
 						</tbody>
 						<tbody>
 						<tbody>
-							<c:if test="${sta!=1}">
-								<tr>
+						<c:if test="${sta!=1}">
+							<tr>
 								<td colspan="7" align="center">
 									<div class="btn-group" align="center">
-										<button type="button" class="btn btn-default">
-										<font>共${totalpage}页</font>
-										<button type="button" class="btn btn-default">
-											<font><a href="<%=basePath%>users/list.do?currpage=1">首页</a></font>
-											<tton>
-											<button type="button" class="btn btn-default">
-												
-												<font><a href="<%=basePath%>users/list.do?currpage=${currpage-1}">上一页</a></font>
-												<tton>
-												<button type="button" class="btn btn-default">
-													<font><a href="<%=basePath%>users/list.do?currpage=${currpage+1}">下一页</a></font>
-													<tton>
-													<button type="button" class="btn btn-default">
-														<font><a href="<%=basePath%>users/list.do?currpage=${totalpage}">末页</a></font>
-														<tton>
-									</div>	
+										<z:page pageBean="${pageBean }"></z:page>
+									</div>
 								</td>
 							</tr>
-							</c:if>
-							
-							
-						</tbody>
 						</c:if>
+
+
+						</tbody>
+					</c:if>
 						<c:if test="${stas==1}">
 							<center><h3>暂无数据,<a href="<%=basePath%>users/list.do?currpage=1">返回用户列表</a></h3></center>
 						</c:if>

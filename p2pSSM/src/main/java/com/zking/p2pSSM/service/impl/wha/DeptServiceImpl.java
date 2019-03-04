@@ -20,11 +20,6 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    public int insert(Dept record) {
-        return deptMapper.insert(record);
-    }
-
-    @Override
     public int insertSelective(Dept record) {
         return deptMapper.insertSelective(record);
     }
@@ -37,11 +32,6 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public int updateByPrimaryKeySelective(Dept record) {
         return deptMapper.updateByPrimaryKeySelective(record);
-    }
-
-    @Override
-    public int updateByPrimaryKey(Dept record) {
-        return deptMapper.updateByPrimaryKey(record);
     }
 
     @Override

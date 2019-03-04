@@ -1,7 +1,7 @@
 package com.zking.p2pSSM.service.impl.wha;
 
-import com.zking.p2pSSM.mapper.wha.WithdrawalMapper;
-import com.zking.p2pSSM.model.Withdrawal;
+import com.zking.p2pSSM.mapper.wha.*;
+import com.zking.p2pSSM.model.*;
 import com.zking.p2pSSM.service.wha.WithrawalService;
 import com.zking.p2pSSM.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,20 +16,16 @@ import java.util.Map;
 public class WithrawalServiceImpl implements WithrawalService {
     @Autowired
     WithdrawalMapper withdrawalMapper;
-    @Override
-    public int deleteByPrimaryKey(Integer wID) {
-        return withdrawalMapper.deleteByPrimaryKey(wID);
-    }
-
-    @Override
-    public int insert(Withdrawal record) {
-        return withdrawalMapper.insert(record);
-    }
-
-    @Override
-    public int insertSelective(Withdrawal record) {
-        return withdrawalMapper.insertSelective(record);
-    }
+    @Autowired
+    TradeMapper tradeMapper;
+    @Autowired
+    BorrowmoneyMapper borrowmoneyMapper;
+    @Autowired
+    RechargeMapper rechargeMapper;
+    @Autowired
+    PoundageMapper poundageMapper;
+    @Autowired
+    BankcardMapper bankcardMapper;
 
     @Override
     public Withdrawal selectByPrimaryKey(Integer wID) {
@@ -39,11 +35,6 @@ public class WithrawalServiceImpl implements WithrawalService {
     @Override
     public int updateByPrimaryKeySelective(Withdrawal record) {
         return withdrawalMapper.updateByPrimaryKeySelective(record);
-    }
-
-    @Override
-    public int updateByPrimaryKey(Withdrawal record) {
-        return withdrawalMapper.updateByPrimaryKey(record);
     }
 
     @Override
@@ -89,6 +80,46 @@ public class WithrawalServiceImpl implements WithrawalService {
         }
         map.put("jytime", new Date());
         map.put("other", "无");
-        return withdrawalMapper.inserttmoney(ma);
+        return withdrawalMapper.inserttmoney(map);
+    }
+
+    @Override
+    public List queryTradePager(Map<String, Object> map, PageBean pageBean) {
+        return tradeMapper.queryTradelist(map);
+    }
+
+    @Override
+    public List queryBorrowmoneyPager(Borrowmoney borrowmoney, PageBean pageBean) {
+        return borrowmoneyMapper.queryBorrowmoney(borrowmoney);
+    }
+
+    @Override
+    public Borrowmoney selectByPrimaryBorrowmoneyKey(Integer id) {
+        return borrowmoneyMapper.selectByPrimaryBorrowmoneyKey(id);
+    }
+
+    @Override
+    public List queryPoundagePager(HashMap<String,Object> map, PageBean pageBean) {
+        return poundageMapper.queryPoundage(map);
+    }
+
+    @Override
+    public Poundage selectByPrimaryPoundageKey(Integer id) {
+        return poundageMapper.selectByPrimaryPoundageKey(id);
+    }
+
+    @Override
+    public List queryRechargePager(HashMap<String,Object> map, PageBean pageBean) {
+        return rechargeMapper.queryRecharge(map);
+    }
+
+    @Override
+    public Recharge selectByPrimaryRechargeKey(Integer id) {
+        return rechargeMapper.selectByPrimaryRechargeKey(id);
+    }
+
+    @Override
+    public List queryBankcardPager(HashMap<String, Object> map, PageBean pageBean) {
+        return bankcardMapper.queryBankcard(map);
     }
 }

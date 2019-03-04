@@ -12,31 +12,27 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class common {
     final String str = "WEB-INF/view/";
-    @RequestMapping("/common")
-    public String common(HttpServletRequest request, Admin admin) {
-        return "WEB-INF/view/common";
-    }
     //1首页
-    @RequestMapping("log/tologin")
-    public String tologin(Model model) {
-        return str+"bk_index";
-    }
+//    @RequestMapping("log/bkindex")
+//    public String tologin(Model model) {
+//        return str+"bk_index";
+//    }
     //2管理组
     //部门管理
 //    @RequestMapping("dept/findall")
 //    public String findall(Model model){
 //        return str + "bk_deptlist";
 //    }
-    //员工管理
-    @RequestMapping("employee/list")
-    public String employeelist(Model model){
-        return str + "bk_emplist";
-    }
-    //用户管理
-    @RequestMapping("users/list")
-    public String userslist(Model model){
-        return str + "bk_userslist";
-    }
+//    //员工管理
+//    @RequestMapping("employee/list")
+//    public String employeelist(Model model){
+//        return str + "bk_emplist";
+//    }
+//    //用户管理
+//    @RequestMapping("users/list")
+//    public String userslist(Model model){
+//        return str + "bk_userslist";
+//    }
     //3网站内容管理
     //添加网站通知
     @RequestMapping("notice/toadd")
@@ -64,31 +60,31 @@ public class common {
 //    public String withdrawallist(Model model){
 //        return str + "Withdrawallist";
 //    }
-    //银行卡管理
-    @RequestMapping("bc/bankcard")
-    public String bankcard(Model model){
-        return str + "BankCardllist";
-    }
-    //充值记录
-    @RequestMapping("rc/rech")
-    public String rech(Model model){
-        return str + "Rechargelist";
-    }
-    //手续费记录
-    @RequestMapping("pa/poundage")
-    public String bankcardpoundage(Model model){
-        return str + "Poundagelist";
-    }
-    //交易记录
-    @RequestMapping("td/trade")
-    public String bankcardtrade(Model model){
-        return str + "Tradelist";
-    }
-    //借贷信息列表
-    @RequestMapping("brower/hjyList")
-    public String hjyList(Model model){
-        return str + "Borrowmoneylist";
-    }
+//    //银行卡管理
+//    @RequestMapping("bc/bankcard")
+//    public String bankcard(Model model){
+//        return str + "BankCardllist";
+//    }
+//    //充值记录
+//    @RequestMapping("wd/rech")
+//    public String rech(Model model){
+//        return str + "Rechargelist";
+//    }
+//    //手续费记录
+//    @RequestMapping("wd/poundage")
+//    public String bankcardpoundage(Model model){
+//        return str + "Poundagelist";
+//    }
+//    //交易记录
+//    @RequestMapping("td/trade")
+//    public String bankcardtrade(Model model){
+//        return str + "Tradelist";
+//    }
+//    //借贷信息列表
+//    @RequestMapping("brower/hjyList")
+//    public String hjyList(Model model){
+//        return str + "Borrowmoneylist";
+//    }
     //5借贷管理
     //投标列表
     @RequestMapping("product/list0")

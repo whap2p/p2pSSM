@@ -30,185 +30,234 @@
     from withdrawal
     where wID = #{wID,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from withdrawal
-    where wID = #{wID,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.zking.p2pSSM.model.Withdrawal" >
-    insert into withdrawal (wID, uID, uname, 
-      zname, txnum, txbank, 
-      txmoney, dzmoney, sxf, 
-      txtime, zztime, statu, 
-      shwho, shtime, nothing
-      )
-    values (#{wID,jdbcType=INTEGER}, #{uID,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR}, 
-      #{zname,jdbcType=VARCHAR}, #{txnum,jdbcType=VARCHAR}, #{txbank,jdbcType=VARCHAR}, 
-      #{txmoney,jdbcType=VARCHAR}, #{dzmoney,jdbcType=VARCHAR}, #{sxf,jdbcType=VARCHAR}, 
-      #{txtime,jdbcType=TIMESTAMP}, #{zztime,jdbcType=TIMESTAMP}, #{statu,jdbcType=VARCHAR}, 
-      #{shwho,jdbcType=VARCHAR}, #{shtime,jdbcType=TIMESTAMP}, #{nothing,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Withdrawal" >
-    insert into withdrawal
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="wID != null" >
-        wID,
+    <select id="queryWithdrawal" resultMap="BaseResultMap" parameterType="map">
+      select
+      <include refid="Base_Column_List" />
+      from withdrawal
+      where 1=1
+      <!--根据id查询-->
+      <if test="wID != null and wID != '' ">
+        wID = #{wID,jdbcType=INTEGER}
       </if>
-      <if test="uID != null" >
-        uID,
+      <!--第一次过滤：根据状态（失败，已提现,转账中，审核中）查询-->
+      <if test="btn !=null and btn !='' ">
+        and  statu = #{btn}
       </if>
-      <if test="uname != null" >
-        uname,
+      <!--根据用户名查询-->
+      <if test="btn !=null and btn !='' ">
+        and  statu = #{btn}
       </if>
-      <if test="zname != null" >
-        zname,
+      <!--根据提交时间查询-->
+      <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">
+        and  STR_TO_DATE(txtime,'%Y-%m-%d')
+        BETWEEN STR_TO_DATE(#{yyy},'%Y-%m-%d') AND STR_TO_DATE(#{yyyy},'%Y-%m-%d')
       </if>
-      <if test="txnum != null" >
-        txnum,
+      <!--第二次过滤：根据状态（失败，已提现,转账中，审核中）查询-->
+      <if test="wstatu !=null and wstatu !='' ">
+        and  statu = #{wstatu}
       </if>
-      <if test="txbank != null" >
-        txbank,
-      </if>
-      <if test="txmoney != null" >
-        txmoney,
-      </if>
-      <if test="dzmoney != null" >
-        dzmoney,
-      </if>
-      <if test="sxf != null" >
-        sxf,
-      </if>
-      <if test="txtime != null" >
-        txtime,
-      </if>
-      <if test="zztime != null" >
-        zztime,
-      </if>
-      <if test="statu != null" >
-        statu,
-      </if>
-      <if test="shwho != null" >
-        shwho,
-      </if>
-      <if test="shtime != null" >
-        shtime,
-      </if>
-      <if test="nothing != null" >
-        nothing,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="wID != null" >
-        #{wID,jdbcType=INTEGER},
-      </if>
-      <if test="uID != null" >
-        #{uID,jdbcType=INTEGER},
-      </if>
-      <if test="uname != null" >
-        #{uname,jdbcType=VARCHAR},
-      </if>
-      <if test="zname != null" >
-        #{zname,jdbcType=VARCHAR},
-      </if>
-      <if test="txnum != null" >
-        #{txnum,jdbcType=VARCHAR},
-      </if>
-      <if test="txbank != null" >
-        #{txbank,jdbcType=VARCHAR},
-      </if>
-      <if test="txmoney != null" >
-        #{txmoney,jdbcType=VARCHAR},
-      </if>
-      <if test="dzmoney != null" >
-        #{dzmoney,jdbcType=VARCHAR},
-      </if>
-      <if test="sxf != null" >
-        #{sxf,jdbcType=VARCHAR},
-      </if>
-      <if test="txtime != null" >
-        #{txtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="zztime != null" >
-        #{zztime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="statu != null" >
-        #{statu,jdbcType=VARCHAR},
-      </if>
-      <if test="shwho != null" >
-        #{shwho,jdbcType=VARCHAR},
-      </if>
-      <if test="shtime != null" >
-        #{shtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nothing != null" >
-        #{nothing,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Withdrawal" >
-    update withdrawal
-    <set >
-      <if test="uID != null" >
-        uID = #{uID,jdbcType=INTEGER},
-      </if>
-      <if test="uname != null" >
-        uname = #{uname,jdbcType=VARCHAR},
-      </if>
-      <if test="zname != null" >
-        zname = #{zname,jdbcType=VARCHAR},
-      </if>
-      <if test="txnum != null" >
-        txnum = #{txnum,jdbcType=VARCHAR},
-      </if>
-      <if test="txbank != null" >
-        txbank = #{txbank,jdbcType=VARCHAR},
-      </if>
-      <if test="txmoney != null" >
-        txmoney = #{txmoney,jdbcType=VARCHAR},
-      </if>
-      <if test="dzmoney != null" >
-        dzmoney = #{dzmoney,jdbcType=VARCHAR},
-      </if>
-      <if test="sxf != null" >
-        sxf = #{sxf,jdbcType=VARCHAR},
-      </if>
-      <if test="txtime != null" >
-        txtime = #{txtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="zztime != null" >
-        zztime = #{zztime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="statu != null" >
-        statu = #{statu,jdbcType=VARCHAR},
-      </if>
-      <if test="shwho != null" >
-        shwho = #{shwho,jdbcType=VARCHAR},
-      </if>
-      <if test="shtime != null" >
-        shtime = #{shtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="nothing != null" >
-        nothing = #{nothing,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where wID = #{wID,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Withdrawal" >
-    update withdrawal
-    set uID = #{uID,jdbcType=INTEGER},
-      uname = #{uname,jdbcType=VARCHAR},
-      zname = #{zname,jdbcType=VARCHAR},
-      txnum = #{txnum,jdbcType=VARCHAR},
-      txbank = #{txbank,jdbcType=VARCHAR},
-      txmoney = #{txmoney,jdbcType=VARCHAR},
-      dzmoney = #{dzmoney,jdbcType=VARCHAR},
-      sxf = #{sxf,jdbcType=VARCHAR},
-      txtime = #{txtime,jdbcType=TIMESTAMP},
-      zztime = #{zztime,jdbcType=TIMESTAMP},
-      statu = #{statu,jdbcType=VARCHAR},
-      shwho = #{shwho,jdbcType=VARCHAR},
-      shtime = #{shtime,jdbcType=TIMESTAMP},
-      nothing = #{nothing,jdbcType=VARCHAR}
-    where wID = #{wID,jdbcType=INTEGER}
-  </update>
+ </select>
+
+<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+ delete from withdrawal
+ where wID = #{wID,jdbcType=INTEGER}
+</delete>
+<insert id="insert" parameterType="com.zking.p2pSSM.model.Withdrawal" >
+ insert into withdrawal (wID, uID, uname,
+   zname, txnum, txbank,
+   txmoney, dzmoney, sxf,
+   txtime, zztime, statu,
+   shwho, shtime, nothing
+   )
+ values (#{wID,jdbcType=INTEGER}, #{uID,jdbcType=INTEGER}, #{uname,jdbcType=VARCHAR},
+   #{zname,jdbcType=VARCHAR}, #{txnum,jdbcType=VARCHAR}, #{txbank,jdbcType=VARCHAR},
+   #{txmoney,jdbcType=VARCHAR}, #{dzmoney,jdbcType=VARCHAR}, #{sxf,jdbcType=VARCHAR},
+   #{txtime,jdbcType=TIMESTAMP}, #{zztime,jdbcType=TIMESTAMP}, #{statu,jdbcType=VARCHAR},
+   #{shwho,jdbcType=VARCHAR}, #{shtime,jdbcType=TIMESTAMP}, #{nothing,jdbcType=VARCHAR}
+   )
+</insert>
+<insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Withdrawal" >
+ insert into withdrawal
+ <trim prefix="(" suffix=")" suffixOverrides="," >
+   <if test="wID != null" >
+     wID,
+   </if>
+   <if test="uID != null" >
+     uID,
+   </if>
+   <if test="uname != null" >
+     uname,
+   </if>
+   <if test="zname != null" >
+     zname,
+   </if>
+   <if test="txnum != null" >
+     txnum,
+   </if>
+   <if test="txbank != null" >
+     txbank,
+   </if>
+   <if test="txmoney != null" >
+     txmoney,
+   </if>
+   <if test="dzmoney != null" >
+     dzmoney,
+   </if>
+   <if test="sxf != null" >
+     sxf,
+   </if>
+   <if test="txtime != null" >
+     txtime,
+   </if>
+   <if test="zztime != null" >
+     zztime,
+   </if>
+   <if test="statu != null" >
+     statu,
+   </if>
+   <if test="shwho != null" >
+     shwho,
+   </if>
+   <if test="shtime != null" >
+     shtime,
+   </if>
+   <if test="nothing != null" >
+     nothing,
+   </if>
+ </trim>
+ <trim prefix="values (" suffix=")" suffixOverrides="," >
+   <if test="wID != null" >
+     #{wID,jdbcType=INTEGER},
+   </if>
+   <if test="uID != null" >
+     #{uID,jdbcType=INTEGER},
+   </if>
+   <if test="uname != null" >
+     #{uname,jdbcType=VARCHAR},
+   </if>
+   <if test="zname != null" >
+     #{zname,jdbcType=VARCHAR},
+   </if>
+   <if test="txnum != null" >
+     #{txnum,jdbcType=VARCHAR},
+   </if>
+   <if test="txbank != null" >
+     #{txbank,jdbcType=VARCHAR},
+   </if>
+   <if test="txmoney != null" >
+     #{txmoney,jdbcType=VARCHAR},
+   </if>
+   <if test="dzmoney != null" >
+     #{dzmoney,jdbcType=VARCHAR},
+   </if>
+   <if test="sxf != null" >
+     #{sxf,jdbcType=VARCHAR},
+   </if>
+   <if test="txtime != null" >
+     #{txtime,jdbcType=TIMESTAMP},
+   </if>
+   <if test="zztime != null" >
+     #{zztime,jdbcType=TIMESTAMP},
+   </if>
+   <if test="statu != null" >
+     #{statu,jdbcType=VARCHAR},
+   </if>
+   <if test="shwho != null" >
+     #{shwho,jdbcType=VARCHAR},
+   </if>
+   <if test="shtime != null" >
+     #{shtime,jdbcType=TIMESTAMP},
+   </if>
+   <if test="nothing != null" >
+     #{nothing,jdbcType=VARCHAR},
+   </if>
+ </trim>
+</insert>
+<update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Withdrawal" >
+ update withdrawal
+ <set >
+   <if test="uID != null" >
+     uID = #{uID,jdbcType=INTEGER},
+   </if>
+   <if test="uname != null" >
+     uname = #{uname,jdbcType=VARCHAR},
+   </if>
+   <if test="zname != null" >
+     zname = #{zname,jdbcType=VARCHAR},
+   </if>
+   <if test="txnum != null" >
+     txnum = #{txnum,jdbcType=VARCHAR},
+   </if>
+   <if test="txbank != null" >
+     txbank = #{txbank,jdbcType=VARCHAR},
+   </if>
+   <if test="txmoney != null" >
+     txmoney = #{txmoney,jdbcType=VARCHAR},
+   </if>
+   <if test="dzmoney != null" >
+     dzmoney = #{dzmoney,jdbcType=VARCHAR},
+   </if>
+   <if test="sxf != null" >
+     sxf = #{sxf,jdbcType=VARCHAR},
+   </if>
+   <if test="txtime != null" >
+     txtime = #{txtime,jdbcType=TIMESTAMP},
+   </if>
+   <if test="zztime != null" >
+     zztime = #{zztime,jdbcType=TIMESTAMP},
+   </if>
+   <if test="statu != null" >
+     statu = #{statu,jdbcType=VARCHAR},
+   </if>
+   <if test="shwho != null" >
+     shwho = #{shwho,jdbcType=VARCHAR},
+   </if>
+   <if test="shtime != null" >
+     shtime = #{shtime,jdbcType=TIMESTAMP},
+   </if>
+   <if test="nothing != null" >
+     nothing = #{nothing,jdbcType=VARCHAR},
+   </if>
+ </set>
+ where wID = #{wID,jdbcType=INTEGER}
+</update>
+<update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Withdrawal" >
+ update withdrawal
+ set uID = #{uID,jdbcType=INTEGER},
+   uname = #{uname,jdbcType=VARCHAR},
+   zname = #{zname,jdbcType=VARCHAR},
+   txnum = #{txnum,jdbcType=VARCHAR},
+   txbank = #{txbank,jdbcType=VARCHAR},
+   txmoney = #{txmoney,jdbcType=VARCHAR},
+   dzmoney = #{dzmoney,jdbcType=VARCHAR},
+   sxf = #{sxf,jdbcType=VARCHAR},
+   txtime = #{txtime,jdbcType=TIMESTAMP},
+   zztime = #{zztime,jdbcType=TIMESTAMP},
+   statu = #{statu,jdbcType=VARCHAR},
+   shwho = #{shwho,jdbcType=VARCHAR},
+   shtime = #{shtime,jdbcType=TIMESTAMP},
+   nothing = #{nothing,jdbcType=VARCHAR}
+ where wID = #{wID,jdbcType=INTEGER}
+</update>
+<!-- 提现总额 -->
+  <select id="sumtxmoney" resultType="int">
+		select SUM(txmoney) from withdrawal
+  	</select>
+  <!-- 到账总额 -->
+  <select id="sumdzmoney" resultType="int">
+		select SUM(dzmoney) from withdrawal
+  	</select>
+  <!-- 手续费总额 -->
+  <select id="sumsxf" resultType="int">
+		select SUM(sxf) from withdrawal
+  	</select>
+    <!--转账失败：退还certification表的用户的可用余额与总金额-->
+    <update id="updatedmoney" parameterType="map"  >
+  	    update certification set cbalance = #{txmoney}+cbalance , ctotalmoney = #{txmoney}+ctotalmoney where cserial=#{uid}
+  	</update>
+    <!--转账交易记录-->
+    <insert id="inserttmoney" parameterType="map">
+  	    INSERT INTO trade(uid,uname,zname,jymoney,what,jytime,other) VALUES(#{uid},#{uname},#{zname},#{jymoney},#{what},#{jytime},#{other})
+  	</insert>
+
 </mapper>

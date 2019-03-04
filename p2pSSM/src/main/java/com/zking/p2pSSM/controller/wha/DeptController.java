@@ -36,7 +36,7 @@ public class DeptController {
                          @RequestParam(value = "describe", required = false) String describe) {
         dept.setDname(dname);
         dept.setDescribes(describe);
-        deptService.insert(dept);
+        deptService.insertSelective(dept);
         return "redirect:/dept/findall";
     }
     @RequestMapping("del")

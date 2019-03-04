@@ -24,7 +24,6 @@
 	href="<%=basePath%>assets/js/gritter/css/jquery.gritter.css" />
 <link rel="stylesheet" type="text/css"
 	href="<%=basePath%>assets/lineicons/style.css">
-
 <!-- Custom styles for this template -->
 <link href="<%=basePath%>assets/css/style.css" rel="stylesheet">
 <link href="<%=basePath%>assets/css/style-responsive.css"
@@ -74,7 +73,7 @@
 				lis[i].checked=false;
 			}
     	}
-    	
+
     	function jiedai(){
     		var lis=$("input:checkbox");
 			for(var i=14;i<24;i++){
@@ -87,7 +86,7 @@
 				lis[i].checked=false;
 			}
     	}
-    	
+
     </script>
     <script>
 	function sub(){
@@ -103,124 +102,77 @@
 	<!-- 内容开始 -->
 	<div class="col-md-12 mt">
 		<div class="content-panel">
-			<form action="<%=basePath%>limit/upd.do" method="post" name="frm">
-				<%
-					List lists=(List)request.getAttribute("listss");
-				%>
-				<input type="hidden" name="eid" value="${eid }">
-				<h4 style="padding-bottom: 0px;">管理组</h4>
-				
-				
-				&nbsp;&nbsp;&nbsp;&nbsp;<input  class="btn btn-success" type="button" onclick="manage()" value="全选" />
-				&nbsp;&nbsp;<input class="btn btn-primary" type="button"
-					onclick="manage1()" value="取消全选" /> <br />&nbsp;&nbsp; <input type="checkbox"
-					value="1" name="inp" id="inp" <% if (lists.contains("1")) {%>
-					checked="checked" <%}%>> 部门管理
-				&nbsp;&nbsp; <input type="checkbox"
-					value="2" name="inp" id="inp" <% if (lists.contains("2")) {%>
-					checked="checked" <%}%>> 员工管理
-				&nbsp;&nbsp;
-				<input type="checkbox"
-					value="3" name="inp" id="inp" <%if (lists.contains("3")) {%>
-					checked="checked" <%}%>> 用户管理
-				<h4>财务管理</h4>
-				&nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-success" type="button" onclick="caiwu()" value="全选" />
-				&nbsp;&nbsp;<input type="button"
-					onclick="caiwu1()" class="btn btn-primary" value="取消全选" /> <br />
-					&nbsp;&nbsp; <input type="checkbox"
-					value="4" name="inp" <%if (lists.contains("4")) {%>
-					checked="checked" <%}%>> 提现管理
-				&nbsp;&nbsp; <input type="checkbox"
-					value="5" name="inp" <%if (lists.contains("5")) {%>
-					checked="checked" <%}%>> 银行卡管理
-				&nbsp;&nbsp; <input type="checkbox"
-					value="6" name="inp" <%if (lists.contains("6")) {%>
-					checked="checked" <%}%>> 充值记录
-				&nbsp;&nbsp; <input type="checkbox"
-					value="7" name="inp" <%if (lists.contains("7")) {%>
-					checked="checked" <%}%>> 手续费记录
-				&nbsp;&nbsp; <input type="checkbox"
-					value="8" name="inp" <%if (lists.contains("8")) {%>
-					checked="checked" <%}%>> 交易记录
-				&nbsp;&nbsp; <input type="checkbox"
-					value="9" name="inp" <%if (lists.contains("9")) {%>
-					checked="checked" <%}%>> 借贷信息列表
-					
-					
-
-				<h4>认证项管理</h4>
-				&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" class="btn btn-success" onclick="renzhengxiang()" value="全选" />
-
-				&nbsp;&nbsp;<input type="button"
-					onclick="renzhengxiang1()" class="btn btn-primary" value="取消全选" /> <br /> &nbsp;&nbsp; <input
-					type="checkbox" value="10" name="inp" <%if (lists.contains("10")) {%>
-					checked="checked" <%}%>> 信用额度申请 &nbsp;&nbsp; <input
-					type="checkbox" value="11" name="inp"
-					<%if (lists.contains("11")) {%> checked="checked" <%}%>>
-				新用户认证资料 &nbsp;&nbsp; <input type="checkbox" value="12" name="inp"
-					<%if (lists.contains("12")) {%> checked="checked" <%}%>>
-				用户资料认证 &nbsp;&nbsp; <input type="checkbox" value="13" name="inp"
-					<%if (lists.contains("13")) {%> checked="checked" <%}%>>
-				认证资料统计 &nbsp;&nbsp; <input type="checkbox" value="14" name="inp"
-					<%if (lists.contains("14")) {%> checked="checked" <%}%>>
-				认证项设置
-				<h4>借贷管理</h4>
-				&nbsp;&nbsp;&nbsp;&nbsp;<input class="btn btn-success" type="button" onclick="jiedai()" value="全选" />
-
-				&nbsp;&nbsp;<input type="button"
-					onclick="jiedai1()" class="btn btn-primary" value="取消全选" /> <br />
-				
-				
-				 &nbsp;&nbsp; <input type="checkbox"
-					value="15" name="inp" <%if (lists.contains("15")) {%>
-					checked="checked" <%}%>> 投标列表&nbsp;&nbsp;
-				<input type="checkbox"
-					value="16" name="inp" <%if (lists.contains("16")) {%>
-					checked="checked" <%}%>> 添加投标&nbsp;&nbsp;
-				<input type="checkbox"
-					value="17" name="inp" <%if (lists.contains("17")) {%>
-					checked="checked" <%}%>> 标种列表&nbsp;&nbsp;
-				<input type="checkbox"
-					value="18" name="inp" <%if (lists.contains("18")) {%>
-					checked="checked" <%}%>> 添加标种
-				&nbsp;&nbsp;<input type="checkbox"
-					value="19" name="inp" <%if (lists.contains("19")) {%>
-					checked="checked" <%}%>> 所有借款
-				&nbsp;&nbsp;
-				<input type="checkbox"
-					value="20" name="inp" <%if (lists.contains("20")) {%>
-					checked="checked" <%}%>> 待审核借款<br>
-				&nbsp;&nbsp;
-				<input type="checkbox"
-					value="21" name="inp" <%if (lists.contains("21")) {%>
-					checked="checked" <%}%>> 招标中的借款
-				&nbsp;&nbsp;
-				&nbsp;&nbsp;<input type="checkbox"
-					value="22" name="inp" <%if (lists.contains("22")) {%>
-					checked="checked" <%}%>> 还款
-				&nbsp;&nbsp;<input type="checkbox"
-					value="23" name="inp" <%if (lists.contains("23")) {%>
-					checked="checked" <%}%>> 满标借款
-				&nbsp;&nbsp;
-				<input type="checkbox"
-					value="24" name="inp" <%if (lists.contains("24")) {%>
-					checked="checked" <%}%>> 还款方式
-				&nbsp;&nbsp;
-
-				<h4>权限管理</h4>
-				&nbsp;&nbsp; <input
-					type="checkbox" value="100" name="inp"
-					<%if (lists.contains("100")) {%> checked="checked" <%}%>>
-				权限管理
-				<br />
-				
-			<!-- 	<button onClick="sub();" type="submit" class="btn btn-primary btn-lg btn-block"><font><font class=""> 保存</font></font>
-				
-				</button> -->
-				
-				
-				
-				&nbsp;&nbsp;&nbsp;&nbsp;<button onClick="sub();" class="btn btn-success" type="submit">
+			<form action="<%=basePath%>limit/upd" method="post" name="frm">
+				<input type="hidden" name="did" value="${did }">
+                <%
+                    List lists=(List)request.getAttribute("listss");
+                %>
+                    <dl class="permission-list">
+                        <dt><label class="middle"><input name="inp" <% if (lists.contains("1000")) {%>checked="checked" <%}%> value="1000" class="ace" type="checkbox" ><h4 class="lbl">后台管理系统</h4></label></dt>
+                        <dd>
+                            <dl class="cl permission-list2">
+                                <dt><label class="middle"><input type="checkbox" <% if (lists.contains("10011")) {%>checked="checked" <%}%> value="1001" class="ace"  name="inp"  ><span class="lbl">管理组</span></label></dt>
+                                <dd>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10011")) {%>checked="checked" <%}%> value="10011" class="ace" name="inp"  ><span class="lbl">部门管理</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10012")) {%>checked="checked" <%}%> value="10012" class="ace" name="inp"  ><span class="lbl">员工管理</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10013")) {%>checked="checked" <%}%> value="10013" class="ace" name="inp"  ><span class="lbl">用户管理</span></label>
+                                </dd>
+                            </dl>
+                            <dl class="cl permission-list2">
+                                <dt><label class="middle"><input type="checkbox" <% if (lists.contains("1002")) {%>checked="checked" <%}%> value="1002" class="ace"  name="inp" > <span class="lbl">网站内容管理</span></label></dt>
+                                <dd>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10021")) {%>checked="checked" <%}%> value="10021" class="ace" name="inp" ><span class="lbl">添加网站通知</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10022")) {%>checked="checked" <%}%> value="10022" class="ace" name="inp" ><span class="lbl">查询网站通知</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10023")) {%>checked="checked" <%}%> value="10023" class="ace" name="inp"  ><span class="lbl">添加网站首页图片</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10024")) {%>checked="checked" <%}%> value="10024" class="ace" name="inp"  ><span class="lbl">查询首页图片</span></label>
+                                </dd>
+                            </dl>
+                            <dl class="cl permission-list2">
+                                <dt><label class="middle"><input type="checkbox" <% if (lists.contains("1003")) {%>checked="checked" <%}%> value="1003" class="ace"  name="inp"  > <span class="lbl">财务管理</span></label></dt>
+                                <dd>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10031")) {%>checked="checked" <%}%> value="10031" class="ace" name="inp"  ><span class="lbl">提现管理</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10032")) {%>checked="checked" <%}%> value="10032" class="ace" name="inp"  ><span class="lbl">银行卡管理</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10033")) {%>checked="checked" <%}%> value="10033" class="ace" name="inp"  ><span class="lbl">充值记录</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10034")) {%>checked="checked" <%}%> value="10034" class="ace" name="inp"  ><span class="lbl">手续费记录</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10035")) {%>checked="checked" <%}%> value="10035" class="ace" name="inp"  ><span class="lbl">交易记录</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10036")) {%>checked="checked" <%}%> value="10036" class="ace" name="inp"  ><span class="lbl">借贷信息列表</span></label>
+                                </dd>
+                            </dl>
+                            <dl class="cl permission-list2">
+                                <dt><label class="middle"><input type="checkbox" <% if (lists.contains("1004")) {%>checked="checked" <%}%> value="1004" class="ace"  name="inp"  > <span class="lbl">借贷管理</span></label></dt>
+                                <dd>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10041")) {%>checked="checked" <%}%> value="10041" class="ace" name="inp"  ><span class="lbl">投标列表</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10042")) {%>checked="checked" <%}%> value="10042" class="ace" name="inp"  ><span class="lbl">添加投标</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10043")) {%>checked="checked" <%}%> value="10043" class="ace" name="inp"  ><span class="lbl">标种列表</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10044")) {%>checked="checked" <%}%> value="10044" class="ace" name="inp"  ><span class="lbl">添加标种</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10045")) {%>checked="checked" <%}%> value="10045" class="ace" name="inp"  ><span class="lbl">所有借款</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10046")) {%>checked="checked" <%}%> value="10046" class="ace" name="inp"  ><span class="lbl">待审核的借款</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10047")) {%>checked="checked" <%}%> value="10047" class="ace" name="inp"  ><span class="lbl">招标中的借款</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10048")) {%>checked="checked" <%}%> value="10048" class="ace" name="inp"  ><span class="lbl">还款</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10049")) {%>checked="checked" <%}%> value="10049" class="ace" name="inp"  ><span class="lbl">满标借款</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("100141")) {%>checked="checked" <%}%> value="100141" class="ace" name="inp"  ><span class="lbl">还款方式</span></label>
+                                </dd>
+                            </dl>
+                            <dl class="cl permission-list2">
+                                <dt><label class="middle"><input type="checkbox" <% if (lists.contains("1005")) {%>checked="checked" <%}%> value="1005" class="ace"  name="inp"  > <span class="lbl">认证项管理</span></label></dt>
+                                <dd>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10051")) {%>checked="checked" <%}%> value="10051" class="ace" name="inp"  ><span class="lbl">新用户认证资料</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10052")) {%>checked="checked" <%}%> value="10052" class="ace" name="inp"  ><span class="lbl">用户资料认证</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10053")) {%>checked="checked" <%}%> value="10053" class="ace" name="inp"  ><span class="lbl">认证资料统计</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10054")) {%>checked="checked" <%}%> value="10054" class="ace" name="inp"  ><span class="lbl">信用额度申请</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10055")) {%>checked="checked" <%}%> value="10055" class="ace" name="inp"  ><span class="lbl">认证项设置</span></label>
+                                </dd>
+                            </dl>
+                            <dl class="cl permission-list2">
+                                <dt><label class="middle"><input type="checkbox" <% if (lists.contains("1006")) {%>checked="checked" <%}%> value="1006" class="ace"  name="user-Character-0-1"  > <span class="lbl">权限管理</span></label></dt>
+                                <dd>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10061")) {%>checked="checked" <%}%> value="10061" class="ace" name="inp"  ><span class="lbl">权限列表</span></label>
+                                    <label class="middle"><input type="checkbox" <% if (lists.contains("10062")) {%>checked="checked" <%}%> value="10062" class="ace" name="inp"  ><span class="lbl">菜单列表</span></label>
+                                </dd>
+                            </dl>
+                        </dd>
+                    </dl>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<button onClick="sub();" class="btn btn-success" type="submit">
 					 保存
 				</button>&nbsp;&nbsp;
 				<a href="javascript:history.go(-1)" style="text-decoration: none;"><button class="btn btn-primary">返回</button></a>
@@ -271,4 +223,30 @@
 
 <script type="text/javascript"
 	src="<%=basePath%>My97DatePickers/WdatePicker.js"></script>
+<script>
+    /*按钮选择*/
+    $(function(){
+        $(".permission-list dt input:checkbox").click(function(){
+            $(this).closest("dl").find("dd input:checkbox").prop("checked",$(this).prop("checked"));
+        });
+        $(".permission-list2 dd input:checkbox").click(function(){
+            var l =$(this).parent().parent().find("input:checked").length;
+            var l2=$(this).parents(".permission-list").find(".permission-list2 dd").find("input:checked").length;
+            if($(this).prop("checked")){
+                $(this).closest("dl").find("dt input:checkbox").prop("checked",true);
+                $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",true);
+            }
+            else{
+                if(l==0){
+                    $(this).closest("dl").find("dt input:checkbox").prop("checked",false);
+                }
+                if(l2==0){
+                    $(this).parents(".permission-list").find("dt").first().find("input:checkbox").prop("checked",false);
+                }
+            }
+
+        });
+    });
+
+</script>
 </html>

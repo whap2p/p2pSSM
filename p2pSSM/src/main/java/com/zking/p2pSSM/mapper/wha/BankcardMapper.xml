@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zking.p2pSSM.mapper.dh.DhBankcardMapper" >
+<mapper namespace="com.zking.p2pSSM.mapper.wha.BankcardMapper" >
   <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Bankcard" >
     <constructor >
       <idArg column="bID" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -154,7 +154,4 @@
       statu = #{statu,jdbcType=VARCHAR}
     where bID = #{bID,jdbcType=INTEGER}
   </update>
-  <select id="qureyBysfz" resultType="com.zking.p2pSSM.model.Bankcard" parameterType="java.lang.String">
-    select * from bankcard where sfz = #{sfz}
-  </select>
 </mapper>

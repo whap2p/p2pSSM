@@ -7,8 +7,7 @@
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib uri="/zking" prefix="z" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +55,7 @@
 		if (yyy > yyyy) {
 			alert("第二个日期不能小于第一个日期");
 		} else {
-			location.href = "rech.do?uname=" + uname + "&yyy=" + yyy
+			location.href = "rech?uname=" + uname + "&yyy=" + yyy
 					+ "&yyyy=" + yyyy + "&zflx=" + zflx+"&statu="+statu;
 		}
 	}
@@ -146,30 +145,9 @@
 								</c:forEach>	
 							</tbody>			
 					</table>
-					
-					&nbsp; &nbsp;&nbsp; 总计&nbsp; &nbsp;&nbsp; 充值总额：${czmoneyre }&nbsp; &nbsp;&nbsp; 到账总额：${dzmoneyre }<br><br>
-					&nbsp; &nbsp;&nbsp; 共有${totalrow }条数据， <a href="putexcelr.do"><button type="button"
-						class="btn btn-default btn-inverse">导出excel</button></a> <br>
-					<br>&nbsp; &nbsp;&nbsp; 第${currpages }页/总${totalpage }页<br><br>&nbsp; &nbsp;&nbsp; 
-					<ul class="pagination">
-				<li>
-					 <a href="rech.do?currpage=1&uname=${uname }&yyy=${yyy}&yyyy=${yyyy}&statu=${statu}&zflx=${zflx}">首页</a>
-				</li>
-				<li>
-					 <a href="rech.do?currpage=${currpages-1 }&uname=${uname }&yyy=${yyy}&yyyy=${yyyy}&statu=${statu}&zflx=${zflx}">上一页</a>
-				</li>
-				<c:forEach begin="1" end="${totalpage }" varStatus="i">
-								<li><a
-									href="rech.do?currpage=${i.index}&uname=${uname }&yyy=${yyy}&yyyy=${yyyy}&statu=${statu}&zflx=${zflx}">${i.index}</a>
-								</li>
-							</c:forEach>
-				<li>
-					 <a href="rech.do?currpage=${currpages+1}&uname=${uname }&yyy=${yyy}&yyyy=${yyyy}&statu=${statu}&zflx=${zflx}">下一页</a>
-				</li>
-				<li>
-					 <a href="rech.do?currpage=${totalpage}&uname=${uname }&yyy=${yyy}&yyyy=${yyyy}&statu=${statu}&zflx=${zflx}">尾页</a>
-				</li>
-			</ul>
+						<ul class="pagination">
+							<z:page pageBean="${pageBean }"></z:page>
+						</ul>
 					</div>
 				</div>
 			</div>

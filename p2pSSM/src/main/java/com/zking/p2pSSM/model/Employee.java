@@ -29,7 +29,8 @@ public class Employee {
 
     private String epassword;
 
-    public Employee(Integer eid, String ename, String esex, Date ebirth, String eidcard, String ephone, String email, Integer edeptno, String epostno, Date etime, Integer estatus, String epassword) {
+    private String esalt;
+    public Employee(Integer eid, String ename, String esex, Date ebirth, String eidcard, String ephone, String email, Integer edeptno, String epostno, Date etime, Integer estatus, String epassword,String esalt) {
         this.eid = eid;
         this.ename = ename;
         this.esex = esex;
@@ -42,6 +43,7 @@ public class Employee {
         this.etime = etime;
         this.estatus = estatus;
         this.epassword = epassword;
+        this.esalt=esalt;
     }
 
     public Employee() {
@@ -142,5 +144,13 @@ public class Employee {
 
     public void setEpassword(String epassword) {
         this.epassword = epassword;
+    }
+
+    public String getEsalt() {
+        return esalt;
+    }
+
+    public void setEsalt(String esalt) {
+        this.esalt = esalt;
     }
 }

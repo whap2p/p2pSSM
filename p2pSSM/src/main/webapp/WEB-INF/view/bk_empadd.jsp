@@ -71,7 +71,7 @@
 			<div class="showback">
 				<h4>
 					<i class="fa fa-angle-right"> <a
-						href="<%=basePath%>employee/list.do">部门信息列表</a>
+						href="<%=basePath%>employee/list">部门信息列表</a>
 					</i> <i class="fa fa-angle-right"> <a
 						href="javascript:history.go(-1)">返回</a>
 					</i>
@@ -79,7 +79,7 @@
 				<!-- 页面内容 -->
 
 				<form class="form-horizontal style-form" method="post"
-					action="<%=basePath%>employee/add.do">
+					action="<%=basePath%>employee/add">
 
 					<div class="form-group">
 						<label class="col-sm-2 col-sm-2 control-label">员工姓名：</label>
@@ -112,7 +112,7 @@
 						</div>
 						<label class="col-sm-2 col-sm-2 control-label">员工手机号：</label>
 						<div class="col-sm-3">
-							<input type="text" class="form-control" onblur="return cephone();"
+							<input type="text" class="form-control"
 							id="ephone" name="ephone">
 						</div>
 					</div>
@@ -141,7 +141,7 @@
 						<label class="col-sm-2 col-sm-2 control-label">职位：</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="epostno"
-							 onblur="return  cepostno();"	name="epostno">
+							 	name="epostno">
 						</div>
 						<label class="col-sm-2 col-sm-2 control-label">入职时间：</label>
 						<div class="col-sm-3">

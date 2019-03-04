@@ -1,13 +1,13 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="/zking" prefix="z" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,7 +56,7 @@
 		if (yyy > yyyy) {
 			alert("第二个日期不能小于第一个日期");
 		} else {
-			location.href = "trade.do?uname=" + uname + "&yyy=" + yyy
+			location.href = "trade?uname=" + uname + "&yyy=" + yyy
 					+ "&yyyy=" + yyyy + "&zname=" + zname;
 		}
 	}
@@ -70,7 +70,7 @@
 		<section class="wrapper">
 			<div class="content-panel">
 				<h3>
-					&nbsp; &nbsp;<i class="fa fa-angle-right"></i><a href="trade.do">交易记录</a> 
+					&nbsp; &nbsp;<i class="fa fa-angle-right"></i><a href="trade">交易记录</a>
 				</h3>
 				<br> &nbsp; &nbsp; &nbsp; 
 				用户名：<input type="text"  id="uname">
@@ -113,26 +113,9 @@
 								</c:forEach>	
 							</tbody>			
 					</table>
-					&nbsp; &nbsp;&nbsp; 第${currpages }页/总${totalpage }页<br><br>
-				&nbsp; &nbsp;&nbsp;	<ul class="pagination">
-				<li>
-					 <a href="trade.do?currpage=1&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">首页</a>
-				</li>
-				<li>
-					 <a href="trade.do?currpage=${currpages-1 }&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">上一页</a>
-				</li>
-				<c:forEach begin="1" end="${totalpage }" varStatus="i">
-								<li><a
-									href="trade.do?currpage=${i.index}&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">${i.index}</a>
-								</li>
-							</c:forEach>
-				<li>
-					 <a href="trade.do?currpage=${currpages+1}&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">下一页</a>
-				</li>
-				<li>
-					 <a href="trade.do?currpage=${totalpage}&uname=${uname }&zname=${zname}&yyy=${yyy}&yyyy=${yyyy}">尾页</a>
-				</li>
-			</ul>
+						<ul class="pagination">
+							<z:page pageBean="${pageBean }"></z:page>
+						</ul>
 					</div>
 				</div>
 			</div>

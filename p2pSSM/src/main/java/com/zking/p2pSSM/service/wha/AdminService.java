@@ -18,5 +18,11 @@ public interface AdminService {
 
     int updateByPrimaryKey(Admin record);
 
+    /**
+     * 分页查询
+     * @param admin
+     * @param pageBean
+     * @return
+     */
     List queryAdminPager(Admin admin, PageBean pageBean);
 }
