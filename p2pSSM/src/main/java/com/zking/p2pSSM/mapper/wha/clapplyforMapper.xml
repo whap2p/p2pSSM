@@ -25,6 +25,28 @@
     from clapplyfor
     where clpid = #{clpid,jdbcType=INTEGER}
   </select>
+  <select id="queryClapplyfors" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List" />
+     from clapplyfor where 1=1
+    <if test="clpid != null ">
+      and clpid = #{clpid}
+    </if>
+    <if test="clpubcid != null and clpubcid !='' ">
+      and clpubcid = #{clpubcid}
+    </if>
+    <if test="clpuname != null and clpuname !='' ">
+      and clpuname like  '%${clpuname}%'
+    </if>
+    <!--根据提交时间查询-->
+    <if test="mindate !=null and mindate!=''  and maxdate !=null  and maxdate!='' ">
+      and  STR_TO_DATE(clpdate,'%Y-%m-%d')
+      BETWEEN STR_TO_DATE(#{mindate},'%Y-%m-%d') AND STR_TO_DATE(#{maxdate},'%Y-%m-%d')
+    </if>
+    <if test=" clpstate != null and clpstate !='' ">
+      and clpstate = #{clpstate}
+    </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from clapplyfor
     where clpid = #{clpid,jdbcType=INTEGER}

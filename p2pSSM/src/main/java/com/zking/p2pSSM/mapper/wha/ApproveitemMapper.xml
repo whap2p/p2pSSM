@@ -18,7 +18,22 @@
     from approveitem
     where aiid = #{aiid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="queryApproves" resultMap="BaseResultMap" parameterType="map">
+      select * from approveitem where 1=1
+      <if test="aiid !=null and aiid !='' ">
+        and  aiid like  concat(concat('%',#{aiid}),'%')
+      </if>
+      <if test="ainame != null and ainame != '' ">
+        and  ainame  like  concat(concat('%',#{ainame}),'%')
+      </if>
+      <if test="aitype != null and aitype != '' ">
+        and aitype  like  concat(concat('%',#{aitype}),'%')
+      </if>
+      <if test="aistate != null and aistate != '' ">
+        and aistate  like  concat(concat('%',#{aistate}),'%')
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from approveitem
     where aiid = #{aiid,jdbcType=INTEGER}
   </delete>

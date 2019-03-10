@@ -146,22 +146,6 @@
 							 </div>
 	                         <!-- 详情弹出框结束 -->
 						</c:forEach>
-						<tr align="center">
-								<td colspan="8">
-									<a href="${pageContext.request.contextPath}/approve/approveStatistics.do?crusername=${username}&craiid=${apid}&currpage=1" class="btn ">首页</a>
-									<a href="${pageContext.request.contextPath}/approve/approveStatistics.do?crusername=${username}&craiid=${apid}&currpage=${currpages -1}" class="btn ">&lt;&lt;上一页</a>
-									<a href="${pageContext.request.contextPath}/approve/approveStatistics.do?crusername=${username}&craiid=${apid}&currpage=${currpages +1}" class="btn "> 下一页&gt;&gt;</a>
-									<a href="${pageContext.request.contextPath}/approve/approveStatistics.do?crusername=${username}&craiid=${apid}&currpage=${totalrow}" class="btn "> 尾页</a>
-									<font size="3">共<font
-										color="red">${totalrow}</font>条数据，当前<font color="#0000ff">${currpages}</font><font
-										color="red">/
-										<c:if test="${totalpage==0}">1</c:if>
-										<c:if test="${totalpage!=0}">${totalpage}</c:if>
-										</font>页
-									</font>
-								</td>
-							</tr>
-							
 					</table>
 					
 				<!-- /content-panel -->

@@ -30,10 +30,10 @@
     from poundage
     where 1=1
     <if test="uname !=null and uname !='' ">
-      and  uname = #{uname}
+      and  uname like concat(concat('%',#{uname}),'%')
     </if>
     <if test="zname !=null and zname !='' ">
-      and  zname = #{zname}
+      and  zname like concat(concat('%',#{zname}),'%')
     </if>
     <!--根据提交时间查询-->
     <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">

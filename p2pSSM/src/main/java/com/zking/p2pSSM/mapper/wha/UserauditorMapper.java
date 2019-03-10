@@ -1,7 +1,12 @@
 package com.zking.p2pSSM.mapper.wha;
 
 import com.zking.p2pSSM.model.Userauditor;
+import org.springframework.stereotype.Repository;
 
+import java.util.HashMap;
+import java.util.List;
+
+@Repository
 public interface UserauditorMapper {
     int deleteByPrimaryKey(Integer uaid);
 
@@ -9,9 +14,5 @@ public interface UserauditorMapper {
 
     int insertSelective(Userauditor record);
 
-    Userauditor selectByPrimaryKey(Integer uaid);
-
-    int updateByPrimaryKeySelective(Userauditor record);
-
-    int updateByPrimaryKey(Userauditor record);
+    List queryUserauditor(HashMap<String, Object> map);
 }

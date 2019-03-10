@@ -40,7 +40,7 @@
 							class="input _userName" maxlength="10" tabindex="1"> <span
 							id="userNameAlt" data-info="6-10个字符，字母开头，字母、数字组成">6-10个字符，字母开头，字母、数字组成</span></li>
 						<li><span class="dis">密码:</span> <input type="password"
-							 onblur="return checkupassword();"
+
 							 name="upassword" id="password" class="input _password"
 							maxlength="16" tabindex="1"> <span id="passwordAlt"
 							data-info="6-16个字符，英文、数字组成，区分大小写">6-16个字符，英文、数字组成</span></li>

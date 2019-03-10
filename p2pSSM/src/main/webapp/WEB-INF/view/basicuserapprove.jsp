@@ -70,10 +70,10 @@
 			var auditor = document.getElementById("crauditor").value;
 			//alert("integral:"+integral+"<--->viewpoint:"+viewpoint+"<--->:"+crtype+"<--->userid:"+userid+"<--->ispass:"+ispass+"<--->auditor:"+auditor);
 			if(integral!=''){
-				$.post('${pageContext.request.contextPath}/approve/updateInfoAudit.do',{"cruserid":userid,"craiid":crtype,"crviewpoint":viewpoint,"crintegral":integral,"crispass":ispass,"crauditor":auditor},function(data){
+				$.post('${pageContext.request.contextPath}/approve/updateInfoAudit',{"cruserid":userid,"craiid":crtype,"crviewpoint":viewpoint,"crintegral":integral,"crispass":ispass,"crauditor":auditor},function(data){
 					 if(data==200){
 						alert("审核成功");
-						location.href = "${pageContext.request.contextPath}/approve/infoAuditByuser.do?cruserid="+userid+"&craiid="+crtype;
+						location.href = "${pageContext.request.contextPath}/approve/infoAuditByuser?cruserid="+userid+"&craiid="+crtype;
 					 }else{
 						 alert("审核失败");
 					 }
@@ -98,10 +98,11 @@
 						<i class="fa "></i>用户资料
 					</h5>
 					<div class="col-md-14">
-					<form action="${pageContext.request.contextPath}/approve/infoAuditByuser.do" method="post"> 
+					<form action="${pageContext.request.contextPath}/approve/infoAuditByuser" method="post">
 						<button type="submit">查找</button>
 						证件种类：
 						<select name="craiid" id="craiid">
+							<option value="" ></option>
 							<c:forEach items="${approve}" var="ap">
 									<option value="${ap.aiid }" ${craiid == ap.aiid?'selected':''}>${ap.ainame }</option>
 							</c:forEach>
@@ -169,8 +170,7 @@
 							<td>
 								<c:forEach items="${useraud}" var="ua">
 								<c:if test="${user.uid == ua.userid}">
-								${ua.uauditor}
-								
+									${ua.uauditor}
 								</c:if>
 								</c:forEach>
 							</td>
