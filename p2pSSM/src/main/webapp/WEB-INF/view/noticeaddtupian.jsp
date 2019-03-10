@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    String path = request.getContextPath();
+    String basePath = request.getScheme() + "://"
+    + request.getServerName() + ":" + request.getServerPort()
+    + path + "/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
 
@@ -22,21 +24,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <link href="<%=basePath%>assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/css/zabuto_calendar.css">
     <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/js/gritter/css/jquery.gritter.css" />
-    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/lineicons/style.css">    
-    
+    <link rel="stylesheet" type="text/css" href="<%=basePath%>assets/lineicons/style.css">
+
     <!-- Custom styles for this template -->
     <link href="<%=basePath%>assets/css/style.css" rel="stylesheet">
     <link href="<%=basePath%>assets/css/style-responsive.css" rel="stylesheet">
 
     <script src="<%=basePath%>assets/js/chart-master/Chart.js"></script>
-    
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  
+
   <body>
    <!-- 导航栏 --><jsp:include page="common.jsp"></jsp:include>		
 	  <!--main content start-->
@@ -48,10 +50,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  		<!-- 页面内容 -->
 				  		
 				  		 <form class="form-horizontal style-form" method="post"
-				  		 	action="<%=basePath%>notice/notadd.do"
+				  		 	action="<%=basePath%>notice/addimg"
 				  		 	enctype="multipart/form-data"
 				  		 	>
-                          
                           <div class="form-group" align="justify">
                               <label class="col-sm-2 col-sm-2 control-label">图片描述</label>
                               <div class="col-sm-10">
@@ -81,9 +82,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                               	  <textarea class="form-control" name="noticecontent" rows="3"  ></textarea>
                               </div>
                          </div>
-							        	
-                           
-                          
                           <button type="submit" class="btn btn-primary btn-lg btn-block">提交</button>
                       </form>
 				  		

@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  		<!-- 页面内容 -->
 				  		
 				  		 <form class="form-horizontal style-form" method="post"
-				  		 	action="<%=basePath%>notice/notupd.do?noticeid=${nots.noticeid}"
+				  		 	action="<%=basePath%>notice/updno?noticeid=${nots.noticeid}"
 				  		 	enctype="multipart/form-data"
 				  		 	>
                           
@@ -72,8 +72,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 									</select>
                               </div>
                          </div>
-							 
-							
 						 <div class="form-group" align="justify">
                               <label class="col-sm-2 col-sm-2 control-label">图片</label>
                               <div class="col-sm-10">

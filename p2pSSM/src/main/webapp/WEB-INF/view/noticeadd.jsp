@@ -4,7 +4,6 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -48,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  		<!-- 页面内容 -->
 				  		
 				  		 <form class="form-horizontal style-form" method="post"
-				  		 	action="<%=basePath%>notice/notadd.do"
+				  		 	action="<%=basePath%>notice/notadd"
 				  		 	enctype="multipart/form-data"
 				  		 	>
                           
