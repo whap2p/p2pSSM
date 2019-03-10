@@ -87,17 +87,17 @@
 								<tr>
 									<td data-target="#${status.index+1}" data-toggle="modal"><a href="javascript:;">${status.index+1}</a>
 									</td>
-									<%--<td>${list.pmoney}</td>--%>		
+									<%--<td>${list.pmoney}</td>--%>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.pincome}%</td>
 									<td data-target="#${status.index+1}" data-toggle="modal"><fmt:formatDate value="${list.ptime}" /></td>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.biao.bname }</td>
-									
+
 									<%-- <td>${list.pway}</td>
 									<td><fmt:formatDate value="${list.pcount}" /></td>
 									<td>${list.progress }%</td>
 									<td>${list.psaveway }</td>
 									<td>${list.prateben }</td> --%>
-									
+
 									<td data-target="#${status.index+1}" data-toggle="modal"><fmt:formatDate value="${list.ppublishtime}" /></td>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.pname }</td>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.ptotalmoney }</td>
@@ -397,7 +397,7 @@
 </script>
 
 <script type="text/javascript">
-	
+
 </script>
 
 <script>

@@ -92,7 +92,7 @@ public class common {
         return str + "bk_list_pro";
     }
     //添加投标
-    @RequestMapping("product/input")
+    @RequestMapping("product/addbiao")
     public String addpro(Model model){
         return str + "bk_input_pro";
     }
@@ -137,31 +137,31 @@ public class common {
 //        return str + "bk_list_pro";
 //    }
     //6认证项管理
-    //新用户认证资料
-    @RequestMapping("approve/anewuserInfoList")
-    private String newuserInfoList(Model model) {
-        return str + "anewuserinfolist";
-    }
-    //用户资料认证
-    @RequestMapping("approve/basicInfoApprove")
-    private String basicInfoaudit(Model model,@RequestParam(value = "currpage", required = false) String currpage) {
-        return str+"basicinfoList";
-    }
-    //认证资料统计
-    @RequestMapping("approve/approveStatistics")
-    private String approveStatistics(Model model, Certifrecord cr, @RequestParam(value = "currpage", required = false) String currpage){
-        return str+"approvestatistics";
-    }
-    //信用额度申请
-    @RequestMapping("approve/limitApplyforlist")
-    private String limitApplyfor(Model model){
-        return str+"limitapplyforlist";
-    }
-    //认证项设置
-    @RequestMapping("approve/traverseApproves")
-    private String traverseApproves(Model model){
-        return str + "approvelist";
-    }
+//    //新用户认证资料
+//    @RequestMapping("approve/anewuserInfoList")
+//    private String newuserInfoList(Model model) {
+//        return str + "anewuserinfolist";
+//    }
+//    //用户资料认证
+//    @RequestMapping("approve/basicInfoApprove")
+//    private String basicInfoaudit(Model model,@RequestParam(value = "currpage", required = false) String currpage) {
+//        return str+"basicinfoList";
+//    }
+//    //认证资料统计
+//    @RequestMapping("approve/approveStatistics")
+//    private String approveStatistics(Model model, Certifrecord cr, @RequestParam(value = "currpage", required = false) String currpage){
+//        return str+"approvestatistics";
+//    }
+//    //信用额度申请
+//    @RequestMapping("approve/limitApplyforlist")
+//    private String limitApplyfor(Model model){
+//        return str+"limitapplyforlist";
+//    }
+//    //认证项设置
+//    @RequestMapping("approve/traverseApproves")
+//    private String traverseApproves(Model model){
+//        return str + "approvelist";
+//    }
     //7权限管理
     //权限列表
 //    @RequestMapping("limit/findlist")

@@ -14,4 +14,11 @@ public interface WhaUsersService {
      * @return
      */
     List queryUsersPager(Users users, PageBean pageBean);
+
+    /**
+     * 根据用户ID查询单个用户
+     * @param uid
+     * @return
+     */
+    Users selectByPrimaryKey(Integer uid);
 }

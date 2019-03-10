@@ -13,13 +13,26 @@
   <sql id="Base_Column_List" >
     uaid, userid, username, uauditorid, uauditor
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from userauditor
-    where uaid = #{uaid,jdbcType=INTEGER}
+
+  <select id="queryUserauditor" resultMap="BaseResultMap" parameterType="map">
+    select * from userauditor where 1=1
+    <if test="uaid!=null and uaid != ''">
+      and uaid like  concat(concat('%',#{uaid}),'%')
+    </if>
+    <if test="userid!=null and userid != ''">
+      and userid like  concat(concat('%',#{userid}),'%')
+    </if>
+    <if test="username!=null and username != ''">
+      and username like  concat(concat('%',#{username}),'%')
+    </if>
+    <if test="uauditorid!=null and uauditorid != ''">
+      and uauditorid like  concat(concat('%',#{uauditorid}),'%')
+    </if>
+    <if test="uauditor!=null and uauditor != ''">
+      and uauditor like  concat(concat('%',#{uauditor}),'%')
+    </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from userauditor
     where uaid = #{uaid,jdbcType=INTEGER}
   </delete>
@@ -66,30 +79,5 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Userauditor" >
-    update userauditor
-    <set >
-      <if test="userid != null" >
-        userid = #{userid,jdbcType=INTEGER},
-      </if>
-      <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="uauditorid != null" >
-        uauditorid = #{uauditorid,jdbcType=INTEGER},
-      </if>
-      <if test="uauditor != null" >
-        uauditor = #{uauditor,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where uaid = #{uaid,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Userauditor" >
-    update userauditor
-    set userid = #{userid,jdbcType=INTEGER},
-      username = #{username,jdbcType=VARCHAR},
-      uauditorid = #{uauditorid,jdbcType=INTEGER},
-      uauditor = #{uauditor,jdbcType=VARCHAR}
-    where uaid = #{uaid,jdbcType=INTEGER}
-  </update>
+
 </mapper>

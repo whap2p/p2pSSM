@@ -24,37 +24,24 @@
 
     <title>后台</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="<%=basePath%>assets/css/bootstrap.css" rel="stylesheet">
-    <!--external css-->
     <link href="<%=basePath%>assets/font-awesome/css/font-awesome.css"
           rel="stylesheet"/>
 
-    <!-- Custom styles for this template -->
     <link href="<%=basePath%>assets/css/style.css" rel="stylesheet">
     <link href="<%=basePath%>assets/css/style-responsive.css"
           rel="stylesheet">
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 
 <section id="container">
-    <!-- **********************************************************************************************************************************************************
-  TOP BAR CONTENT & NOTIFICATIONS
-  *********************************************************************************************************************************************************** -->
-    <!--header start-->
     <header class="header black-bg">
         <div class="sidebar-toggle-box">
             <div class="fa fa-bars tooltips" data-placement="right"
                  data-original-title="Toggle Navigation"></div>
         </div>
-        <!--logo start-->
         <a href="<%=basePath%>log/tologin.do" class="logo"><b>后台管理系统</b></a>
 
         <div class="top-menu">
@@ -62,16 +49,8 @@
                 <li><a class="logout" href="<%=basePath%>log/to_login">退出登录</a></li>
             </ul>
         </div>
-        <!-- <div class="top-menu">
-            <ul class="nav pull-right top-menu">
-                <li><a class="logout"
-                    href="javascript:location.replace('lock_screen.jsp')">锁屏</a></li>
-            </ul>
-        </div> -->
     </header>
-    <!--header end-->
 
-    <!--sidebar start-->
     <aside>
         <div id="sidebar" class="nav-collapse ">
             <!-- sidebar menu start-->
@@ -175,12 +154,12 @@
                         <ul class="sub">
                             <r:hasPermission name="10041">
                             <li>
-                                <a href="<%=basePath%>/product/list">»投标列表</a>
+                                <a href="<%=basePath%>product/list0">»投标列表</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10042">
                             <li>
-                                <a href="<%=basePath%>/product/input">»添加投标</a>
+                                <a href="<%=basePath%>product/addbiao">»添加投标</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10043">
@@ -190,38 +169,38 @@
                             </r:hasPermission>
                             <r:hasPermission name="10044">
                             <li>
-                                <a href="<%=basePath%>/biao/input">»添加标种</a>
+                                <a href="<%=basePath%>biao/input">»添加标种</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10045">
                             <li>
-                                <a href="<%=basePath%>/brower/qurey">»所有借款</a>
+                                <a href="<%=basePath%>brower/qurey">»所有借款</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10046">
                             <li>
-                                <a href="<%=basePath%>/brower/check">»待审核的借款</a>
+                                <a href="<%=basePath%>brower/check">»待审核的借款</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10047">
                             <li>
-                                <a href="<%=basePath%>/product/list">»招标中的借款</a>
+                                <a href="<%=basePath%>product/list">»招标中的借款</a>
 
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10048">
                             <li>
-                                <a href="<%=basePath%>/brower/tohk">»还款</a>
+                                <a href="<%=basePath%>brower/tohk">»还款</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="10049">
                             <li>
-                                <a href="<%=basePath%>/product/list">»满标借款</a>
+                                <a href="<%=basePath%>product/list">»满标借款</a>
                             </li>
                             </r:hasPermission>
                             <r:hasPermission name="100141">
                             <li>
-                                <a href="<%=basePath%>/product/list">»还款方式</a>
+                                <a href="<%=basePath%>product/list">»还款方式</a>
                             </li>
                             </r:hasPermission>
                         </ul>
@@ -283,16 +262,6 @@
         </div>
 
     </aside>
-    <!--sidebar end-->
-
-    <!-- **********************************************************************************************************************************************************
-  MAIN CONTENT
-  *********************************************************************************************************************************************************** -->
-    <!--main content start-->
-    <!-- /MAIN CONTENT -->
-
-    <!--main content end-->
-    <!--footer start-->
     <footer class="site-footer">
         <div class="text-center">
             2014 - Alvarez.is <a href="http://www.mycodes.net/" target="_blank">Դ��֮��</a>
@@ -300,32 +269,19 @@
             </a>
         </div>
     </footer>
-    <!--footer end-->
 </section>
 
-<!-- js placed at the end of the document so the pages load faster -->
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>
-<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
-<script class="include" type="text/javascript"
-        src="assets/js/jquery.dcjqaccordion.2.7.js"></script>
-<script src="assets/js/jquery.scrollTo.min.js"></script>
-<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>
+<%--<script src="assets/js/jquery.js"></script>--%>
+<%--<script src="assets/js/bootstrap.min.js"></script>--%>
+<%--<script src="assets/js/jquery-ui-1.9.2.custom.min.js"></script>--%>
+<%--<script src="assets/js/jquery.ui.touch-punch.min.js"></script>--%>
+<%--<script class="include" type="text/javascript"--%>
+        <%--src="assets/js/jquery.dcjqaccordion.2.7.js"></script>--%>
+<%--<script src="assets/js/jquery.scrollTo.min.js"></script>--%>
+<%--<script src="assets/js/jquery.nicescroll.js" type="text/javascript"></script>--%>
 
 
-<!--common script for all pages-->
-<script src="assets/js/common-scripts.js"></script>
-
-<!--script for this page-->
-
-<script>
-    //custom select box
-
-    $(function () {
-        // $('select.styled').customSelect();
-    });
-</script>
+<%--<script src="assets/js/common-scripts.js"></script>--%>
 
 </body>
 </html>

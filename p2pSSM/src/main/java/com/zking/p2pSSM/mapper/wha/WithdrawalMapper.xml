@@ -44,8 +44,8 @@
         and  statu = #{btn}
       </if>
       <!--根据用户名查询-->
-      <if test="btn !=null and btn !='' ">
-        and  statu = #{btn}
+      <if test="uname !=null and uname !='' ">
+        and  uname like concat(concat('%',#{uname}),'%')
       </if>
       <!--根据提交时间查询-->
       <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">

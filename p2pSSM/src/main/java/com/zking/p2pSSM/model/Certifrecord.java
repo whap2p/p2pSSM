@@ -30,7 +30,7 @@ public class Certifrecord {
     private String crimg;
 
     private Date crupldate;
-
+    private Integer checkpend;//待审核
     public Certifrecord(Integer crid, Integer cruserid, String crusername, Integer craiid, String crainame, String craitype, String crispass, Date crdate, String crauditor, Integer crintegral, String crviewpoint, String crimg, Date crupldate) {
         this.crid = crid;
         this.cruserid = cruserid;
@@ -153,5 +153,12 @@ public class Certifrecord {
 
     public void setCrupldate(Date crupldate) {
         this.crupldate = crupldate;
+    }
+    public Integer getCheckpend() {
+        return checkpend;
+    }
+
+    public void setCheckpend(Integer checkpend) {
+        this.checkpend = checkpend;
     }
 }
