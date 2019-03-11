@@ -5,7 +5,7 @@
 			+ path + "/";
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%@ taglib prefix="z" uri="/zking" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -66,7 +66,7 @@
 				<div class="content-panel">
 					<h4>
 						<i class="fa "></i><a
-							href="${pageContext.request.contextPath}/approve/toaddApprove.do"
+							href="${pageContext.request.contextPath}/approve/toaddApprove"
 							class="btn btn-success btn-ls ">点击添加认证项</a>
 					</h4>
 					<hr>
@@ -95,34 +95,22 @@
 										</c:if> <c:if test="${ai.aistate==1}">
 											<span class="label label-success label-mini">未弃用</span>
 										</c:if></td>
-									<td><a href="${pageContext.request.contextPath}/approve/toupdateApprove.do?aiid=${ai.aiid}" class="btn btn-success btn-ms fa fa-pencil">修改</a>
+									<td><a href="${pageContext.request.contextPath}/approve/toupdateApprove?aiid=${ai.aiid}" class="btn btn-success btn-ms fa fa-pencil">修改</a>
 										<c:if test="${ai.aistate==0}">
-											<a
-												href="${pageContext.request.contextPath}/approve/updateApprove.do?aiid=${ai.aiid}&aistate=1"
+											<a href="${pageContext.request.contextPath}/approve/updateApprove?aiid=${ai.aiid}&aistate=1"
 												class="btn btn-success btn-ms fa fa-check">启用</a>
 										</c:if> <c:if test="${ai.aistate==1}">
-											<a
-												href="${pageContext.request.contextPath}/approve/updateApprove.do?aiid=${ai.aiid}&aistate=0"
+											<a href="${pageContext.request.contextPath}/approve/updateApprove?aiid=${ai.aiid}&aistate=0"
 												class="btn btn-danger btn-ms fa fa-trash-o"
 												onclick="check_abandon()">弃用</a>
 										</c:if></td>
 								</tr>
 							</c:forEach>
-							<tr align="center">
-								<td colspan="5">
-									<a href="${pageContext.request.contextPath}/approve/traverseApproves.do?currpage=1" class="btn btn-success btn-ms ">首页</a>
-									<a href="${pageContext.request.contextPath}/approve/traverseApproves.do?currpage=${currpages-1}" class="btn btn-success btn-ms ">&lt;&lt;上一页</a>
-									<a href="${pageContext.request.contextPath}/approve/traverseApproves.do?currpage=${currpages+1}" class="btn btn-success btn-ms "> 下一页&gt;&gt;</a>
-									<a href="${pageContext.request.contextPath}/approve/traverseApproves.do?currpage=${totalpage}" class="btn btn-success btn-ms "> 尾页</a>
-									
-									<font size="3">共<font
-										color="red">${totalrow}</font>条数据，当前<font color="#0000ff">${currpages}</font><font
-										color="red">/${totalpage}</font>页
-									</font>
-								</td>
-							</tr>
 						</tbody>
 					</table>
+					<ul class="pagination" >
+						<z:page pageBean="${pageBean }"></z:page>
+					</ul>
 				</div>
 				<!-- /content-panel -->
 			</div>

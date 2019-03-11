@@ -29,7 +29,10 @@
     where eid = #{eid,jdbcType=INTEGER}
   </select>
     <select id="queryEmployee" resultMap="BaseResultMap" parameterType="com.zking.p2pSSM.model.Employee">
-        select * from Employee	where estatus=1
+        select * from Employee	where 1=1
+      <if test="estatus !=null and estatus !='' ">
+        and estatus = #{estatus}
+      </if>
       <if test="ename != null and ename != '' ">
          and ename like concat(concat('%',#{ename}),'%')
       </if>

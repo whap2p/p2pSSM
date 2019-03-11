@@ -25,7 +25,7 @@
       from dept
       where 1 = 1
       <if test="did !=null and did != '' ">
-        and did like #{did}
+        and did = #{did}
       </if>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >

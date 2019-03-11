@@ -83,45 +83,27 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${hhjproductshow}" var="list" varStatus="status">
+							<c:forEach items="${list}" var="list" varStatus="status">
 								<tr>
 									<td data-target="#${status.index+1}" data-toggle="modal"><a href="javascript:;">${status.index+1}</a>
 									</td>
-									<%--<td>${list.pmoney}</td>--%>		
+									<%--<td>${list.pmoney}</td>--%>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.pincome}%</td>
 									<td data-target="#${status.index+1}" data-toggle="modal"><fmt:formatDate value="${list.ptime}" /></td>
-									<c:forEach items="${biaovalue}" var="bb">
-										<c:if test="${list.ptype == bb.id}">
-										<td data-target="#${status.index+1}" data-toggle="modal">${bb.bname}</td>
-										</c:if>
-									</c:forEach>
-									
-									
+									<td data-target="#${status.index+1}" data-toggle="modal">${list.biao.bname }</td>
+
 									<%-- <td>${list.pway}</td>
 									<td><fmt:formatDate value="${list.pcount}" /></td>
 									<td>${list.progress }%</td>
 									<td>${list.psaveway }</td>
 									<td>${list.prateben }</td> --%>
-									
+
 									<td data-target="#${status.index+1}" data-toggle="modal"><fmt:formatDate value="${list.ppublishtime}" /></td>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.pname }</td>
 									<td data-target="#${status.index+1}" data-toggle="modal">${list.ptotalmoney }</td>
 									<%-- <td>${list.prange }</td>
 									<td>${list.puse }</td> --%>
-									<c:if test="${list.pstate==1}">
-										<td data-target="#${status.index+1}" data-toggle="modal">筹资中</td>
-									</c:if>
-									<c:if test="${list.pstate==2}">
-									<td data-target="#${status.index+1}" data-toggle="modal">筹资完</td>
-									</c:if>
-									<c:if test="${list.pstate==3}">
-										<td data-target="#${status.index+1}" data-toggle="modal">失效</td>
-									</c:if>
-									<c:if test="${list.pstate==4}">
-										<td data-target="#${status.index+1}" data-toggle="modal">失效</td>
-									</c:if>
-
-									<%--<td data-target="#${status.index+1}" data-toggle="modal"><c:if test="${list.pstate==1}">筹集中</c:if> <c:if
+									<td data-target="#${status.index+1}" data-toggle="modal"><c:if test="${list.pstate==1}">筹集中</c:if> <c:if
 											test="${list.pstate==2}">已筹集完</c:if> <c:if
 											test="${list.pstate==3}">失效</c:if></td>
 									<td data-target="#${status.index+1}" data-toggle="modal"><c:if test="${list.picture!=null&&list.picture!=''}">
@@ -129,14 +111,13 @@
 												src="${list.picture}" />
 										</c:if> <c:if test="${list.picture==null}">
 											<input type="hidden" src="<%=basePath%>${list.picture}" />
-										</c:if></td>--%>
+										</c:if></td>
 									<%-- <td>${list.users.uname}</td>
 									<td>${list.pdesc }</td>
 									<td>${list.psafe }</td> --%>
-									<td>
-										<%--<a href="<%=basePath%>/product/biaolist.do?bid=${list.biao.id }">查看投标数</a>--%>
-										<%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/><a--%>
-										<a href="<%=basePath%>/hhjproduct//deleteByPrimaryKey?id=${list.id}">删除</a>
+									<td><a
+										href="<%=basePath%>/product/biaolist.do?bid=${list.biao.id }">查看投标数</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br/><a
+										href="<%=basePath%>/product/delete.do?pid=${list.id}">删除</a>
 										</td>
 								</tr>
 								<!-- 弹出框 -->
@@ -156,7 +137,7 @@
 												</div>
 												<div class="alert alert-success">
 													<b><font><font>已募集总金额 </font></font></b><font><font>
-														${list.pmoney}</font></font>
+															${list.pmoney}</font></font>
 												</div>
 												<div class="alert alert-info">
 													<b><font><font>预期年化收益 </font></font></b><font><font>${list.pincome}%</font></font>
@@ -165,27 +146,27 @@
 													<b><font><font>项目期限 </font></font></b><font><font>${list.pmoney }</font></font>
 												</div>
 												<div class="alert alert-danger">
-													<b><font><font>类型</font></font></b><font><font>${list.ptype}</font></font>
+													<b><font><font>类型</font></font></b><font><font>${list.biao.bname }</font></font>
 												</div>
 												<div class="alert alert-success">
 													<b><font><font>还款方式 </font></font></b><font><font>${list.pway}
-												</font></font>
+													</font></font>
 												</div>
 												<div class="alert alert-success">
 													<b><font><font>借款期限 </font></font></b><font><font>${list.pcount}
-												</font></font>
+													</font></font>
 												</div>
 												<div class="alert alert-success">
 													<b><font><font>投资进度 </font></font></b><font><font>${list.progress }
-												</font></font>
+													</font></font>
 												</div>
 												<div class="alert alert-danger">
 													<b><font><font>保障方式 </font></font></b><font><font>
-														${list.psaveway } </font></font>
+															${list.psaveway } </font></font>
 												</div>
 												<div class="alert alert-danger">
 													<b><font><font>需还本息</font></font></b><font><font>
-														${list.prateben } </font></font>
+															${list.prateben } </font></font>
 												</div>
 												<div class="alert alert-danger">
 													<b><font><font>发布时间 </font></font></b><font><font>
@@ -202,15 +183,31 @@
 												</div>
 												<div class="alert alert-danger">
 													<b><font><font>投资范围 </font></font></b><font><font>${list.prange }
-												</font></font>
+													</font></font>
 												</div>
 												<div class="alert alert-danger">
 													<b><font><font>资金用途 </font></font></b><font><font>
-														${list.puse } </font></font>
+															${list.puse } </font></font>
 												</div>
 												<div class="alert alert-danger">
 													<b><font><font>状态 </font></font></b><font><font>
 															${list.pstate } </font></font>
+												</div>
+												<div class="alert alert-danger">
+													<b><font><font>封面 </font></font></b><font><font>${list.picture }
+													</font></font>
+												</div>
+												<div class="alert alert-danger">
+													<b><font><font>标主姓名 </font></font></b><font><font>
+															${list.users.uname} </font></font>
+												</div>
+												<div class="alert alert-danger">
+													<b><font><font>项目描述 </font></font></b><font><font>${list.pdesc }
+													</font></font>
+												</div>
+												<div class="alert alert-danger">
+													<b><font><font>保障措施 </font></font></b><font><font>
+															${list.psafe } </font></font>
 												</div>
 											</div>
 											<div class="modal-footer">
@@ -227,16 +224,16 @@
 						<tbody>
 							<tr align="center">
 								<td colspan="19"><a
-									href="${pageContext.request.contextPath}/hhjproduct/productshow?pager=1"
+									href="${pageContext.request.contextPath}/product/list.do?currpage=1"
 									class="btn btn-success btn-ms ">首页</a> <a
-									href="${pageContext.request.contextPath}/hhjproduct/productshow?pager=${hhjproductshowPage-1}"
+									href="${pageContext.request.contextPath}/product/list.do?currpage=${currpages-1}"
 									class="btn btn-success btn-ms ">&lt;&lt;上一页</a> <a
-									href="${pageContext.request.contextPath}/hhjproduct/productshow?pager=${hhjproductshowPage+1}"
+									href="${pageContext.request.contextPath}/product/list.do?currpage=${currpages+1}"
 									class="btn btn-success btn-ms "> 下一页&gt;&gt;</a> <a
-									href="${pageContext.request.contextPath}/hhjproduct/productshow?pager=${hhjproductshowPageMax}"
+									href="${pageContext.request.contextPath}/product/list.do?currpage=${totalpage}"
 									class="btn btn-success btn-ms "> 尾页</a> <font size="3">共<font
-										color="red">${hhjproductshowsize}</font>条数据，当前<font color="#0000ff">${hhjproductshowPage}</font><font
-										color="red">/${hhjproductshowPageMax}</font>页
+										color="red">${totalrow}</font>条数据，当前<font color="#0000ff">${currpages}</font><font
+										color="red">/${totalpage}</font>页
 								</font></td>
 							</tr>
 						</tbody>
@@ -400,7 +397,7 @@
 </script>
 
 <script type="text/javascript">
-	
+
 </script>
 
 <script>

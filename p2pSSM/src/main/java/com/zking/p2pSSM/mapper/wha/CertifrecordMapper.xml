@@ -28,7 +28,40 @@
     from certifrecord
     where crid = #{crid,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="queryCertifrecord" resultMap="BaseResultMap" parameterType="map">
+       select
+       <include refid="Base_Column_List" />
+       from certifrecord
+       where 1=1
+        <if test="crid !=null and crid !='' ">
+            and  crid  = #{crid}
+        </if>
+      <if test="cruserid != null and cruserid != '' ">
+        and  cruserid = #{cruserid}
+      </if>
+      <if test="crusername != null and crusername != '' ">
+        and crusername like  '%${crusername}%'
+      </if>
+      <if test="craiid != null and craiid != '' ">
+        and craiid =  #{craiid}
+      </if>
+      <if test="crainame != null and crainame != '' ">
+        and crainame like  '%${crainame}%'
+      </if>
+      <if test="craitype != null and craitype != '' ">
+        and craitype like  '%${craitype}%'
+      </if>
+      <if test="crispass != null and crispass != '' ">
+        and crispass like  '%${crispass}%'
+      </if>
+      <if test="crauditor != null and crauditor != '' ">
+        and crauditor like  '%${crauditor}%'
+      </if>
+      <if test="crintegral != null and crintegral != '' ">
+        and crintegral like '%${crintegral}%'
+      </if>
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from certifrecord
     where crid = #{crid,jdbcType=INTEGER}
   </delete>

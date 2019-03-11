@@ -18,4 +18,9 @@ class WhaUsersServiceImpl implements WhaUsersService {
     public List queryUsersPager(Users users, PageBean pageBean) {
         return usersMapper.queryUsers(users);
     }
+
+    @Override
+    public Users selectByPrimaryKey(Integer uid) {
+        return usersMapper.selectByPrimaryKey(uid);
+    }
 }

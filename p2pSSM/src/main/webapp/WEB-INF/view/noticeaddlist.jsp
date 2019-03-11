@@ -1,6 +1,7 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
+
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 			+ request.getServerName() + ":" + request.getServerPort()
@@ -8,6 +9,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="ft" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="/zking" prefix="z" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,27 +45,31 @@
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js">< /script>
     <![endif]-->
 </head>
-<script type="text/javascript">
+<%--<script  type="text/javascript">
 	function ongaib() {
 		var va=document.getElementById("ong").value;
-			window.location.href="<%=basePath%>notice/notlists.do?ids="+va;
+			window.location.href="<%=basePath%>notice/notlist?noticetype="+va;
 	}
 
-</script>
+</script>--%>
 <body>
 	<!-- 导航栏 --><jsp:include page="common.jsp"></jsp:include>
+    <form class="form-horizontal style-form" method="post"
+          action="<%=basePath%>notice/notlists"
+          enctype="multipart/form-data"
+    >
 	<!--main content start-->
 	<section id="main-content">
 		<section class="wrapper">
 			<!-- 内容开始 -->
 			<div class="col-md-12 mt">
-				<div class="content-panel">
+				<%--<div class="content-panel">
 					<h4>
 						<i class="fa fa-angle-right"></i>公告列表
-						<select onchange="ongaib();" id="ong">
+						<select onchange="ongaib();" id="ong" name="noticetype">
 							<option value="">选择分类</option>
 							<option value="1">网站公告</option>
 							<option value="2">媒体报道</option>
@@ -71,7 +77,7 @@
 							<option value="4">合作伙伴</option>
 							<option value="5">团队风采</option>
 						</select>
-					</h4>
+					</h4>--%>
 					<hr>
 					<table class="table table-hover">
 						<thead>
@@ -79,13 +85,12 @@
 								<th>公告标题</th>
 								<th>公告类型</th>
 								<th>公告内容</th>
-								
 								<th>公告最后修改时间</th>
 								<th>操作</th>
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${list}" var="list" varStatus="status">
+						<c:forEach items="${noticelist}" var="list" varStatus="status">
 							<c:if test="${list.noticetype!='6' }">
 							<tr >
 								<td  data-target="#${list.noticeid }" data-toggle="modal" >
@@ -103,9 +108,9 @@
 								<td data-target="#${list.noticeid }" data-toggle="modal">
 									<fmt:formatDate value="${list.noticelasttime }"/></td>
 								<td>
-								<a href="<%=basePath%>notice/sgetno.do?ids=${list.noticeid}">修改</a>
+								<a href="<%=basePath%>notice/findone?noticeid=${list.noticeid}">修改</a>
 								&nbsp;&nbsp;
-								<a href="<%=basePath%>notice/notdel.do?ids=${list.noticeid}&isd=${list.noticetype}">删除</a>
+								<a href="<%=basePath%>notice/notdel?noticeid=${list.noticeid}">删除</a>
 								</td>
 							</tr>
 							</c:if>
@@ -131,7 +136,7 @@
 										</font></font>
 									</div>
 							        <div class="alert alert-info"><b><font><font>最后修改时间: </font></font></b><font><font><fmt:formatDate value="${list.noticelasttime }"/></font></font></div>
-							        
+
 							      </div>
 							      <div class="modal-footer">
 							        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -140,13 +145,21 @@
 							  </div>
 							 </div>
 	                         <!--  -->
-		
+
 						</c:forEach>
 
 						</tbody>
 						<tbody>
 						<tbody>
-							<tr>
+					<tr>
+						<td colspan="7" align="center">
+							<div class="btn-group" align="center">
+								<z:page pageBean="${pagebean }"></z:page>
+							</div>
+						</td>
+
+					</tr>
+							<%--<tr>
 								<td colspan="7" align="center">
 									<div class="btn-group" align="center">
 										<button type="button" class="btn btn-default">
@@ -155,14 +168,14 @@
 											<button type="button" class="btn btn-default">
 												<font><font>1</font></font>
 												<tton>
-												
+
 													<button type="button" class="btn btn-default">
 														<font><font>末页</font></font>
 														<tton>
 									</div>
 								</td>
 
-							</tr>
+							</tr>--%>
 						</tbody>
 
 					</table>
@@ -173,6 +186,7 @@
 		</section>
 		<! --/wrapper -->
 	</section>
+    </form>
 	<!-- /MAIN CONTENT -->
 </body>
 

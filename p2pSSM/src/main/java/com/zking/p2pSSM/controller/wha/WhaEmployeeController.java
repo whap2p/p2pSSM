@@ -30,6 +30,7 @@ public class WhaEmployeeController {
 		PageBean pageBean=new PageBean();
 		pageBean.setRequest(request);
 		List<Employee> emplist = whaEmployeeService.queryEmployeePager(employee,pageBean);
+		System.out.println("12334567890:"+emplist.toString());
 		request.setAttribute("emp", emplist);
 		// 查询部门
 		List<Dept> deptlist = deptService.queryDeptPager(null,null);

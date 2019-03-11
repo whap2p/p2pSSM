@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="/zking" prefix="z" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -76,7 +77,7 @@
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach items="${list}" var="list" varStatus="status">
+						<c:forEach items="${imglist}" var="list" varStatus="status">
 							<tr >
 								<td  data-target="#${list.noticeid }" data-toggle="modal" >
 								${ft:substring(list.noticetitle,0,9) }...</td>
@@ -94,14 +95,13 @@
 								<td data-target="#${list.noticeid }" data-toggle="modal">
 									<fmt:formatDate value="${list.noticelasttime }"/></td>
 								<td>
-								<a href="<%=basePath%>notice/sgetno.do?ids=${list.noticeid}">修改</a>
+								<a href="<%=basePath%>notice/findone?noticeid=${list.noticeid}">修改</a>
+							<%--	&nbsp;&nbsp;
+								<a href="<%=basePath%>notice/nottop.do?ids=${list.noticeid}&isd=${list.noticetype}">置顶</a>--%>
 								&nbsp;&nbsp;
-								<a href="<%=basePath%>notice/nottop.do?ids=${list.noticeid}&isd=${list.noticetype}">置顶</a>
-								&nbsp;&nbsp;
-								<a href="<%=basePath%>notice/notdel.do?ids=${list.noticeid}&isd=${list.noticetype}">删除</a>
+								<a href="<%=basePath%>notice/notimgdel?noticeid=${list.noticeid}">删除</a>
 								</td>
 							</tr>
-							
  							<!-- 弹出框 -->
 							<div class="modal fade" id="${list.noticeid }" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 							  <div class="modal-dialog">
@@ -140,7 +140,15 @@
 						</tbody>
 						<tbody>
 						<tbody>
-							<tr>
+						<tr>
+						<td colspan="7" align="center">
+							<div class="btn-group" align="center">
+								<z:page pageBean="${pageBean }"></z:page>
+							</div>
+						</td>
+
+					</tr>
+						<%--	<tr>
 								<td colspan="7" align="center">
 									<div class="btn-group" align="center">
 										<button type="button" class="btn btn-default">
@@ -155,7 +163,7 @@
 									</div>
 								</td>
 
-							</tr>
+							</tr>--%>
 						</tbody>
 
 					</table>

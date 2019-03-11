@@ -6,7 +6,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-
+<%@ taglib uri="/zking" prefix="z" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,13 +64,6 @@
 							<td>序号</td>
 							<td>用户名</td>
 							<td>真实姓名</td>
-<%-- 							<c:forEach items="${ap}" var="ap"> --%>
-
-<%-- 								<c:if test="${ap.aitype=='1' and ap.aistate=='1' }"> --%>
-<%-- 									<td>${ap.ainame}</td> --%>
-<%-- 								</c:if> --%>
-
-<%-- 							</c:forEach> --%>
 							<td>跟踪审核</td>
 							<td>操作</td>
 						</tr>
@@ -79,54 +72,18 @@
 								<td>${i.index+1}</td>
 								<td>${u.unickname}</td>
 								<td>${u.uname}</td>
-<%-- 								<c:forEach items="${ap}" var="ap" varStatus="x"> --%>
-<%-- 									<c:if test="${ap.aitype=='1' and ap.aistate=='1' }"><!-- 循环列 --> --%>
-<!-- 										<td> -->
-<%-- 										<c:forEach items="${cr }" var="cr" varStatus="code"> --%>
-										 
-<%-- 											<c:choose> --%>
-<%-- 												<c:when test="${cr.cruserid == u.uid and cr.craiid==ap.aiid }"> --%>
-<%-- 													<c:if test="${cr.crispass=='1'}"> --%>
-<!-- 														待审核 -->
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${cr.crispass=='2'}"> --%>
-<!-- 														审核成功 -->
-<%-- 													</c:if> --%>
-<%-- 													<c:if test="${cr.crispass=='3'}"> --%>
-<!-- 														审核失败 -->
-<%-- 													</c:if> --%>
-<%-- 												</c:when> --%>
-<%-- 												<c:otherwise> --%>
-													
-<%-- 												</c:otherwise> --%>
-<%-- 											</c:choose> --%>
-  											
-<%-- 										</c:forEach> --%>
-<!-- 										</td> -->
-<%-- 									</c:if> --%>
-<%-- 								</c:forEach> --%>
 								<td><c:forEach items="${ua}" var="ua">
 										<c:if test="${ua.userid==u.uid }">
 										${ua.uauditor}
 									</c:if>
 									</c:forEach></td>
-								<td><a href="${pageContext.request.contextPath}/approve/infoAuditByuser.do?cruserid=${u.uid}&craiid=1">查看</a></td>
+								<td><a href="infoAuditByuser?cruserid=${u.uid}&craiid=1">查看</a></td>
 							</tr>
 						</c:forEach>
-						<tr align="center">
-							<td colspan="5">
-									<a href="${pageContext.request.contextPath}/approve/basicInfoApprove.do?currpage=1" class="btn btn-success btn-ms ">首页</a>
-									<a href="${pageContext.request.contextPath}/approve/basicInfoApprove.do?currpage=${currpages-1}" class="btn btn-success btn-ms ">&lt;&lt;上一页</a>
-									<a href="${pageContext.request.contextPath}/approve/basicInfoApprove.do?currpage=${currpages+1}" class="btn btn-success btn-ms "> 下一页&gt;&gt;</a>
-									<a href="${pageContext.request.contextPath}/approve/basicInfoApprove.do?currpage=${totalpage}" class="btn btn-success btn-ms "> 尾页</a>
-									<font size="3">共<font
-										color="red">${totalrow}</font>条数据，当前<font color="#0000ff">${currpages}</font><font
-										color="red">/${totalpage}</font>页
-									</font>
-								</td>
-						</tr>
 					</table>
-
+					<ul class="pagination">
+						<z:page pageBean="${pageBean }"></z:page>
+					</ul>
 				</div>
 				<!-- /content-panel -->
 			</div>

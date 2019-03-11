@@ -111,10 +111,10 @@
 			alert("请选择审核人");
 			return false;
 		}else{
-			$.post('${pageContext.request.contextPath}/approve/affirmCrauditor.do',{"uauditor":auditor,"userid":userid,"uauditorid":auditorid,"username":username},function(data){
+			$.post('affirmCrauditor',{"uauditor":auditor,"userid":userid,"uauditorid":auditorid,"username":username},function(data){
 				 if(data==200){
 					alert("添加成功");
-					location.href = "${pageContext.request.contextPath}/approve/newuserInfoList.do";
+					location.href = "${pageContext.request.contextPath}/approve/anewuserInfoList";
 				 }else{
 					 alert("添加失败");
 				 }
@@ -138,7 +138,7 @@
 						<i class="fa "></i>新用户认证资料
 					</h4>
 					<hr>
-					<form id="frm1" name="frm1" action="${pageContext.request.contextPath}/approve/affirmCrauditor.do" method="post">
+					<form id="frm1" name="frm1" action="${pageContext.request.contextPath}/approve/affirmCrauditor" method="post">
 					<table class="table table-striped table-advance table-hover">
 						<thead>
 							<tr>
@@ -151,7 +151,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							
 							<c:forEach items="${users}" var="u" varStatus="subscript">
 							
 								<tr>
