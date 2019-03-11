@@ -127,17 +127,7 @@
       other = #{other,jdbcType=VARCHAR}
     where tID = #{tID,jdbcType=INTEGER}
   </update>
-  <select id="queryTrade" resultType="com.zking.p2pSSM.model.Trade" parameterType="map">
+  <select id="queryTrade" resultType="com.zking.p2pSSM.model.Trade" parameterType="java.lang.Integer">
     select * from trade where 1=1 and uID = #{uid}
-    <if test="yyy !=null and yyy!=''  and yyyy !=null  and yyyy!='' ">
-      and  STR_TO_DATE(txtime,'%Y-%m-%d')
-      BETWEEN STR_TO_DATE(#{yyy},'%Y-%m-%d') AND STR_TO_DATE(#{yyyy},'%Y-%m-%d')
-    </if>
-    <if test="what != null and what != ''">
-      and what like concat(concat('%', #{what}), '%');
-    </if>
-
-
-
   </select>
 </mapper>

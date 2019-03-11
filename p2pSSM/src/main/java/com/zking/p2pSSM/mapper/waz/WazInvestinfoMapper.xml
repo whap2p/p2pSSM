@@ -189,6 +189,20 @@
   </update>
 
   <select id="query" resultType="com.zking.p2pSSM.model.Investinfo" parameterType="com.zking.p2pSSM.model.Investinfo">
-    select * from investinfo
+    select * from investinfo where brrowid = #{brrowid}
+  </select>
+
+  <select id="sumBYInmoney" resultType="java.lang.Integer"  parameterType="com.zking.p2pSSM.model.Investinfo">
+    select sum(inmoney) from investinfo where 1=1
+     <if test="brrowid != null">
+      and brrowid = #{brrowid}
+     </if>
+  </select>
+
+  <select id="sumBYProfitmoney" resultType="java.lang.Integer" parameterType="com.zking.p2pSSM.model.Investinfo">
+    select sum(profitmoney) from investinfo where 1=1
+    <if test="brrowid != null">
+     and brrowid = #{brrowid}
+    </if>
   </select>
 </mapper>

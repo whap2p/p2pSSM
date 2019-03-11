@@ -14,5 +14,5 @@ public interface DhTradeService {
 
     int updateByPrimaryKeySelective(Trade record);
 
-    List<Trade> queryTrade(Map<String, Object> map);
+    List<Trade> queryTrade(int uid);
 }

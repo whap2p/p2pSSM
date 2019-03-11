@@ -40,7 +40,7 @@ public class DhTradeServiceImpl implements DhTradeService {
     }
 
     @Override
-    public List<Trade> queryTrade(Map<String, Object> map) {
-        return dhTradeMapper.queryTrade(map);
+    public List<Trade> queryTrade(int uid) {
+        return dhTradeMapper.queryTrade(uid);
     }
 }

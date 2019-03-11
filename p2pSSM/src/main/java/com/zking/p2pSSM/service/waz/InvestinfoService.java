@@ -1,12 +1,11 @@
-package com.zking.p2pSSM.mapper.waz;
+package com.zking.p2pSSM.service.waz;
 
 import com.zking.p2pSSM.model.Investinfo;
-import org.springframework.stereotype.Repository;
+import com.zking.p2pSSM.utils.PageBean;
 
 import java.util.List;
 
-@Repository
-public interface WazInvestinfoMapper {
+public interface InvestinfoService {
     int deleteByPrimaryKey(Integer inid);
 
     int insert(Investinfo record);
@@ -24,7 +23,7 @@ public interface WazInvestinfoMapper {
      * @param investinfo
      * @return
      */
-    List<Investinfo> query(Investinfo investinfo);
+    List<Investinfo> queryPager(Investinfo investinfo, PageBean pageBean);
 
     /**
      * 通过投标id目前投标总额

@@ -127,11 +127,11 @@
         <div class="title clearfix">
           <ul>
             <li class="col-330">标题名称</li>
-            <li class="col-180"><a href="javascript:url('order','account_up');" class="">借款金额</a> </li>
+            <li class="col-180"><a href="javascript:url('order','account_up');" class="">项目规模</a> </li>
             <li class="col-110"><a href="javascript:url('order','apr_up');" class="">年利率</a> </li>
             <li class="col-150"><a href="javascript:url('order','period_up');" class="">截止期限</a> </li>
             <li class="col-150">还款方式</li>
-            <li class="col-120"><a href="javascript:url('order','scale_up');" class="">借款进度</a></li>
+            <li class="col-120"><a href="javascript:url('order','scale_up');" class="">项目进度</a></li>
             <li class="col-120-t">操作</li>
           </ul>
         </div>
@@ -145,10 +145,10 @@
         <div class="item">
           <ul>
             <li class="col-330 col-t">
-            	<a href="investInfo.do?bmid=${invest.id }" target="_blank">
+            	<a href="../product/queryById?id=${invest.id }" target="_blank">
             		<i class="icon icon-xin" title="类型"></i>
             	</a>
-            	<a class="f18" href="investInfo.do?bmid=${invest.id }" title="${invest.pname }" target="_blank"> ${ft:substring(invest.pname,0,8) } 
+            	<a class="f18" href="../product/queryById?id=${invest.id }" title="${invest.pname }" target="_blank"> ${ft:substring(invest.pname,0,8) }
             	</a>
             </li>
             <li class="col-180"><span class="f20 c-333">${invest.ptotalmoney }</span>元</li>
@@ -165,7 +165,9 @@
               </div>
             </li>
             <li class="col-120-2"> 
-            	<a class="ui-btn btn-gray"  href="../product/queryById?id=${invest.id }">
+              <a class="ui-btn btn-gray"
+                 <c:if test="${globaluser == null}" >href="../product/queryById?id=${invest.id }"</c:if>
+                 <c:if test="${globaluser != null}" >href="../product/queryById?id=${invest.id }&&unickname=${globaluser.unickname}"</c:if> >
             		<c:if test="${invest.pstate=='1' }">立即投标</c:if>
             		<c:if test="${invest.pstate=='2' }">募集完成</c:if>
             		<c:if test="${invest.pstate=='3' }">还款中</c:if>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.waz.WazCertificationMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Certification" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="cserial" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cusername" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="crealname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cbalance" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cfreeze" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cdue" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cpaid" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ctotalmoney" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, cserial, cusername, crealname, cbalance, cfreeze, cdue, cpaid, ctotalmoney
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from certification
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from certification
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Certification" >
+    insert into certification (id, cserial, cusername, 
+      crealname, cbalance, cfreeze, 
+      cdue, cpaid, ctotalmoney
+      )
+    values (#{id,jdbcType=INTEGER}, #{cserial,jdbcType=VARCHAR}, #{cusername,jdbcType=VARCHAR}, 
+      #{crealname,jdbcType=VARCHAR}, #{cbalance,jdbcType=VARCHAR}, #{cfreeze,jdbcType=VARCHAR}, 
+      #{cdue,jdbcType=VARCHAR}, #{cpaid,jdbcType=VARCHAR}, #{ctotalmoney,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Certification" >
+    insert into certification
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="cserial != null" >
+        cserial,
+      </if>
+      <if test="cusername != null" >
+        cusername,
+      </if>
+      <if test="crealname != null" >
+        crealname,
+      </if>
+      <if test="cbalance != null" >
+        cbalance,
+      </if>
+      <if test="cfreeze != null" >
+        cfreeze,
+      </if>
+      <if test="cdue != null" >
+        cdue,
+      </if>
+      <if test="cpaid != null" >
+        cpaid,
+      </if>
+      <if test="ctotalmoney != null" >
+        ctotalmoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cserial != null" >
+        #{cserial,jdbcType=VARCHAR},
+      </if>
+      <if test="cusername != null" >
+        #{cusername,jdbcType=VARCHAR},
+      </if>
+      <if test="crealname != null" >
+        #{crealname,jdbcType=VARCHAR},
+      </if>
+      <if test="cbalance != null" >
+        #{cbalance,jdbcType=VARCHAR},
+      </if>
+      <if test="cfreeze != null" >
+        #{cfreeze,jdbcType=VARCHAR},
+      </if>
+      <if test="cdue != null" >
+        #{cdue,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaid != null" >
+        #{cpaid,jdbcType=VARCHAR},
+      </if>
+      <if test="ctotalmoney != null" >
+        #{ctotalmoney,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Certification" >
+    update certification
+    <set >
+      <if test="cserial != null" >
+        cserial = #{cserial,jdbcType=VARCHAR},
+      </if>
+      <if test="cusername != null" >
+        cusername = #{cusername,jdbcType=VARCHAR},
+      </if>
+      <if test="crealname != null" >
+        crealname = #{crealname,jdbcType=VARCHAR},
+      </if>
+      <if test="cbalance != null" >
+        cbalance = #{cbalance,jdbcType=VARCHAR},
+      </if>
+      <if test="cfreeze != null" >
+        cfreeze = #{cfreeze,jdbcType=VARCHAR},
+      </if>
+      <if test="cdue != null" >
+        cdue = #{cdue,jdbcType=VARCHAR},
+      </if>
+      <if test="cpaid != null" >
+        cpaid = #{cpaid,jdbcType=VARCHAR},
+      </if>
+      <if test="ctotalmoney != null" >
+        ctotalmoney = #{ctotalmoney,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Certification" >
+    update certification
+    set cserial = #{cserial,jdbcType=VARCHAR},
+      cusername = #{cusername,jdbcType=VARCHAR},
+      crealname = #{crealname,jdbcType=VARCHAR},
+      cbalance = #{cbalance,jdbcType=VARCHAR},
+      cfreeze = #{cfreeze,jdbcType=VARCHAR},
+      cdue = #{cdue,jdbcType=VARCHAR},
+      cpaid = #{cpaid,jdbcType=VARCHAR},
+      ctotalmoney = #{ctotalmoney,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByCbalance" parameterType="com.zking.p2pSSM.model.Certification" >
+    update certification set cbalance = (cbalance-#{cbalance}) where id = #{id}
+  </update>
+
+
+  <select id="queryByCusername" resultType="com.zking.p2pSSM.model.Certification" parameterType="java.lang.String">
+    select * from certification where cusername = #{cusername}
+  </select>
+</mapper>

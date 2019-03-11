@@ -3,6 +3,8 @@ package com.zking.p2pSSM.mapper.waz;
 import com.zking.p2pSSM.model.Users;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface WazUsersMapper {
     int deleteByPrimaryKey(Integer uid);
@@ -11,7 +13,7 @@ public interface WazUsersMapper {
 
     int insertSelective(Users record);
 
-    Users selectByPrimaryKey(Integer uid);
+    List<Users> selectByPrimaryKey();
 
     int updateByPrimaryKeySelective(Users record);
 

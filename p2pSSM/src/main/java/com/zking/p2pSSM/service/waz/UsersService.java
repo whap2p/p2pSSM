@@ -1,6 +1,9 @@
 package com.zking.p2pSSM.service.waz;
 
 import com.zking.p2pSSM.model.Users;
+import com.zking.p2pSSM.utils.PageBean;
+
+import java.util.List;
 
 public interface UsersService {
     int deleteByPrimaryKey(Integer uid);
@@ -9,7 +12,7 @@ public interface UsersService {
 
     int insertSelective(Users record);
 
-    Users selectByPrimaryKey(Integer uid);
+    List<Users> selectPager();
 
     int updateByPrimaryKeySelective(Users record);
 

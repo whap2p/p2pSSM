@@ -1,13 +1,8 @@
 package com.zking.p2pSSM.controller.waz;
 
-import com.zking.p2pSSM.model.Biao;
-import com.zking.p2pSSM.model.Notice;
-import com.zking.p2pSSM.model.Product;
-import com.zking.p2pSSM.model.Users;
-import com.zking.p2pSSM.service.waz.BiaoService;
-import com.zking.p2pSSM.service.waz.NoticeService;
-import com.zking.p2pSSM.service.waz.ProductService;
-import com.zking.p2pSSM.service.waz.UsersService;
+import com.zking.p2pSSM.model.*;
+import com.zking.p2pSSM.service.dh.DhCertificationService;
+import com.zking.p2pSSM.service.waz.*;
 import com.zking.p2pSSM.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,6 +28,10 @@ public class NoticeController {
     private ProductService productService;
     @Autowired
     private BiaoService biaoService;
+    @Autowired
+    private InvestinfoService investinfoService;
+    @Autowired
+    private DhCertificationService certificationService;
 
 
     @RequestMapping("/list")
@@ -75,21 +74,13 @@ public class NoticeController {
         //注册人数
         int size = usersService.userCount();
         //主页查询累计投资金额
-        int userCountByMarkmoney = usersService.userCountByMarkmoney();
+        int sumBYInmoney = investinfoService.sumBYInmoney(null);
         //主页查询累积收益
-        int userCountByMarkgain = usersService.userCountByMarkgain();
+        int sumBYProfitmoney = investinfoService.sumBYProfitmoney(null);
 
         //主页项目
         List<Product> proList = productService.queryPager(null, null);
         List<Biao> biaoList = biaoService.query();
-//        扫码登陆后默认用户登陆
-//        if(state == 2){
-//            Users users = new Users();
-//            users.setUnickname("test");
-//            users.setUpassword("123");
-//            Users login = usersService.login(users);
-//            request.setAttribute("globaluser", login);
-//        }
         //网站运营天数
         String format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
         SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -103,7 +94,6 @@ public class NoticeController {
         long second1 = between % 60 / 60;
         String date = day1 + "天" + hour1 + "小时" + minute1 + "分" + second1 + "秒";
 
-//        request.setAttribute("state", state);
         request.setAttribute("listss", listByWzgg);
         request.setAttribute("listByTop", listByTop);
         request.setAttribute("listByMtbd", listByMtbd);
@@ -112,8 +102,8 @@ public class NoticeController {
         request.setAttribute("date", date);
         request.setAttribute("proList", proList);
         request.setAttribute("biaoList", biaoList);
-        request.setAttribute("userCountByMarkmoney", userCountByMarkmoney);
-        request.setAttribute("userCountByMarkgain", userCountByMarkgain);
+        request.setAttribute("inmoney", sumBYInmoney);
+        request.setAttribute("profitmoney", sumBYProfitmoney);
         return "index";
     }
 
