@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.p2pSSM.mapper.hhj.HhjInvestinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.p2pSSM.model.Investinfo" >
+    <constructor >
+      <idArg column="inid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="userid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="brrowid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="inmoney" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="instatus" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="instyle" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="brrowstatus" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="interest" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="profitmodel" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="profitmoney" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
+      <arg column="indate" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="replaydate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="markstatus" jdbcType="INTEGER" javaType="java.lang.Integer" />
+    </constructor>
+  </resultMap>
+  <!--<resultMap id="InvestinfoMap" type="com.zking.p2pSSM.model.Investinfo">
+    <result property="inid" column="inid"/>
+    <result property="userid" column="userid"/>
+    <result property="brrowid" column="brrowid"/>
+    <result property="inmoney" column="inmoney"/>
+    <result property="instatus" column="instatus"/>
+    <result property="instyle" column="instyle"/>
+    <result property="brrowstatus" column="brrowstatus"/>
+    <result property="interest" column="interest"/>
+    <result property="profitmodel" column="profitmodel"/>
+    <result property="profitmoney" column="profitmoney"/>
+    <result property="indate" column="indate"/>
+    <result property="replaydate" column="replaydate"/>
+    <result property="markstatus" column="markstatus"/>
+    <association property=""
+  </resultMap>-->
+  <sql id="Base_Column_List" >
+    inid, userid, brrowid, inmoney, instatus, instyle, brrowstatus, interest, profitmodel, 
+    profitmoney, indate, replaydate, markstatus
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from investinfo
+    where inid = #{inid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from investinfo
+    where inid = #{inid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.p2pSSM.model.Investinfo" >
+    insert into investinfo (inid, userid, brrowid, 
+      inmoney, instatus, instyle, 
+      brrowstatus, interest, profitmodel, 
+      profitmoney, indate, replaydate, 
+      markstatus)
+    values (#{inid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{brrowid,jdbcType=INTEGER}, 
+      #{inmoney,jdbcType=DECIMAL}, #{instatus,jdbcType=VARCHAR}, #{instyle,jdbcType=VARCHAR}, 
+      #{brrowstatus,jdbcType=VARCHAR}, #{interest,jdbcType=VARCHAR}, #{profitmodel,jdbcType=VARCHAR}, 
+      #{profitmoney,jdbcType=DECIMAL}, #{indate,jdbcType=TIMESTAMP}, #{replaydate,jdbcType=VARCHAR}, 
+      #{markstatus,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.p2pSSM.model.Investinfo" >
+    insert into investinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="inid != null" >
+        inid,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="brrowid != null" >
+        brrowid,
+      </if>
+      <if test="inmoney != null" >
+        inmoney,
+      </if>
+      <if test="instatus != null" >
+        instatus,
+      </if>
+      <if test="instyle != null" >
+        instyle,
+      </if>
+      <if test="brrowstatus != null" >
+        brrowstatus,
+      </if>
+      <if test="interest != null" >
+        interest,
+      </if>
+      <if test="profitmodel != null" >
+        profitmodel,
+      </if>
+      <if test="profitmoney != null" >
+        profitmoney,
+      </if>
+      <if test="indate != null" >
+        indate,
+      </if>
+      <if test="replaydate != null" >
+        replaydate,
+      </if>
+      <if test="markstatus != null" >
+        markstatus,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="inid != null" >
+        #{inid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="brrowid != null" >
+        #{brrowid,jdbcType=INTEGER},
+      </if>
+      <if test="inmoney != null" >
+        #{inmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="instatus != null" >
+        #{instatus,jdbcType=VARCHAR},
+      </if>
+      <if test="instyle != null" >
+        #{instyle,jdbcType=VARCHAR},
+      </if>
+      <if test="brrowstatus != null" >
+        #{brrowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null" >
+        #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="profitmodel != null" >
+        #{profitmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="profitmoney != null" >
+        #{profitmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="indate != null" >
+        #{indate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replaydate != null" >
+        #{replaydate,jdbcType=VARCHAR},
+      </if>
+      <if test="markstatus != null" >
+        #{markstatus,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.p2pSSM.model.Investinfo" >
+    update investinfo
+    <set >
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="brrowid != null" >
+        brrowid = #{brrowid,jdbcType=INTEGER},
+      </if>
+      <if test="inmoney != null" >
+        inmoney = #{inmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="instatus != null" >
+        instatus = #{instatus,jdbcType=VARCHAR},
+      </if>
+      <if test="instyle != null" >
+        instyle = #{instyle,jdbcType=VARCHAR},
+      </if>
+      <if test="brrowstatus != null" >
+        brrowstatus = #{brrowstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="interest != null" >
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+      <if test="profitmodel != null" >
+        profitmodel = #{profitmodel,jdbcType=VARCHAR},
+      </if>
+      <if test="profitmoney != null" >
+        profitmoney = #{profitmoney,jdbcType=DECIMAL},
+      </if>
+      <if test="indate != null" >
+        indate = #{indate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="replaydate != null" >
+        replaydate = #{replaydate,jdbcType=VARCHAR},
+      </if>
+      <if test="markstatus != null" >
+        markstatus = #{markstatus,jdbcType=INTEGER},
+      </if>
+    </set>
+    where inid = #{inid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.p2pSSM.model.Investinfo" >
+    update investinfo
+    set userid = #{userid,jdbcType=INTEGER},
+      brrowid = #{brrowid,jdbcType=INTEGER},
+      inmoney = #{inmoney,jdbcType=DECIMAL},
+      instatus = #{instatus,jdbcType=VARCHAR},
+      instyle = #{instyle,jdbcType=VARCHAR},
+      brrowstatus = #{brrowstatus,jdbcType=VARCHAR},
+      interest = #{interest,jdbcType=VARCHAR},
+      profitmodel = #{profitmodel,jdbcType=VARCHAR},
+      profitmoney = #{profitmoney,jdbcType=DECIMAL},
+      indate = #{indate,jdbcType=TIMESTAMP},
+      replaydate = #{replaydate,jdbcType=VARCHAR},
+      markstatus = #{markstatus,jdbcType=INTEGER}
+    where inid = #{inid,jdbcType=INTEGER}
+  </update>
+</mapper>

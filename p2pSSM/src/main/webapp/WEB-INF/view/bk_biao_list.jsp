@@ -66,25 +66,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${list}" var="list" varStatus="status">
+							<c:forEach items="${hhjBiaoshow}" var="list" varStatus="status">
 								<tr>
 								
 									<td>${status.index+1 }</td>
 									<td>${list.bname }</td>
-									<td><a href="<%=basePath%>biao/input.do?id=${list.id}">编辑</a>
+									<td><a href="<%=basePath%>/hhjbiao/update1?id=${list.id}&bname=${list.bname}">编辑</a>
 										&nbsp;&nbsp; <a
-										href="<%=basePath%>biao/delete.do?id=${list.id}">删除</a></td>
+										href="<%=basePath%>/hhjbiao/delete?id=${list.id}">删除</a></td>
 								</tr>
 							</c:forEach>
 							<tr align="center">
 								<td colspan="13">
-									<a href="${pageContext.request.contextPath}/biao/list.do?currpage=1" class="btn btn-success btn-ms ">首页</a>
-									<a href="${pageContext.request.contextPath}/biao/list.do?currpage=${currpages-1}" class="btn btn-success btn-ms ">&lt;&lt;上一页</a>
-									<a href="${pageContext.request.contextPath}/biao/list.do?currpage=${currpages+1}" class="btn btn-success btn-ms "> 下一页&gt;&gt;</a>
-									<a href="${pageContext.request.contextPath}/biao/list.do?currpage=${totalpage}" class="btn btn-success btn-ms "> 尾页</a>
+									<a href="${pageContext.request.contextPath}/hhjbiao/show?currpage=1" class="btn btn-success btn-ms ">首页</a>
+									<a href="${pageContext.request.contextPath}/hhjbiao/show?currpage=${hhjBiaoshowPage-1}" class="btn btn-success btn-ms ">&lt;&lt;上一页</a>
+									<a href="${pageContext.request.contextPath}/hhjbiao/show?currpage=${hhjBiaoshowPage+1}" class="btn btn-success btn-ms "> 下一页&gt;&gt;</a>
+									<a href="${pageContext.request.contextPath}/hhjbiao/show?currpage=${hhjBiaoshowPageMax}" class="btn btn-success btn-ms "> 尾页</a>
 									<font size="3">共<font
-										color="red">${totalrow}</font>条数据，当前<font color="#0000ff">${currpages}</font><font
-										color="red">/${totalpage}</font>页
+										color="red">${hhjBiaoshowsize}</font>条数据，当前<font color="#0000ff">${hhjBiaoshowPage}</font><font
+										color="red">/${hhjBiaoshowPageMax}</font>页
 									</font>
 								</td>
 							</tr>
