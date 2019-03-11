@@ -32,8 +32,8 @@
     </div>
     <div class="registerCont">
       <ul>
-        <li class="scses"> ${unickname}， 恭喜您注册成功！<a class="blue" href="#" target="_blank">请立即开通--双乾支付账户,即可投资！</a></li>
-        <li class="rz"><a href="#" class="btn">立即开通</a><a href="#" class="blue">进入我的账户</a></li>
+        <li class="scses"> ${globaluser.unickname}， 恭喜您注册成功！<a class="blue" href="#" target="_blank">请立即开通--双乾支付账户,即可投资！</a></li>
+        <li class="rz"><a href="${pageContext.request.contextPath}/thirdparty.jsp" class="btn">立即开通</a><a href="${pageContext.request.contextPath}/user/query?id=${globaluser.uid}" class="blue">进入我的账户</a></li>
       </ul>
     </div>
   </div>

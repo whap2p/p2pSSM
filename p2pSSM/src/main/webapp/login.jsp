@@ -93,7 +93,7 @@
 								<div class="wrp_code"><img class="qrcode lightBorder" src="${pageContext.request.contextPath}/users/code/${uuid}" /></div>
 								<div class="info">
 									<div  id="wx_default_tip">
-										<p id="msg">请使用微信扫描二维码登录</p><a style="" href="${pageContext.request.contextPath}/users/index">刷新</a>
+										<p id="msg">请使用微信扫描二维码登录</p><a href="${pageContext.request.contextPath}/users/index">刷新</a>
 									</div>
 								</div>
 							</div>

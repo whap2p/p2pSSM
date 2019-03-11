@@ -14,6 +14,6 @@ public interface DhInvestinfoService {
 
     int updateByPrimaryKeySelective(Investinfo record);
 
-    List<Investinfo> qureyInvestinfoPager(int userid,PageBean pageBean);
+    List<Investinfo> qureyInvestinfoPager(int userid, PageBean pageBean);
 
 }

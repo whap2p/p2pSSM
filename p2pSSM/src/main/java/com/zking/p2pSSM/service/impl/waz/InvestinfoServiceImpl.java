@@ -2,6 +2,7 @@ package com.zking.p2pSSM.service.impl.waz;
 
 import com.zking.p2pSSM.mapper.waz.WazInvestinfoMapper;
 import com.zking.p2pSSM.model.Investinfo;
+import com.zking.p2pSSM.service.waz.InvestinfoService;
 import com.zking.p2pSSM.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,7 +27,7 @@ public class InvestinfoServiceImpl implements InvestinfoService {
 
     @Override
     public int insertSelective(Investinfo record) {
-        return 0;
+        return wazInvestinfoMapper.insertSelective(record);
     }
 
     @Override
@@ -47,5 +48,15 @@ public class InvestinfoServiceImpl implements InvestinfoService {
     @Override
     public List<Investinfo> queryPager(Investinfo investinfo, PageBean pageBean) {
         return wazInvestinfoMapper.query(investinfo);
+    }
+
+    @Override
+    public int sumBYInmoney(Investinfo investinfo) {
+        return wazInvestinfoMapper.sumBYInmoney(investinfo);
+    }
+
+    @Override
+    public int sumBYProfitmoney(Investinfo investinfo) {
+        return wazInvestinfoMapper.sumBYProfitmoney(investinfo);
     }
 }

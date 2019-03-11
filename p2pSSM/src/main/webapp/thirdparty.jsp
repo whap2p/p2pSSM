@@ -15,12 +15,12 @@
 <title>p2p网贷平台</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="<%=basePath%>css/common.css" rel="stylesheet" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/user.css" />
-<link rel="stylesheet" type="text/css" href="<%=basePath%>css/jquery.datetimepicker.css"/>
-<script type="text/javascript" src="<%=basePath%>script/jquery.min.js"></script>
-<script type="text/javascript" src="<%=basePath%>script/common.js"></script>
-<script src="<%=basePath%>script/user.js" type="text/javascript"></script>
+<link href="<%=basePath%>/css/common.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/user.css" />
+<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/jquery.datetimepicker.css"/>
+<script type="text/javascript" src="<%=basePath%>/script/jquery.min.js"></script>
+<script type="text/javascript" src="<%=basePath%>/script/common.js"></script>
+<script src="<%=basePath%>/script/user.js" type="text/javascript"></script>
 </head>
 <body>
  <!-- 导航栏 --><jsp:include page="head.jsp"></jsp:include>	
@@ -181,19 +181,43 @@
               </li>
             </ul>
             </c:if>
-            <c:if test="${globaluser.ucertnumber==null}">
-            <ul>
-           	 	<li>
-                <label for="phone">交易密码</label>
-                <input type="password" name="upwd_zd" id="upwd_zd" class="pay-txt" maxlength="18" placeholder="您的交易密码">
-              </li>
-            	<li>
-                <input type="submit" name="" value="开户" style="border:none;" class="btn-paykh">
-              </li>
+            <c:if test="${globaluser.userpaytoid==null}">
+              <h6>请选择您要开户的银行</h6>
+              <ul>
+                <li>
+                  <label for="bank">银行</label>
+                  <select name="bkname" onblur="yinhang()" id="bank" class="select-redpacket">
+                    <option value="空">请选择</option>
+                    <option value="中国邮政">中国邮政</option>
+                    <option value="中国建设">中国建设</option>
+                    <option value="中国工商">中国工商</option>
+                    <option value="中国农业">中国农业</option>
+                  </select>
               </ul>
             </c:if>
-            <c:if test="${globaluser.ucertnumber!=null}">
-            	<h3><i>已绑定第三方账户</i></h3>
+            <c:if test="${globaluser.userpaytoid != null}">
+              <h6>银行卡已绑定</h6>
+              <ul>
+                <li>
+                  <label for="userpaytoid">银行卡号</label>
+                  <input type="hidden" name="userpaytoid" id="userpaytoid" value="${globaluser.uphonenumber}">
+                  <label id="form:userpaytoid"> ${globaluser.userpaytoid}</label>
+                </li>>
+              </ul>
+            </c:if>
+            <c:if test="${globaluser.userpaytoid==null}">
+              <ul>
+                <li>
+                  <label for="upwd_zd">交易密码</label>
+                  <input type="password" name="upwd_zd" id="upwd_zd" class="pay-txt" maxlength="18" placeholder="您的交易密码">
+                </li>
+                <li>
+                  <input type="submit" name="" value="开户" style="border:none;" class="btn-paykh">
+                </li>
+              </ul>
+            </c:if>
+            <c:if test="${globaluser.userpaytoid!=null}">
+              <h3><i>已绑定第三方账户</i></h3>
             </c:if>
           </div>
         </form>
@@ -274,7 +298,15 @@
 
 				var second = 0;
                 var internal;
-                
+
+
+                function yinhang() {
+                    var bank = document.getElementById("bank").value;
+                    if(bank.equals("空")){
+                        alert("请选择您要开户的银行");
+                        return false;
+                    }
+                }
 		        //]]>
 		    </script>
     </div>

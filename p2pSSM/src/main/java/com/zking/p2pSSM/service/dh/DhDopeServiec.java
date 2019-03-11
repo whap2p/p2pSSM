@@ -14,6 +14,6 @@ public interface DhDopeServiec {
 
     int updateByPrimaryKeySelective(Dope record);
 
-    List<Dope> qureyDopePager(int dprimkey,PageBean pageBean);
+    List<Dope> qureyDopePager(int dprimkey, PageBean pageBean);
 
 }

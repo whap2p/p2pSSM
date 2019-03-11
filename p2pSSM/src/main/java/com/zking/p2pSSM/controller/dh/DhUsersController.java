@@ -3,8 +3,7 @@ package com.zking.p2pSSM.controller.dh;
 import com.zking.p2pSSM.model.*;
 import com.zking.p2pSSM.service.dh.*;
 import com.zking.p2pSSM.utils.PageBean;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
+import com.zking.p2pSSM.utils.RandomCreditCardNumberGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,9 +15,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author段豪
@@ -54,10 +51,6 @@ public class DhUsersController {
 
     @RequestMapping("/login")
     public String login(Users users, HttpServletRequest request){
-//        UsernamePasswordToken token = new UsernamePasswordToken(users.getUnickname(),users.getUpassword());
-//        Subject subject = SecurityUtils.getSubject();
-//        try {
-//            subject.login(token);
             Users users1 = usersService.qureyByName(users);
             if(users1 != null){
                 request.getSession().setAttribute("globaluser",users1);
@@ -65,17 +58,14 @@ public class DhUsersController {
             }else{
                 return "redirect:/login.jsp";
             }
-//        }catch (Exception e){
-//            return "redirect:/login.jsp";
-//        }
     }
 
     @RequestMapping("/exit")
-    public String exit(){
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
+    public String exit(HttpServletRequest request){
+        request.getSession().setMaxInactiveInterval(1);
         return "redirect:/login.jsp";
     }
+
 
     @RequestMapping("/toUrl")
     public String getUrl(String url,String type){
@@ -95,13 +85,15 @@ public class DhUsersController {
         certification.setCusername(users.getUnickname());
         certification.setCrealname(users.getUname());
         certificationService.insertSelective(certification);
+        Users users1 = usersService.qureyByName(users);
         if(i>0){
-            request.setAttribute("unickname",users.getUnickname());
+            request.getSession().setAttribute("globaluser",users1);
             return "forward:/register1.jsp";
-    }else{
+        }else{
             return "redirect:/register.jsp";
         }
     }
+
 
     @ResponseBody
     @RequestMapping("/findByName")
@@ -113,23 +105,49 @@ public class DhUsersController {
     @RequestMapping("/query")
     public String findByID(int id,HttpServletRequest request){
         Users users = usersService.selectByPrimaryKey(id);
+        PageBean pageBean = new PageBean();
+        pageBean.setRequest(request);
+        List<Trade> list = dhTradeService.queryTrade(id);
+        List<Biao> dhBiaos = dhBiaoService.queryBiao();
+        List<Investinfo> dhInvestinfos = dhInvestinfoService.qureyInvestinfoPager(id,pageBean);
 //        Investstat investstat = investstatService.queryByuserid(id);
         Certification certification = certificationService.queryByCusername(users.getUnickname());
         request.getSession().setAttribute("globaluser",users);
         request.getSession().setAttribute("certification",certification);
+        request.getSession().setAttribute("record",dhInvestinfos);
+        request.getSession().setAttribute("biao",dhBiaos);
+        request.getSession().setAttribute("trades",list);
         return "personalpage";
     }
 
     @RequestMapping("/kaihu")
     @Transactional
-    public String kaihu(Users user){
-        Bankcard bankcard = dhBankcardService.qureyBysfz(user.getUcardid());
-        user.setUserpaytoid(bankcard.getCardid());
+    public String kaihu(Users user,String bkname) throws ParseException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Date date = format.parse(df.format(new Date()));
+        String cardid = RandomCreditCardNumberGenerator.get_Bank_account();
+        Bankcard bankcard = new Bankcard();
+        bankcard.setuID(user.getUid());
+        bankcard.setUname(user.getUnickname());
+        bankcard.setZname(user.getUname());
+        bankcard.setSfz(user.getUcardid());
+        bankcard.setKhh(bkname);
+        bankcard.setCardid(cardid);
+        bankcard.setTjtime(date);
+        bankcard.setStatu("成功");
+        dhBankcardService.insertSelective(bankcard);
+        Bankcard bankcard1 = dhBankcardService.qureyBysfz(user.getUcardid());
+        user.setUserpaytoid(bankcard1.getCardid());
         int i = usersService.updateByPrimaryKeySelective(user);
         if(i>0){
+            Inactiveuser inactiveuser = new Inactiveuser();
+            inactiveuser.setIuname(user.getUnickname());
+            inactiveuser.setIdmailbox(user.getUmailbox());
+            inactiveuser.setiCreatetime(date);
             return "/user/query?id="+user.getUid();
         }else {
-            return "redirect:/thirdparty.jsp";
+            return "thirdparty";
         }
     }
 
@@ -240,13 +258,11 @@ public class DhUsersController {
         return "investrecord";
     }
 
-
-    public String qureyTrade(int uid){
-        Map map = new HashMap();
-        map.put("uid",uid);
-        List<Trade> list = dhTradeService.queryTrade(map);
-
-        return "";
+    @RequestMapping("/queryTrade")
+    public String qureyTrade(int uid,HttpServletRequest request){
+//        List<Trade> list = dhTradeService.queryTrade(uid);
+//        request.getSession().setAttribute("trades",list);
+        return "forward:moneyrecord.jsp";
     }
 
 

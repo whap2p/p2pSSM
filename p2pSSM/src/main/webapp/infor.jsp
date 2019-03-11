@@ -24,9 +24,9 @@
 	type="text/css" />
 <script type="text/javascript" src="script/jquery.min.js"></script>
 <script type="text/javascript" src="script/common.js"></script>
-<script src="<%=basePath%>script/ablumn.js"></script>
-<script src="<%=basePath%>script/plugins.js"></script>
-<script src="<%=basePath%>script/detail.js"></script>
+<script src="<%=basePath%>/script/ablumn.js"></script>
+<script src="<%=basePath%>/script/plugins.js"></script>
+<script src="<%=basePath%>/script/detail.js"></script>
 <link href="<%=basePath%>/css/common.css" rel="stylesheet" />
 <link href=<%=basePath%>/css/register.css"
 	rel="stylesheet" type="text/css" />
@@ -36,28 +36,35 @@
 	src="<%=basePath%>/script/common.js"></script>
 <script src="<%=basePath%>/script/login.js"
 	type="text/javascript"></script>
+	<script type="text/javascript">
+        function touzi() {
+            var inmoney = document.getElementById("inmoney").value;
+            var sum = document.getElementById("sum").value;
+
+            var profitmodel = document.getElementById("profitmodel").value;
+            var interest = document.getElementById("interest").value;
+            var brrowid = document.getElementById("brrowid").value;
+            var id = document.getElementById("id").value;
+            var userid = document.getElementById("userid").value;
+            var unickname = document.getElementById("unickname").value;
+
+
+            var cbalance = ${certification.cbalance}
+            var profitmoney = inmoney*0.02;
+
+
+            if(${globaluser==null}){
+                alert("请登录！")
+            }else{
+                if(cbalance < inmoney){
+                    alert("余额不足，请充值");
+                }else{
+                    location.href = "${pageContext.request.contextPath}/product/touZi?cbalance="+inmoney+"&inmoney="+inmoney+"&instatus=0&brrowstatus=筹集中&replaydate=无期&profitmoney="+profitmoney+"&&profitmodel="+profitmodel+"&&interest="+interest+"&&brrowid="+brrowid+"&&id="+id+"&&userid="+userid+"&&unickname="+unickname;
+                }
+            }
+        }
+	</script>
 </head>
-<script type="text/javascript">
-	function submit() {
-		var fr = document.getElementById("fr");
-		fr.onsubmit = "return true";
-		fr.submit();
-	}
-
-	function investA() {
-		var money = document.getElementById("amount").value;
-		//		alert(money);
-		window.location.href = "investAdd.do?money=" + money;
-	}
-
-	function end() {//投资完返回此界面弹出提示
-		if ("${end}" != null && "${end}" == "end") {
-			alert("恭喜您,投资成功!");
-		}
-	}
-
-	end();
-</script>
 <body>
 	<!-- 导航栏 --><jsp:include page="head.jsp"></jsp:include>
 	<!--信息详细-->
@@ -75,11 +82,11 @@
 				<!--   <form id="fr" action="investAdd.do" method="post" onsubmit="return false"> -->
 				<div class="data">
 					<ul>
-						<li><span class="f16">借款金额</span><br> <span
+						<li><span class="f16">项目规模</span><br> <span
 							class="f30 c-333" id="account">${Borrowmoney.ptotalmoney }元</span></li>
 						<li class="relative"><span class="f16">年利率</span><br> <span
 							class="f30 c-orange">${Borrowmoney.pincome }%</span></li>
-						<li><span class="f16">借款期限</span><br> <span
+						<li><span class="f16">项目期限</span><br> <span
 							class="f30 c-333"><fmt:formatDate
 									value="${Borrowmoney.pcount }" pattern="yyyy-MM-dd" /></span></li>
 						<li><span class="c-888">借款编号：</span>${Borrowmoney.id}<%-- ${Borrowmoney.bserial } --%></li>
@@ -102,16 +109,40 @@
 				</div>
 				<!--   </form> -->
 
-				<div class="mod-right mod-status">
-					<div class="inner">
-						<div class="text">
-							待还本息：<span class="f24 c-333">${Borrowmoney.ptotalmoney+ Borrowmoney.prateben}</span>元<br> 剩余期限：<span
-								class="f24 c-333">29天</span> <br> 下期还款日： <span
-								class="f20 c-333">2019-5-29</span>
+				<c:if test="${Borrowmoney.pstate == 1 }">
+					<input type="hidden" name="profitmodel" id="profitmodel" value="${Borrowmoney.pway}"/>
+					<input type="hidden" name="interest"id="interest" value="${Borrowmoney.pincome}"/>
+					<input type="hidden" name="brrowid"id="brrowid" value="${Borrowmoney.id}"/>
+					<input type="hidden" name="id"id="id" value="${certification.id}"/>
+					<input type="hidden" name="userid"id="userid" value="${globaluser.uid}"/>
+					<input type="hidden" name="unickname"id="unickname" value="${globaluser.unickname}"/>
+					<div class="mod-right mod-status">
+						<div class="inner">
+							<div class="text pay-form">
+								<form action="" method="post">
+									<input type="hidden" value="${Borrowmoney.ptotalmoney-sumBYInmoney }" id="sum"/>
+									可投资余额：<span class="f24 c-333">￥${Borrowmoney.ptotalmoney-sumBYInmoney }</span>元<br>
+									<input type="text" id="inmoney" name="inmoney" placeholder="投资金额" style="
+									font-size:1.2em;height:2.0em;width:7.0em;border-radius:4px;border:1px solid #c8cccf;color:#6a6f77;"/>
+									<span style="font-size: 10px">(100起)</span><br/>
+									<a value="投资" onclick="touzi();" style="font-size: 22px;background-color: #00b7ee">投资</a>
+								</form>
+							</div>
 						</div>
-						<i class="icon icon-status icon-status1"></i>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${Borrowmoney.pstate == 2 }">
+					<div class="mod-right mod-status">
+						<div class="inner">
+							<div class="text">
+								待还本息：<span class="f24 c-333">${Borrowmoney.ptotalmoney+ Borrowmoney.prateben}</span>元<br> 剩余期限：<span
+									class="f24 c-333">29天</span> <br> 下期还款日： <span
+									class="f20 c-333">2019-5-29</span>
+							</div>
+							<i class="icon icon-status icon-status1"></i>
+						</div>
+					</div>
+				</c:if>
 
 			</div>
 		</div>
@@ -146,15 +177,6 @@
 												${dt.dcontent }</p>
 										</c:if>
 									</c:forEach>
-
-									<!--                 <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 借款人信息介绍：</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 借款人赵女士，<span>1988</span>年出生，大专学历，未婚，户籍地址为四川省古蔺县，现居住于成都市成华区。</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 借款人工作情况：</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 赵女士为成都某服装店老板，月收入<span>2</span>万元，收入居住稳定。</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 借款人资产介绍：</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 赵女士有<span>1</span>辆全款长安福特福克斯汽车。</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 详细资金用途：</p>
-                <p class="MsoNormal" style="margin-left:0cm;text-indent:0cm;"> 借款人申请汽车质押贷款，贷款用于资金周转。</p> -->
 								</div>
 							</dd>
 						</dl>
@@ -284,8 +306,8 @@
 				</div>
 				<div class="ui-tab-item" style="display: none;">
 					<div class="repayment-list">
-						目前投标总额：<span class="c-orange"> ${tm }元</span>&nbsp;&nbsp; 目前收益总额：<span
-							class="c-orange">${gm } 元</span>
+						目前投标总额：<span class="c-orange"> ${sumBYInmoney }元</span>&nbsp;&nbsp; 目前收益总额：<span
+							class="c-orange">${sumBYProfitmoney } 元</span>
 						<table border="0" cellpadding="0" cellspacing="0" width="100%">
 							<tbody>
 								<tr>
@@ -299,21 +321,19 @@
 								<c:if test="${record.size() > 0 }">
 									<c:forEach items="${record }" var="record">
 										<tr>
-											<td>${fn:substring(record.uname,0,1)}
-												<c:forEach begin="1" end="${fn:length(fn:substring(record.uname,1,fn:length(record.uname)))}" step="1">
-												*
-												</c:forEach><!-- 筱*** -->
+											<td>
+												<c:forEach items="${user}" var="u">
+													<c:if test="${record.userid == u.uid }">${u.unickname }</c:if>
+												</c:forEach>
 											</td>
 											<td><span class="c-orange">￥${record.inmoney }</span></td>
 											<td><fmt:formatDate value="${record.indate }"
 													pattern="yyyy-MM-dd HH:mm:ss" /></td>
-											<td><c:forEach items="${biao }" var="b">
-													<c:if test="${record.type == b.id }">${b.bname }</c:if>
-												</c:forEach></td>
+											<td>${record.instyle}</td>
 										</tr>
 									</c:forEach>
 								</c:if>
-								<c:if test="${record.size() <= 0 }">
+								<c:if test="${record.size() < 0 }">
 									<tr>
 										<td colspan="4">此标暂无投资信息!</td>
 									</tr>

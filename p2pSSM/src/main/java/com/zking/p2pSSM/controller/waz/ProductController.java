@@ -1,20 +1,17 @@
 package com.zking.p2pSSM.controller.waz;
 
-import com.zking.p2pSSM.model.Biao;
-import com.zking.p2pSSM.model.Details;
-import com.zking.p2pSSM.model.Investinfo;
-import com.zking.p2pSSM.model.Product;
-import com.zking.p2pSSM.service.impl.waz.InvestinfoService;
-import com.zking.p2pSSM.service.waz.BiaoService;
-import com.zking.p2pSSM.service.waz.DetailsService;
-import com.zking.p2pSSM.service.waz.ProductService;
+import com.zking.p2pSSM.model.*;
+import com.zking.p2pSSM.service.waz.*;
 import com.zking.p2pSSM.utils.PageBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,6 +25,10 @@ public class ProductController {
     private DetailsService detailsService;
     @Autowired
     private InvestinfoService investinfoService;
+    @Autowired
+    private UsersService usersService;
+    @Autowired
+    private CertificationService certificationService;
 
 
     /**
@@ -99,20 +100,72 @@ public class ProductController {
         return "list";
     }
 
-
+    /**
+     * 投资详情查询
+     * @param request
+     * @param id
+     * @param unickname
+     * @return
+     */
     @RequestMapping("/queryById")
-    public String queryById(HttpServletRequest request,Integer id,Integer userid){
+    public String queryById(HttpServletRequest request,Integer id,String unickname){
+        PageBean pageBean = new PageBean();
+        pageBean.setRequest(request);
+        Investinfo investinfo = new Investinfo();
+        investinfo.setBrrowid(id);
+
+
         Product product = productService.selectByPrimaryKey(id);
         List<Details> detailsList = detailsService.queryPager(null, null);
+        List<Investinfo> investinfoList = investinfoService.queryPager(investinfo, pageBean);
+        int sumBYInmoney = investinfoService.sumBYInmoney(investinfo);
+        int sumBYProfitmoney = investinfoService.sumBYProfitmoney(investinfo);
+        List<Biao> biaos = biaoService.query();
+        List<Users> users = usersService.selectPager();
+        Certification certification = certificationService.queryByCusername(unickname);
+
+
         request.setAttribute("Details",detailsList);
         request.setAttribute("Borrowmoney",product);
-        if(userid != null){
-            Investinfo investinfo = new Investinfo();
-            investinfo.setUserid(userid);
-            List<Investinfo> investinfoList = investinfoService.queryPager(investinfo, null);
-            request.setAttribute("record",investinfoList);
-        }
+        request.setAttribute("record",investinfoList);
+        request.setAttribute("biao",biaos);
+        request.setAttribute("user",users);
+        request.setAttribute("sumBYInmoney",sumBYInmoney);
+        request.setAttribute("sumBYProfitmoney",sumBYProfitmoney);
+        request.setAttribute("certification",certification);
         return "infor";
     }
+
+    /**
+     * 投资
+     * @return
+     */
+    @RequestMapping(value = "/touZi")
+    public String touZi(Integer id, Integer userid, BigDecimal inmoney, String cbalance, Integer brrowid, String interest, String profitmodel, String instatus, String brrowstatus, BigDecimal profitmoney , String replaydate, Integer markstatus,String unickname){
+
+        Certification certification = new Certification();
+        certification.setCbalance(cbalance);
+        certification.setId(id);
+
+        Investinfo investinfo = new Investinfo();
+        investinfo.setUserid(userid);
+        investinfo.setBrrowstatus(brrowstatus);
+        investinfo.setInmoney(inmoney);
+        investinfo.setInstatus(instatus);
+        investinfo.setMarkstatus(markstatus);
+        investinfo.setInterest(interest);
+        investinfo.setProfitmodel(profitmodel);
+        investinfo.setProfitmoney(profitmoney);
+        investinfo.setReplaydate(replaydate);
+        investinfo.setBrrowid(brrowid);
+        investinfo.setIndate(new Date());
+        investinfo.setInstyle("钱多多");
+
+
+        int addInvestinfo = investinfoService.insertSelective(investinfo);
+        int updateByCbalance = certificationService.updateByCbalance(certification);
+        return  "product/queryById?id="+brrowid+"&&unickname="+unickname;
+    }
+
 
 }

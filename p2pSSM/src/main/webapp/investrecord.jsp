@@ -76,7 +76,7 @@
               			<span class="investnote-w2">
               				<c:forEach items="${biao}" var="b">
               					<c:if test="${recordList.brrowid == b.id }">${b.bname }</c:if>
- --%>              				</c:forEach>
+              				</c:forEach>
               			</span>
               			<span class="investnote-w3">${recordList.interest }%</span>
               			<span class="investnote-hbw4">${recordList.replaydate }</span> <%-- <fmt:formatDate value="${recordList.replaydate }" pattern="yyyy-MM-dd HH:mm:ss"/> --%>
